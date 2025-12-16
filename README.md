@@ -1,11 +1,22 @@
+# Frockly
 
-  # Frockly
+**Frockly** is a visual Excel formula builder powered by Blockly.
 
-  This is a code bundle for Frockly. The original project is available at https://www.figma.com/design/TYE90s9CxzTvOmHlgE3rPS/Frockly.
+You can build Excel formulas using blocks instead of typing,
+with support for:
 
-  ## Running the code
+- Excel-compatible functions (SUM, IF, XLOOKUP, etc.)
+- Variadic argument blocks
+- Cell and range references
+- Absolute reference toggles ($A$1, $A1, A$1)
+- Japanese / English UI switching
 
-  Run `npm i` to install the dependencies.
+## Demo
+https://ryuu12358.github.io/Frockly/
 
-  Run `npm run dev` to start the development server.
-  
+## Development
+
+```bash
+npm install
+npm run dev
+
