@@ -19,7 +19,7 @@ https://ryuu12358.github.io/Frockly/
 ```bash
 npm install
 npm run dev
-
+```
 ## build
 
 npm run build
@@ -32,8 +32,6 @@ See THIRD_PARTY_LICENSES.txt for details.
 
 
 ---
-
-```md
 ## Design
 Initial UI design was explored in Figma:
 https://www.figma.com/design/XXXX
