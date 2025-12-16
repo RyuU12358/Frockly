@@ -34,4 +34,4 @@ See THIRD_PARTY_LICENSES.txt for details.
 ---
 ## Design
 Initial UI design was explored in Figma:
-https://www.figma.com/design/XXXX
+[https://www.figma.com/design/XXXX](https://www.figma.com/design/TYE90s9CxzTvOmHlgE3rPS/Frockly)
