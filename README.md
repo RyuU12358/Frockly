@@ -17,7 +17,9 @@ with support for:
 
 ## Demo
 https://ryuu12358.github.io/Frockly/
-> This tool is designed for desktop use with mouse input.
+> This tool is primarily designed for desktop use.
+> It may still work on mobile devices when using desktop mode.
+
 ## Development
 
 ```bash
