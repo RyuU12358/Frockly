@@ -2,6 +2,10 @@
 
 **Frockly** is a visual Excel formula builder powered by Blockly.
 
+It lets you edit and refactor Excel formulas *structurally*,
+instead of dealing with deeply nested text formulas.
+
+
 You can build Excel formulas using blocks instead of typing,
 with support for:
 
@@ -13,7 +17,7 @@ with support for:
 
 ## Demo
 https://ryuu12358.github.io/Frockly/
-
+> This tool is designed for desktop use with mouse input.
 ## Development
 
 ```bash
@@ -31,7 +35,3 @@ This project uses third-party open-source libraries.
 See THIRD_PARTY_LICENSES.txt for details.
 
 
----
-## Design
-Initial UI design was explored in Figma:
-[https://www.figma.com/design/XXXX](https://www.figma.com/design/TYE90s9CxzTvOmHlgE3rPS/Frockly)
