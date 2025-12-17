@@ -31,7 +31,7 @@ The production build will be generated in the build/ directory.
 
 ## License
 
-This project uses third-party open-source libraries.
-See THIRD_PARTY_LICENSES.txt for details.
+License information will be added later.
+
 
 
