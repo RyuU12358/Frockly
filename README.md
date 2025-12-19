@@ -1,39 +1,20 @@
 # Frockly
 
-**Frockly** is a visual Excel formula builder powered by Blockly.
+Frockly is an experimental visual editor for Excel formulas.
 
-It lets you edit and refactor Excel formulas *structurally*,
-instead of dealing with deeply nested text formulas.
+Instead of reading and editing long, nested text formulas,
+it represents formulas structurally using blocks.
 
-
-You can build Excel formulas using blocks instead of typing,
-with support for:
-
-- Excel-compatible functions (SUM, IF, XLOOKUP, etc.)
-- Variadic argument blocks
-- Cell and range references
-- Absolute reference toggles ($A$1, $A1, A$1)
-- Japanese / English UI switching
+This is an early experiment focused on readability and refactoring,
+not a finished product.
 
 ## Demo
 https://ryuu12358.github.io/Frockly/
-> This tool is primarily designed for desktop use.
-> It may still work on mobile devices when using desktop mode.
 
-## Development
+(Desktop recommended)
 
-```bash
-npm install
-npm run dev
-```
-## build
+## Example
 
-npm run build
-The production build will be generated in the build/ directory.
+Same formula, different representation.
 
-## License
-
-License information will be added later.
-
-
-
+![screenshot](./screenshot.jpg)
