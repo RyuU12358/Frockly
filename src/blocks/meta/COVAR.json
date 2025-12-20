@@ -1,0 +1,17 @@
+{
+  "function": "COVAR",
+  "syntax": "COVAR(array1,array2)",
+  "arguments": [
+    {
+      "name": "Array1",
+      "required": true,
+      "description": "The first cell range of integers."
+    },
+    {
+      "name": "Array2",
+      "required": true,
+      "description": "The second cell range of integers."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/covar-function-50479552-2c03-4daf-bd71-a5ab88b2db03"
+}

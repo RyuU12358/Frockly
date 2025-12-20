@@ -1,0 +1,12 @@
+{
+  "function": "MIN",
+  "syntax": "MIN(number1, [number2], ...)",
+  "arguments": [
+    {
+      "name": "Number1, number2, ...",
+      "required": null,
+      "description": "Number1 is optional, subsequent numbers are optional. 1 to 255 numbers for which you want to find the minimum value."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/min-function-61635d12-920f-4ce2-a70f-96f202dcc152"
+}

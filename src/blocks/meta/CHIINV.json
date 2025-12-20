@@ -1,0 +1,17 @@
+{
+  "function": "CHIINV",
+  "syntax": "CHIINV(probability,deg_freedom)",
+  "arguments": [
+    {
+      "name": "Probability",
+      "required": true,
+      "description": "A probability associated with the chi-squared distribution."
+    },
+    {
+      "name": "Deg_freedom",
+      "required": true,
+      "description": "The number of degrees of freedom."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/chiinv-function-cfbea3f6-6e4f-40c9-a87f-20472e0512af"
+}

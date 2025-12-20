@@ -1,0 +1,27 @@
+{
+  "function": "BINOM.DIST.RANGE",
+  "syntax": "BINOM.DIST.RANGE(trials,probability_s,number_s,[number_s2])",
+  "arguments": [
+    {
+      "name": "Trials",
+      "required": true,
+      "description": "The number of independent trials. Must be greater than or equal to 0."
+    },
+    {
+      "name": "Probability_s",
+      "required": true,
+      "description": "The probability of success in each trial. Must be greater than or equal to 0 and less than or equal to 1."
+    },
+    {
+      "name": "Number_s",
+      "required": true,
+      "description": "The number of successes in trials. Must be greater than or equal to 0 and less than or equal to Trials."
+    },
+    {
+      "name": "Number_s2",
+      "required": false,
+      "description": "If provided, returns the probability that the number of successful trials will fall between Number_s and number_s2. Must be greater than or equal to Number_s and less than or equal to Trials."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/binom-dist-range-function-17331329-74c7-4053-bb4c-6653a7421595"
+}

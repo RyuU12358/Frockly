@@ -1,0 +1,27 @@
+{
+  "function": "REGEXEXTRACT",
+  "syntax": "The REGEXEXTRACT function extracts strings within the provided text that matches the pattern .",
+  "arguments": [
+    {
+      "name": "text",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "pattern",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "return_mode",
+      "required": false,
+      "description": ""
+    },
+    {
+      "name": "case_sensitivity",
+      "required": false,
+      "description": ""
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/regexextract-function-4b96c140-9205-4b6e-9fbe-6aa9e783ff57"
+}

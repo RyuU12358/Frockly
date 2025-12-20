@@ -1,0 +1,12 @@
+{
+  "function": "COT",
+  "syntax": "COT(number)",
+  "arguments": [
+    {
+      "name": "Number",
+      "required": true,
+      "description": "The angle in radians for which you want the cotangent."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/cot-function-c446f34d-6fe4-40dc-84f8-cf59e5f5e31a"
+}

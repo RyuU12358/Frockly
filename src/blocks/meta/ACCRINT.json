@@ -1,0 +1,42 @@
+{
+  "function": "ACCRINT",
+  "syntax": "ACCRINT(issue, first_interest, settlement, rate, par, frequency, [basis], [calc_method])",
+  "arguments": [
+    {
+      "name": "Issue",
+      "required": true,
+      "description": "The security's issue date."
+    },
+    {
+      "name": "First_interest",
+      "required": true,
+      "description": "The security's first interest date."
+    },
+    {
+      "name": "Settlement",
+      "required": true,
+      "description": "The security's settlement date. The security settlement date is the date after the issue date when the security is traded to the buyer."
+    },
+    {
+      "name": "Rate",
+      "required": true,
+      "description": "The security's annual coupon rate."
+    },
+    {
+      "name": "Par",
+      "required": true,
+      "description": "The security's par value. If you omit par, ACCRINT uses $1,000."
+    },
+    {
+      "name": "Frequency",
+      "required": true,
+      "description": "The number of coupon payments per year. For annual payments, frequency = 1; for semiannual, frequency = 2; for quarterly, frequency = 4."
+    },
+    {
+      "name": "Basis",
+      "required": false,
+      "description": "The type of day count basis to use."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/accrint-function-fe45d089-6722-4fb3-9379-e1f911d8dc74"
+}

@@ -1,0 +1,17 @@
+{
+  "function": "MODE.SNGL",
+  "syntax": "MODE.SNGL(number1,[number2],...)",
+  "arguments": [
+    {
+      "name": "Number1",
+      "required": true,
+      "description": "The first argument for which you want to calculate the mode."
+    },
+    {
+      "name": "Number2, ...",
+      "required": false,
+      "description": "Arguments 2 to 254 for which you want to calculate the mode. You can also use a single array or a reference to an array instead of arguments separated by commas."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/mode-sngl-function-f1267c16-66c6-4386-959f-8fba5f8bb7f8"
+}

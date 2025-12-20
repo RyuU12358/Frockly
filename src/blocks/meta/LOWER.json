@@ -1,0 +1,12 @@
+{
+  "function": "LOWER",
+  "syntax": "LOWER(text)",
+  "arguments": [
+    {
+      "name": "Text",
+      "required": true,
+      "description": "The text you want to convert to lowercase. LOWER does not change characters in text that are not letters."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/lower-function-3f21df02-a80c-44b2-afaf-81358f9fdeb4"
+}

@@ -1,0 +1,17 @@
+{
+  "function": "VAR.P",
+  "syntax": "VAR.P(number1,[number2],...)",
+  "arguments": [
+    {
+      "name": "Number1",
+      "required": true,
+      "description": "The first number argument corresponding to a population."
+    },
+    {
+      "name": "Number2, ...",
+      "required": false,
+      "description": "Number arguments 2 to 254 corresponding to a population."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/var-p-function-73d1285c-108c-4843-ba5d-a51f90656f3a"
+}

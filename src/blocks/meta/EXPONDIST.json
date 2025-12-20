@@ -1,0 +1,22 @@
+{
+  "function": "EXPONDIST",
+  "syntax": "EXPONDIST(x,lambda,cumulative)",
+  "arguments": [
+    {
+      "name": "X",
+      "required": true,
+      "description": "The value of the function."
+    },
+    {
+      "name": "Lambda",
+      "required": true,
+      "description": "The parameter value."
+    },
+    {
+      "name": "Cumulative",
+      "required": true,
+      "description": "A logical value that indicates which form of the exponential function to provide. If cumulative is TRUE, EXPONDIST returns the cumulative distribution function; if FALSE, it returns the probability density function."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/expondist-function-68ab45fd-cd6d-4887-9770-9357eb8ee06a"
+}

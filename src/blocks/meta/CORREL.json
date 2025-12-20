@@ -1,0 +1,17 @@
+{
+  "function": "CORREL",
+  "syntax": "CORREL(array1, array2)",
+  "arguments": [
+    {
+      "name": "array1",
+      "required": true,
+      "description": "A range of cell values."
+    },
+    {
+      "name": "array2",
+      "required": true,
+      "description": "A second range of cell values."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/correl-function-995dcef7-0c0a-4bed-a3fb-239d7b68ca92"
+}

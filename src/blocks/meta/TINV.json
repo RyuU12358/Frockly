@@ -1,0 +1,17 @@
+{
+  "function": "TINV",
+  "syntax": "TINV(probability,deg_freedom)",
+  "arguments": [
+    {
+      "name": "Probability",
+      "required": true,
+      "description": "The probability associated with the two-tailed Student's t-distribution."
+    },
+    {
+      "name": "Deg_freedom",
+      "required": true,
+      "description": "The number of degrees of freedom with which to characterize the distribution."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/tinv-function-a7c85b9d-90f5-41fe-9ca5-1cd2f3e1ed7c"
+}

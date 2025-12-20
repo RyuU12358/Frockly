@@ -1,0 +1,12 @@
+{
+  "function": "AVERAGEA",
+  "syntax": "AVERAGEA(value1, [value2], ...)",
+  "arguments": [
+    {
+      "name": "Value1, value2, ...",
+      "required": null,
+      "description": "Value1 is required, subsequent values are optional. 1 to 255 cells, ranges of cells, or values for which you want the average."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/averagea-function-f5f84098-d453-4f4c-bbba-3d2c66356091"
+}

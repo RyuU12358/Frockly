@@ -1,0 +1,12 @@
+{
+  "function": "MEDIAN",
+  "syntax": "MEDIAN(number1, [number2], ...)",
+  "arguments": [
+    {
+      "name": "Number1, number2, ...",
+      "required": null,
+      "description": "Number1 is required, subsequent numbers are optional. 1 to 255 numbers for which you want the median."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/median-function-d0916313-4753-414c-8537-ce85bdd967d2"
+}

@@ -1,0 +1,12 @@
+{
+  "function": "SQRTPI",
+  "syntax": "SQRTPI(number)",
+  "arguments": [
+    {
+      "name": "Number",
+      "required": true,
+      "description": "The number by which pi is multiplied."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/sqrtpi-function-1fb4e63f-9b51-46d6-ad68-b3e7a8b519b4"
+}

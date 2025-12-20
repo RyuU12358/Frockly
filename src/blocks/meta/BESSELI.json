@@ -1,0 +1,17 @@
+{
+  "function": "BESSELI",
+  "syntax": "BESSELI(X, N)",
+  "arguments": [
+    {
+      "name": "X",
+      "required": true,
+      "description": "The value at which to evaluate the function."
+    },
+    {
+      "name": "N",
+      "required": true,
+      "description": "The order of the Bessel function. If n is not an integer, it is truncated."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/besseli-function-8d33855c-9a8d-444b-98e0-852267b1c0df"
+}

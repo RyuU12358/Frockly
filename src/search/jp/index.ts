@@ -1,0 +1,1 @@
+export { searchFunctionsJP } from "./searchFunctionsJP";

@@ -1,0 +1,12 @@
+{
+  "function": "T",
+  "syntax": "T(value)",
+  "arguments": [
+    {
+      "name": "Value",
+      "required": true,
+      "description": "The value you want to test."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/t-function-fb83aeec-45e7-4924-af95-53e073541228"
+}

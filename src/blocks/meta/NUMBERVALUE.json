@@ -1,0 +1,22 @@
+{
+  "function": "NUMBERVALUE",
+  "syntax": "NUMBERVALUE(Text, [Decimal_separator], [Group_separator ])",
+  "arguments": [
+    {
+      "name": "Text",
+      "required": true,
+      "description": "The text to convert to a number."
+    },
+    {
+      "name": "Decimal_separator",
+      "required": false,
+      "description": "The character used to separate the integer and fractional part of the result."
+    },
+    {
+      "name": "Group_separator",
+      "required": false,
+      "description": "The character used to separate groupings of numbers, such as thousands from hundreds and millions from thousands."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/numbervalue-function-1b05c8cf-2bfa-4437-af70-596c7ea7d879"
+}

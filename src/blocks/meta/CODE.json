@@ -1,0 +1,12 @@
+{
+  "function": "CODE",
+  "syntax": "CODE(text)",
+  "arguments": [
+    {
+      "name": "Text",
+      "required": true,
+      "description": "The text for which you want the code of the first character."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/code-function-c32b692b-2ed0-4a04-bdd9-75640144b928"
+}

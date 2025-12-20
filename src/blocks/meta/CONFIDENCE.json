@@ -1,0 +1,22 @@
+{
+  "function": "CONFIDENCE",
+  "syntax": "CONFIDENCE(alpha,standard_dev,size)",
+  "arguments": [
+    {
+      "name": "Alpha",
+      "required": true,
+      "description": "The significance level used to compute the confidence level. The confidence level equals 100*(1 - alpha)%, or in other words, an alpha of 0.05 indicates a 95 percent confidence level."
+    },
+    {
+      "name": "Standard_dev",
+      "required": true,
+      "description": "The population standard deviation for the data range and is assumed to be known."
+    },
+    {
+      "name": "Size",
+      "required": true,
+      "description": "The sample size."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/confidence-function-75ccc007-f77c-4343-bc14-673642091ad6"
+}

@@ -1,0 +1,27 @@
+{
+  "function": "TTEST",
+  "syntax": "TTEST(array1,array2,tails,type)",
+  "arguments": [
+    {
+      "name": "Array1",
+      "required": true,
+      "description": "The first data set."
+    },
+    {
+      "name": "Array2",
+      "required": true,
+      "description": "The second data set."
+    },
+    {
+      "name": "Tails",
+      "required": true,
+      "description": "Specifies the number of distribution tails. If tails = 1, TTEST uses the one-tailed distribution. If tails = 2, TTEST uses the two-tailed distribution."
+    },
+    {
+      "name": "Type",
+      "required": true,
+      "description": "The kind of t-Test to perform."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/ttest-function-1696ffc1-4811-40fd-9d13-a0eaad83c7ae"
+}

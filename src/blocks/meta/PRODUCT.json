@@ -1,0 +1,17 @@
+{
+  "function": "PRODUCT",
+  "syntax": "PRODUCT(number1, [number2], ...)",
+  "arguments": [
+    {
+      "name": "number1",
+      "required": true,
+      "description": "The first number or range that you want to multiply."
+    },
+    {
+      "name": "number2, ...",
+      "required": false,
+      "description": "Additional numbers or ranges that you want to multiply, up to a maximum of 255 arguments."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/product-function-8e6b5b24-90ee-4650-aeec-80982a0512ce"
+}

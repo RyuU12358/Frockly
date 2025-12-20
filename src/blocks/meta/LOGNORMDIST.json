@@ -1,0 +1,22 @@
+{
+  "function": "LOGNORMDIST",
+  "syntax": "LOGNORMDIST(x,mean,standard_dev)",
+  "arguments": [
+    {
+      "name": "X",
+      "required": true,
+      "description": "The value at which to evaluate the function."
+    },
+    {
+      "name": "Mean",
+      "required": true,
+      "description": "The mean of ln(x)."
+    },
+    {
+      "name": "Standard_dev",
+      "required": true,
+      "description": "The standard deviation of ln(x)."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/lognormdist-function-f8d194cb-9ee3-4034-8c75-1bdb3884100b"
+}

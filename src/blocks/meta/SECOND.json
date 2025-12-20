@@ -1,0 +1,12 @@
+{
+  "function": "SECOND",
+  "syntax": "SECOND(serial_number)",
+  "arguments": [
+    {
+      "name": "Serial_number",
+      "required": true,
+      "description": "The time that contains the seconds you want to find. Times may be entered as text strings within quotation marks (for example, \"6:45 PM\"), as decimal numbers (for example, 0.78125, which represents 6:45 PM), or as results of other formulas or functions (for example, TIMEVALUE(\"6:45 PM\"))."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/second-function-740d1cfc-553c-4099-b668-80eaa24e8af1"
+}

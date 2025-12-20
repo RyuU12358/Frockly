@@ -1,0 +1,12 @@
+{
+  "function": "IMEXP",
+  "syntax": "IMEXP(inumber)",
+  "arguments": [
+    {
+      "name": "Inumber",
+      "required": true,
+      "description": "A complex number for which you want the exponential."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/imexp-function-c6f8da1f-e024-4c0c-b802-a60e7147a95f"
+}

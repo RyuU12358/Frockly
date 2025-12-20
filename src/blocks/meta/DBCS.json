@@ -1,0 +1,12 @@
+{
+  "function": "DBCS",
+  "syntax": "DBCS(text)",
+  "arguments": [
+    {
+      "name": "text",
+      "required": true,
+      "description": ""
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/dbcs-function-a4025e73-63d2-4958-9423-21a24794c9e5"
+}

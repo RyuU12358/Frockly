@@ -1,0 +1,12 @@
+{
+  "function": "INFO",
+  "syntax": "INFO(type_text)",
+  "arguments": [
+    {
+      "name": "Type_text",
+      "required": true,
+      "description": "Text that specifies what type of information you want returned."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/info-function-725f259a-0e4b-49b3-8b52-58815c69acae"
+}

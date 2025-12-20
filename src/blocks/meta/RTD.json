@@ -1,0 +1,22 @@
+{
+  "function": "RTD",
+  "syntax": "RTD(ProgID, server, topic1, [topic2], ...)",
+  "arguments": [
+    {
+      "name": "ProgID",
+      "required": true,
+      "description": "The name of the ProgID of a registered COM automation add-in that has been installed on the local computer. Enclose the name in quotation marks."
+    },
+    {
+      "name": "server",
+      "required": true,
+      "description": "Name of the server where the add-in should be run. If there is no server, and the program is run locally, leave the argument blank. Otherwise, enter quotation marks (\"\") around the server name. When using RTD within Visual Basic for Applications (VBA), double quotation marks or the VBA NullString property are required for the server, even if the server is running locally."
+    },
+    {
+      "name": "Topic1, topic2, ...",
+      "required": null,
+      "description": "Topic1 is required, subsequent topics are optional. 1 to 253 parameters that together represent a unique piece of real-time data."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/rtd-function-e0cc001a-56f0-470a-9b19-9455dc0eb593"
+}

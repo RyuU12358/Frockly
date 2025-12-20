@@ -1,0 +1,12 @@
+{
+  "function": "IMABS",
+  "syntax": "IMABS(inumber)",
+  "arguments": [
+    {
+      "name": "Inumber",
+      "required": true,
+      "description": "A complex number for which you want the absolute value."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/imabs-function-b31e73c6-d90c-4062-90bc-8eb351d765a1"
+}

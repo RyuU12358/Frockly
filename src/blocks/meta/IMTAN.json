@@ -1,0 +1,12 @@
+{
+  "function": "IMTAN",
+  "syntax": "IMTAN(inumber)",
+  "arguments": [
+    {
+      "name": "Inumber",
+      "required": true,
+      "description": "A complex number for which you want the tangent."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/imtan-function-8478f45d-610a-43cf-8544-9fc0b553a132"
+}

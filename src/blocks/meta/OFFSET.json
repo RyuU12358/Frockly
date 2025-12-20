@@ -1,0 +1,32 @@
+{
+  "function": "OFFSET",
+  "syntax": "OFFSET(reference, rows, cols, [height], [width])",
+  "arguments": [
+    {
+      "name": "Reference",
+      "required": true,
+      "description": "The reference from which you want to base the offset. Reference must refer to a cell or range of adjacent cells; otherwise, OFFSET returns the #VALUE! error value."
+    },
+    {
+      "name": "Rows",
+      "required": true,
+      "description": "The number of rows, up or down, that you want the upper-left cell to refer to. Using 5 as the rows argument specifies that the upper-left cell in the reference is five rows below reference. Rows can be positive (which means below the starting reference) or negative (which means above the starting reference)."
+    },
+    {
+      "name": "Cols",
+      "required": true,
+      "description": "The number of columns, to the left or right, that you want the upper-left cell of the result to refer to. Using 5 as the cols argument specifies that the upper-left cell in the reference is five columns to the right of reference. Cols can be positive (which means to the right of the starting reference) or negative (which means to the left of the starting reference)."
+    },
+    {
+      "name": "Height",
+      "required": false,
+      "description": "The height, in number of rows, that you want the returned reference to be. Height must be a positive number."
+    },
+    {
+      "name": "Width",
+      "required": false,
+      "description": "The width, in number of columns, that you want the returned reference to be. Width must be a positive number."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/offset-function-c8de19ae-dd79-4b9b-a14e-b4d906d11b66"
+}

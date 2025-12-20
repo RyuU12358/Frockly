@@ -1,0 +1,12 @@
+{
+  "function": "XOR",
+  "syntax": "XOR(logical1, [logical2],…)",
+  "arguments": [
+    {
+      "name": "Logical1, logical2,…",
+      "required": null,
+      "description": "Logical 1 is required, subsequent logical values are optional. 1 to 254 conditions you want to test that can be either TRUE or FALSE, and can be logical values, arrays, or references."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/xor-function-1548d4c2-5e47-4f77-9a92-0533bba14f37"
+}

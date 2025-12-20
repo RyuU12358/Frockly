@@ -1,0 +1,17 @@
+{
+  "function": "IFERROR",
+  "syntax": "IFERROR(value, value_if_error)",
+  "arguments": [
+    {
+      "name": "value",
+      "required": true,
+      "description": "The argument that is checked for an error."
+    },
+    {
+      "name": "value_if_error",
+      "required": true,
+      "description": "The value to return if the formula evaluates to an error. The following error types are evaluated: #N/A, #VALUE!, #REF!, #DIV/0!, #NUM!, #NAME?, or #NULL!."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/iferror-function-c526fd07-caeb-47b8-8bb6-63f3e417f611"
+}

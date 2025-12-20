@@ -1,0 +1,17 @@
+{
+  "function": "SUM",
+  "syntax": "SUM(number1,[number2],...)",
+  "arguments": [
+    {
+      "name": "number1",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "number2",
+      "required": false,
+      "description": ""
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/sum-function-043e1c7d-7726-4e80-8f32-07b23e057f89"
+}

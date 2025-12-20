@@ -1,0 +1,17 @@
+{
+  "function": "FTEST",
+  "syntax": "FTEST(array1,array2)",
+  "arguments": [
+    {
+      "name": "Array1",
+      "required": true,
+      "description": "The first array or range of data."
+    },
+    {
+      "name": "Array2",
+      "required": true,
+      "description": "The second array or range of data."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/ftest-function-4c9e1202-53fe-428c-a737-976f6fc3f9fd"
+}

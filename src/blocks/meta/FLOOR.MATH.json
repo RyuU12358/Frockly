@@ -1,0 +1,22 @@
+{
+  "function": "FLOOR.MATH",
+  "syntax": "FLOOR.MATH(number, significance, mode)",
+  "arguments": [
+    {
+      "name": "Number",
+      "required": true,
+      "description": "The number to be rounded down."
+    },
+    {
+      "name": "Significance",
+      "required": false,
+      "description": "The multiple to which you want to round."
+    },
+    {
+      "name": "Mode",
+      "required": false,
+      "description": "The direction (toward or away from 0) to round negative numbers."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/floor-math-function-c302b599-fbdb-4177-ba19-2c2b1249a2f5"
+}

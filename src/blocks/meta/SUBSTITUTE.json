@@ -1,0 +1,27 @@
+{
+  "function": "SUBSTITUTE",
+  "syntax": "SUBSTITUTE(text, old_text, new_text, [instance_num])",
+  "arguments": [
+    {
+      "name": "Text",
+      "required": true,
+      "description": "The text or the reference to a cell containing text for which you want to substitute characters."
+    },
+    {
+      "name": "Old_text",
+      "required": true,
+      "description": "The text you want to replace."
+    },
+    {
+      "name": "New_text",
+      "required": true,
+      "description": "The text you want to replace old_text with."
+    },
+    {
+      "name": "Instance_num",
+      "required": false,
+      "description": "Specifies which occurrence of old_text you want to replace with new_text. If you specify instance_num, only that instance of old_text is replaced. Otherwise, every occurrence of old_text in text is changed to new_text."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/substitute-function-6434944e-a904-4336-a9b0-1e58df3bc332"
+}

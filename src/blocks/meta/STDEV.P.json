@@ -1,0 +1,17 @@
+{
+  "function": "STDEV.P",
+  "syntax": "STDEV.P(number1,[number2],...)",
+  "arguments": [
+    {
+      "name": "Number1",
+      "required": true,
+      "description": "The first number argument corresponding to a population."
+    },
+    {
+      "name": "Number2, ...",
+      "required": false,
+      "description": "Number arguments 2 to 254 corresponding to a population. You can also use a single array or a reference to an array instead of arguments separated by commas."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/stdev-p-function-6e917c05-31a0-496f-ade7-4f4e7462f285"
+}

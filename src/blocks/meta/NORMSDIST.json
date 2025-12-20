@@ -1,0 +1,12 @@
+{
+  "function": "NORMSDIST",
+  "syntax": "NORMSDIST(z)",
+  "arguments": [
+    {
+      "name": "z",
+      "required": true,
+      "description": ""
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/normsdist-function-463369ea-0345-445d-802a-4ff0d6ce7cac"
+}

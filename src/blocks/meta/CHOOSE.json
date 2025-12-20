@@ -1,0 +1,17 @@
+{
+  "function": "CHOOSE",
+  "syntax": "CHOOSE(index_num, value1, [value2], ...)",
+  "arguments": [
+    {
+      "name": "Index_num",
+      "required": true,
+      "description": "Specifies which value argument is selected. Index_num must be a number between 1 and 254, or a formula or reference to a cell containing a number between 1 and 254."
+    },
+    {
+      "name": "Value1, value2, ...",
+      "required": null,
+      "description": "Value 1 is required, subsequent values are optional. 1 to 254 value arguments from which CHOOSE selects a value or an action to perform based on index_num. The arguments can be numbers, cell references, defined names, formulas, functions, or text."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/choose-function-fc5c184f-cb62-4ec7-a46e-38653b98f5bc"
+}

@@ -1,0 +1,12 @@
+{
+  "function": "IMAGINARY",
+  "syntax": "IMAGINARY(inumber)",
+  "arguments": [
+    {
+      "name": "Inumber",
+      "required": true,
+      "description": "A complex number for which you want the imaginary coefficient."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/imaginary-function-dd5952fd-473d-44d9-95a1-9a17b23e428a"
+}

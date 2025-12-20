@@ -1,0 +1,22 @@
+{
+  "function": "MATCH",
+  "syntax": "MATCH(lookup_value, lookup_array, [match_type])",
+  "arguments": [
+    {
+      "name": "lookup_value",
+      "required": true,
+      "description": "The value that you want to match in lookup_array . For example, when you look up someone's number in a telephone book, you are using the person's name as the lookup value, but the telephone number is the value you want. The lookup_value argument can be a value (number, text, or logical value) or a cell reference to a number, text, or logical value."
+    },
+    {
+      "name": "lookup_array",
+      "required": true,
+      "description": "The range of cells being searched."
+    },
+    {
+      "name": "match_type",
+      "required": false,
+      "description": "The number -1, 0, or 1. The match_type argument specifies how Excel matches lookup_value with values in lookup_array . The default value for this argument is 1. The following table describes how the function finds values based on the setting of the match_type argument."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/match-function-e8dffd45-c762-47d6-bf89-533f4a37673a"
+}

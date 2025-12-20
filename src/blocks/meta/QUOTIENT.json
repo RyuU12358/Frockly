@@ -1,0 +1,17 @@
+{
+  "function": "QUOTIENT",
+  "syntax": "QUOTIENT(numerator, denominator)",
+  "arguments": [
+    {
+      "name": "Numerator",
+      "required": true,
+      "description": "The dividend."
+    },
+    {
+      "name": "Denominator",
+      "required": true,
+      "description": "The divisor."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/quotient-function-9f7bf099-2a18-4282-8fa4-65290cc99dee"
+}

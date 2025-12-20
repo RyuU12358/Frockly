@@ -1,0 +1,17 @@
+{
+  "function": "STDEV.S",
+  "syntax": "STDEV.S(number1,[number2],...)",
+  "arguments": [
+    {
+      "name": "Number1",
+      "required": true,
+      "description": "The first number argument corresponding to a sample of a population. You can also use a single array or a reference to an array instead of arguments separated by commas."
+    },
+    {
+      "name": "Number2, ...",
+      "required": false,
+      "description": "Number arguments 2 to 254 corresponding to a sample of a population. You can also use a single array or a reference to an array instead of arguments separated by commas."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/stdev-s-function-7d69cf97-0c1f-4acf-be27-f3e83904cc23"
+}

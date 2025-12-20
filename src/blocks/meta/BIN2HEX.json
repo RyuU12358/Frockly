@@ -1,0 +1,17 @@
+{
+  "function": "BIN2HEX",
+  "syntax": "BIN2HEX(number, [places])",
+  "arguments": [
+    {
+      "name": "Number",
+      "required": true,
+      "description": "The binary number you want to convert. Number cannot contain more than 10 characters (10 bits). The most significant bit of number is the sign bit. The remaining 9 bits are magnitude bits. Negative numbers are represented using two's-complement notation."
+    },
+    {
+      "name": "Places",
+      "required": false,
+      "description": "The number of characters to use. If places is omitted, BIN2HEX uses the minimum number of characters necessary. Places is useful for padding the return value with leading 0s (zeros)."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/bin2hex-function-0375e507-f5e5-4077-9af8-28d84f9f41cc"
+}

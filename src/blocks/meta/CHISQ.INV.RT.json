@@ -1,0 +1,17 @@
+{
+  "function": "CHISQ.INV.RT",
+  "syntax": "CHISQ.INV.RT(probability,deg_freedom)",
+  "arguments": [
+    {
+      "name": "Probability",
+      "required": true,
+      "description": "A probability associated with the chi-squared distribution."
+    },
+    {
+      "name": "Deg_freedom",
+      "required": true,
+      "description": "The number of degrees of freedom."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/chisq-inv-rt-function-435b5ed8-98d5-4da6-823f-293e2cbc94fe"
+}

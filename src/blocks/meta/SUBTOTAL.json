@@ -1,0 +1,12 @@
+{
+  "function": "SUBTOTAL",
+  "syntax": "SUBTOTAL(function_num,ref1,[ref2],...)",
+  "arguments": [
+    {
+      "name": "Function_num",
+      "required": true,
+      "description": "The number 1-11 or 101-111 that specifies the function to use for the subtotal. 1-11 includes manually-hidden rows, while 101-111 excludes them; filtered-out cells are always excluded."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/subtotal-function-7b027003-f060-4ade-9040-e478765b9939"
+}

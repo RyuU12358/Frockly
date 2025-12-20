@@ -1,0 +1,17 @@
+{
+  "function": "SUMX2PY2",
+  "syntax": "SUMX2PY2(array_x, array_y)",
+  "arguments": [
+    {
+      "name": "Array_x",
+      "required": true,
+      "description": "The first array or range of values."
+    },
+    {
+      "name": "Array_y",
+      "required": true,
+      "description": "The second array or range of values."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/sumx2py2-function-826b60b4-0aa2-4e5e-81d2-be704d3d786f"
+}

@@ -1,0 +1,12 @@
+{
+  "function": "DATEVALUE",
+  "syntax": "DATEVALUE(date_text)",
+  "arguments": [
+    {
+      "name": "Date_text",
+      "required": true,
+      "description": "Text that represents a date in an Excel date format, or a reference to a cell that contains text that represents a date in an Excel date format. For example, \"1/30/2008\" or \"30-Jan-2008\" are text strings within quotation marks that represent dates."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/datevalue-function-df8b07d4-7761-4a93-bc33-b7471bbff252"
+}

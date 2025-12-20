@@ -1,0 +1,12 @@
+{
+  "function": "FORMULATEXT",
+  "syntax": "FORMULATEXT(reference)",
+  "arguments": [
+    {
+      "name": "Reference",
+      "required": true,
+      "description": "A reference to a cell or range of cells."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/formulatext-function-0a786771-54fd-4ae2-96ee-09cda35439c8"
+}

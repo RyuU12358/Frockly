@@ -1,0 +1,17 @@
+{
+  "function": "TRIMMEAN",
+  "syntax": "TRIMMEAN(array, percent)",
+  "arguments": [
+    {
+      "name": "Array",
+      "required": true,
+      "description": "The array or range of values to trim and average."
+    },
+    {
+      "name": "Percent",
+      "required": true,
+      "description": "The fractional number of data points to exclude from the calculation. For example, if percent = 0.2, 4 points are trimmed from a data set of 20 points (20 x 0.2): 2 from the top and 2 from the bottom of the set."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/trimmean-function-d90c9878-a119-4746-88fa-63d988f511d3"
+}

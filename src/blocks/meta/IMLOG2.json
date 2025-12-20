@@ -1,0 +1,12 @@
+{
+  "function": "IMLOG2",
+  "syntax": "IMLOG2(inumber)",
+  "arguments": [
+    {
+      "name": "Inumber",
+      "required": true,
+      "description": "A complex number for which you want the base-2 logarithm."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/imlog2-function-152e13b4-bc79-486c-a243-e6a676878c51"
+}

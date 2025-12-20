@@ -1,0 +1,12 @@
+{
+  "function": "IMCONJUGATE",
+  "syntax": "IMCONJUGATE(inumber)",
+  "arguments": [
+    {
+      "name": "Inumber",
+      "required": true,
+      "description": "A complex number for which you want the conjugate."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/imconjugate-function-2e2fc1ea-f32b-4f9b-9de6-233853bafd42"
+}

@@ -1,0 +1,12 @@
+{
+  "function": "MMULT",
+  "syntax": "MMULT(array1, array2)",
+  "arguments": [
+    {
+      "name": "array1, array2",
+      "required": true,
+      "description": "The arrays you want to multiply."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/mmult-function-40593ed7-a3cd-4b6b-b9a3-e4ad3c7245eb"
+}

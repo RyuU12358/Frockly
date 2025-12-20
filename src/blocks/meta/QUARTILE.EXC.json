@@ -1,0 +1,17 @@
+{
+  "function": "QUARTILE.EXC",
+  "syntax": "QUARTILE.EXC(array, quart)",
+  "arguments": [
+    {
+      "name": "Array",
+      "required": true,
+      "description": "The array or cell range of numeric values for which you want the quartile value."
+    },
+    {
+      "name": "Quart",
+      "required": true,
+      "description": "Indicates which value to return."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/quartile-exc-function-5a355b7a-840b-4a01-b0f1-f538c2864cad"
+}

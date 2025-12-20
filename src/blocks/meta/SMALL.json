@@ -1,0 +1,17 @@
+{
+  "function": "SMALL",
+  "syntax": "SMALL(array, k)",
+  "arguments": [
+    {
+      "name": "Array",
+      "required": true,
+      "description": "An array or range of numerical data for which you want to determine the k-th smallest value."
+    },
+    {
+      "name": "K",
+      "required": true,
+      "description": "The position (from the smallest) in the array or range of data to return."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/small-function-17da8222-7c82-42b2-961b-14c45384df07"
+}

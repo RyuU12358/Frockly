@@ -1,0 +1,17 @@
+{
+  "function": "LARGE",
+  "syntax": "LARGE(array, k)",
+  "arguments": [
+    {
+      "name": "Array",
+      "required": true,
+      "description": "The array or range of data for which you want to determine the k-th largest value."
+    },
+    {
+      "name": "K",
+      "required": true,
+      "description": "The position (from the largest) in the array or cell range of data to return."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/large-function-3af0af19-1190-42bb-bb8b-01672ec00a64"
+}

@@ -1,0 +1,12 @@
+{
+  "function": "STDEVPA",
+  "syntax": "STDEVPA(value1, [value2], ...)",
+  "arguments": [
+    {
+      "name": "Value1, value2, ...",
+      "required": null,
+      "description": "Value1 is required, subsequent values are optional. 1 to 255 values corresponding to a population. You can also use a single array or a reference to an array instead of arguments separated by commas."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/stdevpa-function-5578d4d6-455a-4308-9991-d405afe2c28c"
+}

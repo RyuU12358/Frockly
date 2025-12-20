@@ -1,0 +1,32 @@
+{
+  "function": "MAXIFS",
+  "syntax": "MAXIFS(max_range, criteria_range1, criteria1, [criteria_range2, criteria2], ...)",
+  "arguments": [
+    {
+      "name": "max_range",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "criteria_range1",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "criteria1",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "[criteria_range2",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "criteria2]",
+      "required": true,
+      "description": ""
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/maxifs-function-dfd611e6-da2c-488a-919b-9b6376b28883"
+}

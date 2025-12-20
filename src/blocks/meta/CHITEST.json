@@ -1,0 +1,17 @@
+{
+  "function": "CHITEST",
+  "syntax": "CHITEST(actual_range,expected_range)",
+  "arguments": [
+    {
+      "name": "Actual_range",
+      "required": true,
+      "description": "The range of data that contains observations to test against expected values."
+    },
+    {
+      "name": "Expected_range",
+      "required": true,
+      "description": "The range of data that contains the ratio of the product of row totals and column totals to the grand total."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/chitest-function-981ff871-b694-4134-848e-38ec704577ac"
+}

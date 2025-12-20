@@ -1,0 +1,22 @@
+{
+  "function": "SLN",
+  "syntax": "SLN(cost, salvage, life)",
+  "arguments": [
+    {
+      "name": "Cost",
+      "required": true,
+      "description": "The initial cost of the asset."
+    },
+    {
+      "name": "Salvage",
+      "required": true,
+      "description": "The value at the end of the depreciation (sometimes called the salvage value of the asset)."
+    },
+    {
+      "name": "Life",
+      "required": true,
+      "description": "The number of periods over which the asset is depreciated (sometimes called the useful life of the asset)."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/sln-function-cdb666e5-c1c6-40a7-806a-e695edc2f1c8"
+}

@@ -1,0 +1,37 @@
+{
+  "function": "PRICEMAT",
+  "syntax": "PRICEMAT(settlement, maturity, issue, rate, yld, [basis])",
+  "arguments": [
+    {
+      "name": "Settlement",
+      "required": true,
+      "description": "The security's settlement date. The security settlement date is the date after the issue date when the security is traded to the buyer."
+    },
+    {
+      "name": "Maturity",
+      "required": true,
+      "description": "The security's maturity date. The maturity date is the date when the security expires."
+    },
+    {
+      "name": "Issue",
+      "required": true,
+      "description": "The security's issue date, expressed as a serial date number."
+    },
+    {
+      "name": "Rate",
+      "required": true,
+      "description": "The security's interest rate at date of issue."
+    },
+    {
+      "name": "Yld",
+      "required": true,
+      "description": "The security's annual yield."
+    },
+    {
+      "name": "Basis",
+      "required": false,
+      "description": "The type of day count basis to use."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/pricemat-function-52c3b4da-bc7e-476a-989f-a95f675cae77"
+}

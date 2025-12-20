@@ -1,0 +1,17 @@
+{
+  "function": "DEC2BIN",
+  "syntax": "DEC2BIN(number, [places])",
+  "arguments": [
+    {
+      "name": "Number",
+      "required": true,
+      "description": "The decimal integer you want to convert. If number is negative, valid place values are ignored and DEC2BIN returns a 10-character (10-bit) binary number in which the most significant bit is the sign bit. The remaining 9 bits are magnitude bits. Negative numbers are represented using two's-complement notation."
+    },
+    {
+      "name": "Places",
+      "required": false,
+      "description": "The number of characters to use. If places is omitted, DEC2BIN uses the minimum number of characters necessary. Places is useful for padding the return value with leading 0s (zeros)."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/dec2bin-function-0f63dd0e-5d1a-42d8-b511-5bf5c6d43838"
+}

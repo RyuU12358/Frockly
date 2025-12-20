@@ -1,0 +1,17 @@
+{
+  "function": "CEILING.PRECISE",
+  "syntax": "CEILING.PRECISE(number, [significance])",
+  "arguments": [
+    {
+      "name": "Number",
+      "required": true,
+      "description": "The value to be rounded."
+    },
+    {
+      "name": "Significance",
+      "required": false,
+      "description": "The multiple to which number is to be rounded."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/ceiling-precise-function-f366a774-527a-4c92-ba49-af0a196e66cb"
+}

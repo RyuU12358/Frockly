@@ -1,0 +1,22 @@
+{
+  "function": "LOOKUP",
+  "syntax": "LOOKUP(lookup_value, lookup_vector, [result_vector])",
+  "arguments": [
+    {
+      "name": "lookup_value",
+      "required": true,
+      "description": "A value that LOOKUP searches for in the first vector. Lookup_value can be a number, text, a logical value, or a name or reference that refers to a value."
+    },
+    {
+      "name": "lookup_vector",
+      "required": true,
+      "description": "A range that contains only one row or one column. The values in lookup_vector can be text, numbers, or logical values."
+    },
+    {
+      "name": "result_vector",
+      "required": false,
+      "description": "A range that contains only one row or column. The result_vector argument must be the same size as lookup_vector . It has to be the same size."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/lookup-function-446d94af-663b-451d-8251-369d5e3864cb"
+}

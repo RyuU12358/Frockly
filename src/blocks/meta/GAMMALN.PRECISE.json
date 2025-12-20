@@ -1,0 +1,12 @@
+{
+  "function": "GAMMALN.PRECISE",
+  "syntax": "GAMMALN.PRECISE(x)",
+  "arguments": [
+    {
+      "name": "X",
+      "required": true,
+      "description": "The value for which you want to calculate GAMMALN.PRECISE."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/gammaln-precise-function-5cdfe601-4e1e-4189-9d74-241ef1caa599"
+}

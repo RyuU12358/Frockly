@@ -1,0 +1,17 @@
+{
+  "function": "BESSELJ",
+  "syntax": "BESSELJ(X, N)",
+  "arguments": [
+    {
+      "name": "X",
+      "required": true,
+      "description": "The value at which to evaluate the function."
+    },
+    {
+      "name": "N",
+      "required": true,
+      "description": "The order of the Bessel function. If n is not an integer, it is truncated."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/besselj-function-839cb181-48de-408b-9d80-bd02982d94f7"
+}

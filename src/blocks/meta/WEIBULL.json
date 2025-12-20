@@ -1,0 +1,27 @@
+{
+  "function": "WEIBULL",
+  "syntax": "WEIBULL(x,alpha,beta,cumulative)",
+  "arguments": [
+    {
+      "name": "X",
+      "required": true,
+      "description": "The value at which to evaluate the function."
+    },
+    {
+      "name": "Alpha",
+      "required": true,
+      "description": "A parameter to the distribution."
+    },
+    {
+      "name": "Beta",
+      "required": true,
+      "description": "A parameter to the distribution."
+    },
+    {
+      "name": "Cumulative",
+      "required": true,
+      "description": "Determines the form of the function."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/weibull-function-b83dc2c6-260b-4754-bef2-633196f6fdcc"
+}

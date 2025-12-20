@@ -1,0 +1,32 @@
+{
+  "function": "HYPGEOM.DIST",
+  "syntax": "HYPGEOM.DIST(sample_s,number_sample,population_s,number_pop,cumulative)",
+  "arguments": [
+    {
+      "name": "Sample_s",
+      "required": true,
+      "description": "The number of successes in the sample."
+    },
+    {
+      "name": "Number_sample",
+      "required": true,
+      "description": "The size of the sample."
+    },
+    {
+      "name": "Population_s",
+      "required": true,
+      "description": "The number of successes in the population."
+    },
+    {
+      "name": "Number_pop",
+      "required": true,
+      "description": "The population size."
+    },
+    {
+      "name": "Cumulative",
+      "required": true,
+      "description": "A logical value that determines the form of the function. If cumulative is TRUE, then HYPGEOM.DIST returns the cumulative distribution function; if FALSE, it returns the probability mass function."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/hypgeom-dist-function-6dbd547f-1d12-4b1f-8ae5-b0d9e3d22fbf"
+}

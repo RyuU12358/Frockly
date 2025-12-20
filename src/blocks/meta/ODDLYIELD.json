@@ -1,0 +1,47 @@
+{
+  "function": "ODDLYIELD",
+  "syntax": "ODDLYIELD(settlement, maturity, last_interest, rate, pr, redemption, frequency, [basis])",
+  "arguments": [
+    {
+      "name": "Settlement",
+      "required": true,
+      "description": "The security's settlement date. The security settlement date is the date after the issue date when the security is traded to the buyer."
+    },
+    {
+      "name": "Maturity",
+      "required": true,
+      "description": "The security's maturity date. The maturity date is the date when the security expires."
+    },
+    {
+      "name": "Last_interest",
+      "required": true,
+      "description": "The security's last coupon date."
+    },
+    {
+      "name": "Rate",
+      "required": true,
+      "description": "The security's interest rate"
+    },
+    {
+      "name": "Pr",
+      "required": true,
+      "description": "The security's price."
+    },
+    {
+      "name": "Redemption",
+      "required": true,
+      "description": "The security's redemption value per $100 face value."
+    },
+    {
+      "name": "Frequency",
+      "required": true,
+      "description": "The number of coupon payments per year. For annual payments, frequency = 1; for semiannual, frequency = 2; for quarterly, frequency = 4."
+    },
+    {
+      "name": "Basis",
+      "required": false,
+      "description": "The type of day count basis to use."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/oddlyield-function-c873d088-cf40-435f-8d41-c8232fee9238"
+}

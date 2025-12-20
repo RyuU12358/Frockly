@@ -1,0 +1,12 @@
+{
+  "function": "ATANH",
+  "syntax": "ATANH(number)",
+  "arguments": [
+    {
+      "name": "Number",
+      "required": true,
+      "description": "Any real number between 1 and -1."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/atanh-function-3cd65768-0de7-4f1d-b312-d01c8c930d90"
+}

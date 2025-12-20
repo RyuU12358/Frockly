@@ -1,0 +1,22 @@
+{
+  "function": "DGET",
+  "syntax": "DGET(database, field, criteria)",
+  "arguments": [
+    {
+      "name": "Database",
+      "required": true,
+      "description": "The range of cells that makes up the list or database. A database is a list of related data in which rows of related information are records, and columns of data are fields. The first row of the list contains labels for each column."
+    },
+    {
+      "name": "Field",
+      "required": true,
+      "description": "Indicates which column is used in the function. Enter the column label enclosed between double quotation marks, such as \"Age\" or \"Yield,\" or a number (without quotation marks) that represents the position of the column within the list: 1 for the first column, 2 for the second column, and so on."
+    },
+    {
+      "name": "Criteria",
+      "required": true,
+      "description": "The range of cells that contains the conditions that you specify. You can use any range for the criteria argument, as long as it includes at least one column label and at least one cell below the column label in which you specify a condition for the column."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/dget-function-455568bf-4eef-45f7-90f0-ec250d00892e"
+}

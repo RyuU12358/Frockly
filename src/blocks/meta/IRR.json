@@ -1,0 +1,5 @@
+{
+  "function": "IRR",
+  "syntax": "IRR(values, [guess])",
+  "url": "https://support.microsoft.com/en-us/office/irr-function-64925eaa-9988-495b-b290-3ad0c163c1bc"
+}

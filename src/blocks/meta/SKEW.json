@@ -1,0 +1,12 @@
+{
+  "function": "SKEW",
+  "syntax": "SKEW(number1, [number2], ...)",
+  "arguments": [
+    {
+      "name": "Number1, number2, ...",
+      "required": null,
+      "description": "Number1 is required, subsequent numbers are optional. 1 to 255 arguments for which you want to calculate skewness. You can also use a single array or a reference to an array instead of arguments separated by commas."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/skew-function-bdf49d86-b1ef-4804-a046-28eaea69c9fa"
+}

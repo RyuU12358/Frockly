@@ -1,0 +1,17 @@
+{
+  "function": "COVARIANCE.S",
+  "syntax": "COVARIANCE.S(array1,array2)",
+  "arguments": [
+    {
+      "name": "Array1",
+      "required": true,
+      "description": "The first cell range of integers."
+    },
+    {
+      "name": "Array2",
+      "required": true,
+      "description": "The second cell range of integers."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/covariance-s-function-0a539b74-7371-42aa-a18f-1f5320314977"
+}

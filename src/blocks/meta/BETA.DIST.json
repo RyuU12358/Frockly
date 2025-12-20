@@ -1,0 +1,37 @@
+{
+  "function": "BETA.DIST",
+  "syntax": "BETA.DIST(x,alpha,beta,cumulative,[A],[B])",
+  "arguments": [
+    {
+      "name": "X",
+      "required": true,
+      "description": "The value between A and B at which to evaluate the function"
+    },
+    {
+      "name": "Alpha",
+      "required": true,
+      "description": "A parameter of the distribution."
+    },
+    {
+      "name": "Beta",
+      "required": true,
+      "description": "A parameter of the distribution."
+    },
+    {
+      "name": "Cumulative",
+      "required": true,
+      "description": "A logical value that determines the form of the function. If cumulative is TRUE, BETA.DIST returns the cumulative distribution function; if FALSE, it returns the probability density function."
+    },
+    {
+      "name": "A",
+      "required": false,
+      "description": "A lower bound to the interval of x."
+    },
+    {
+      "name": "B",
+      "required": false,
+      "description": "An upper bound to the interval of x."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/beta-dist-function-11188c9c-780a-42c7-ba43-9ecb5a878d31"
+}

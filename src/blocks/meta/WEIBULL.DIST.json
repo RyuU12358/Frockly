@@ -1,0 +1,27 @@
+{
+  "function": "WEIBULL.DIST",
+  "syntax": "WEIBULL.DIST(x,alpha,beta,cumulative)",
+  "arguments": [
+    {
+      "name": "X",
+      "required": true,
+      "description": "The value at which to evaluate the function."
+    },
+    {
+      "name": "Alpha",
+      "required": true,
+      "description": "A parameter to the distribution."
+    },
+    {
+      "name": "Beta",
+      "required": true,
+      "description": "A parameter to the distribution."
+    },
+    {
+      "name": "Cumulative",
+      "required": true,
+      "description": "Determines the form of the function."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/weibull-dist-function-4e783c39-9325-49be-bbc9-a83ef82b45db"
+}

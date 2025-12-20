@@ -1,0 +1,17 @@
+{
+  "function": "NPV",
+  "syntax": "NPV(rate,value1,[value2],...)",
+  "arguments": [
+    {
+      "name": "Rate",
+      "required": true,
+      "description": "The rate of discount over the length of one period."
+    },
+    {
+      "name": "Value1, value2, ...",
+      "required": null,
+      "description": "Value1 is required, subsequent values are optional. 1 to 254 arguments representing the payments and income."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/npv-function-8672cb67-2576-4d07-b67b-ac28acf2a568"
+}

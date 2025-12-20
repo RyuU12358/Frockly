@@ -1,0 +1,12 @@
+{
+  "function": "N",
+  "syntax": "N(value)",
+  "arguments": [
+    {
+      "name": "Value",
+      "required": true,
+      "description": "The value you want converted. N converts values listed in the following table."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/n-function-a624cad1-3635-4208-b54a-29733d1278c9"
+}

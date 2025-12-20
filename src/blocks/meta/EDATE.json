@@ -1,0 +1,17 @@
+{
+  "function": "EDATE",
+  "syntax": "EDATE(start_date, months)",
+  "arguments": [
+    {
+      "name": "Start_date",
+      "required": true,
+      "description": "A date that represents the start date. Dates should be entered by using the DATE function, or as results of other formulas or functions. For example, use DATE(2008,5,23) for the 23rd day of May, 2008. Problems can occur if dates are entered as text ."
+    },
+    {
+      "name": "Months",
+      "required": true,
+      "description": "The number of months before or after start_date. A positive value for months yields a future date; a negative value yields a past date."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/edate-function-3c920eb2-6e66-44e7-a1f5-753ae47ee4f5"
+}

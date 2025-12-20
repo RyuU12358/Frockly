@@ -1,0 +1,22 @@
+{
+  "function": "MIRR",
+  "syntax": "MIRR(values, finance_rate, reinvest_rate)",
+  "arguments": [
+    {
+      "name": "Values",
+      "required": true,
+      "description": "An array or a reference to cells that contain numbers. These numbers represent a series of payments (negative values) and income (positive values) occurring at regular periods."
+    },
+    {
+      "name": "Finance_rate",
+      "required": true,
+      "description": "The interest rate you pay on the money used in the cash flows."
+    },
+    {
+      "name": "Reinvest_rate",
+      "required": true,
+      "description": "The interest rate you receive on the cash flows as you reinvest them."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/mirr-function-b020f038-7492-4fb4-93c1-35c345b53524"
+}

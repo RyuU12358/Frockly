@@ -1,0 +1,5 @@
+{
+  "function": "ISPMT",
+  "syntax": "ISPMT(rate, per, nper, pv)",
+  "url": "https://support.microsoft.com/en-us/office/ispmt-function-fa58adb6-9d39-4ce0-8f43-75399cea56cc"
+}

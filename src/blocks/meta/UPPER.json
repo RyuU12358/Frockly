@@ -1,0 +1,12 @@
+{
+  "function": "UPPER",
+  "syntax": "UPPER(text)",
+  "arguments": [
+    {
+      "name": "Text",
+      "required": true,
+      "description": "The text you want converted to uppercase. Text can be a reference or text string."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/upper-function-c11f29b3-d1a3-4537-8df6-04d0049963d6"
+}

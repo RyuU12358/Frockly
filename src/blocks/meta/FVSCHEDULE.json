@@ -1,0 +1,17 @@
+{
+  "function": "FVSCHEDULE",
+  "syntax": "FVSCHEDULE(principal, schedule)",
+  "arguments": [
+    {
+      "name": "Principal",
+      "required": true,
+      "description": "The present value."
+    },
+    {
+      "name": "Schedule",
+      "required": true,
+      "description": "An array of interest rates to apply."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/fvschedule-function-bec29522-bd87-4082-bab9-a241f3fb251d"
+}

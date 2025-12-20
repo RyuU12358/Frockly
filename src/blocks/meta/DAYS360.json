@@ -1,0 +1,17 @@
+{
+  "function": "DAYS360",
+  "syntax": "DAYS360(start_date,end_date,[method])",
+  "arguments": [
+    {
+      "name": "Start_date, end_date",
+      "required": true,
+      "description": "The two dates between which you want to know the number of days. If start_date occurs after end_date , the DAYS360 function returns a negative number. Dates should be entered by using the DATE function, or derived from the results of other formulas or functions. For example, use DATE(2008,5,23) to return the 23rd day of May, 2008. Problems can occur if dates are entered as text."
+    },
+    {
+      "name": "Method",
+      "required": false,
+      "description": "A logical value that specifies whether to use the U.S. or European method in the calculation."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/days360-function-b9a509fd-49ef-407e-94df-0cbda5718c2a"
+}

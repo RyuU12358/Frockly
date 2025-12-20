@@ -1,0 +1,12 @@
+{
+  "function": "ODD",
+  "syntax": "ODD(number)",
+  "arguments": [
+    {
+      "name": "Number:",
+      "required": true,
+      "description": "The value to round."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/odd-function-deae64eb-e08a-4c88-8b40-6d0b42575c98"
+}

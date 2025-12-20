@@ -1,0 +1,12 @@
+{
+  "function": "FISHERINV",
+  "syntax": "FISHERINV(y)",
+  "arguments": [
+    {
+      "name": "Y",
+      "required": true,
+      "description": "The value for which you want to perform the inverse of the transformation."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/fisherinv-function-62504b39-415a-4284-a285-19c8e82f86bb"
+}

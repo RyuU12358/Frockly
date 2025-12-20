@@ -1,0 +1,17 @@
+{
+  "function": "DECIMAL",
+  "syntax": "DECIMAL(text, radix)",
+  "arguments": [
+    {
+      "name": "Text",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "Radix",
+      "required": true,
+      "description": "Radix must be an integer."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/decimal-function-ee554665-6176-46ef-82de-0a283658da2e"
+}

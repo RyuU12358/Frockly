@@ -1,0 +1,12 @@
+{
+  "function": "RADIANS",
+  "syntax": "RADIANS(angle)",
+  "arguments": [
+    {
+      "name": "Angle",
+      "required": true,
+      "description": "An angle in degrees that you want to convert."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/radians-function-ac409508-3d48-45f5-ac02-1497c92de5bf"
+}

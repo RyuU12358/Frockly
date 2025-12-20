@@ -1,0 +1,22 @@
+{
+  "function": "COUNTIFS",
+  "syntax": "COUNTIFS(criteria_range1, criteria1, [criteria_range2, criteria2]…)",
+  "arguments": [
+    {
+      "name": "criteria_range1",
+      "required": true,
+      "description": "The first range in which to evaluate the associated criteria."
+    },
+    {
+      "name": "criteria1",
+      "required": true,
+      "description": "The criteria in the form of a number, expression, cell reference, or text that define which cells will be counted. For example, criteria can be expressed as 32, \">32\", B4, \"apples\", or \"32\"."
+    },
+    {
+      "name": "criteria_range2, criteria2, ...",
+      "required": false,
+      "description": "Additional ranges and their associated criteria. Up to 127 range/criteria pairs are allowed."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/countifs-function-dda3dc6e-f74e-4aee-88bc-aa8c2a866842"
+}

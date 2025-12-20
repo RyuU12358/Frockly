@@ -1,0 +1,32 @@
+{
+  "function": "PRICEDISC",
+  "syntax": "PRICEDISC(settlement, maturity, discount, redemption, [basis])",
+  "arguments": [
+    {
+      "name": "Settlement",
+      "required": true,
+      "description": "The security's settlement date. The security settlement date is the date after the issue date when the security is traded to the buyer."
+    },
+    {
+      "name": "Maturity",
+      "required": true,
+      "description": "The security's maturity date. The maturity date is the date when the security expires."
+    },
+    {
+      "name": "Discount",
+      "required": true,
+      "description": "The security's discount rate."
+    },
+    {
+      "name": "Redemption",
+      "required": true,
+      "description": "The security's redemption value per $100 face value."
+    },
+    {
+      "name": "Basis",
+      "required": false,
+      "description": "The type of day count basis to use."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/pricedisc-function-d06ad7c1-380e-4be7-9fd9-75e3079acfd3"
+}

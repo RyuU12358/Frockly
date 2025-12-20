@@ -1,0 +1,17 @@
+{
+  "function": "WEEKDAY",
+  "syntax": "WEEKDAY(serial_number,[return_type])",
+  "arguments": [
+    {
+      "name": "Serial_number",
+      "required": true,
+      "description": "A sequential number that represents the date of the day you are trying to find. Dates should be entered by using the DATE function, or as results of other formulas or functions. For example, use DATE(2008,5,23) for the 23rd day of May, 2008. Problems can occur if dates are entered as text."
+    },
+    {
+      "name": "Return_type",
+      "required": false,
+      "description": "A number that determines the type of return value."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/weekday-function-60e44483-2ed1-439f-8bd0-e404c190949a"
+}

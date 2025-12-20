@@ -1,0 +1,12 @@
+{
+  "function": "PHI",
+  "syntax": "PHI(x)",
+  "arguments": [
+    {
+      "name": "X",
+      "required": true,
+      "description": "X is the number for which you want the density of the standard normal distribution."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/phi-function-23e49bc6-a8e8-402d-98d3-9ded87f6295c"
+}

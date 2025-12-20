@@ -1,0 +1,22 @@
+{
+  "function": "FIXED",
+  "syntax": "FIXED(number, [decimals], [no_commas])",
+  "arguments": [
+    {
+      "name": "Number",
+      "required": true,
+      "description": "The number you want to round and convert to text."
+    },
+    {
+      "name": "Decimals",
+      "required": false,
+      "description": "The number of digits to the right of the decimal point."
+    },
+    {
+      "name": "No_commas",
+      "required": false,
+      "description": "A logical value that, if TRUE, prevents FIXED from including commas in the returned text."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/fixed-function-ffd5723c-324c-45e9-8b96-e41be2a8274a"
+}

@@ -1,0 +1,12 @@
+{
+  "function": "LCM",
+  "syntax": "LCM(number1, [number2], ...)",
+  "arguments": [
+    {
+      "name": "Number1, number2,...",
+      "required": null,
+      "description": "Number1 is required, subsequent numbers are optional. 1 to 255 values for which you want the least common multiple. If value is not an integer, it is truncated."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/lcm-function-7152b67a-8bb5-4075-ae5c-06ede5563c94"
+}

@@ -1,0 +1,32 @@
+{
+  "function": "RATE",
+  "syntax": "RATE(nper, pmt, pv, [fv], [type], [guess])",
+  "arguments": [
+    {
+      "name": "Nper",
+      "required": true,
+      "description": "The total number of payment periods in an annuity."
+    },
+    {
+      "name": "Pmt",
+      "required": true,
+      "description": "The payment made each period and cannot change over the life of the annuity. Typically, pmt includes principal and interest but no other fees or taxes. If pmt is omitted, you must include the fv argument."
+    },
+    {
+      "name": "Pv",
+      "required": true,
+      "description": "The present value — the total amount that a series of future payments is worth now."
+    },
+    {
+      "name": "Fv",
+      "required": false,
+      "description": "The future value, or a cash balance you want to attain after the last payment is made. If fv is omitted, it is assumed to be 0 (the future value of a loan, for example, is 0). If fv is omitted, you must include the pmt argument."
+    },
+    {
+      "name": "Type",
+      "required": false,
+      "description": "The number 0 or 1 and indicates when payments are due."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/rate-function-9f665657-4a7e-4bb7-a030-83fc59e748ce"
+}

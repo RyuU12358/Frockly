@@ -1,0 +1,32 @@
+{
+  "function": "DDB",
+  "syntax": "DDB(cost, salvage, life, period, [factor])",
+  "arguments": [
+    {
+      "name": "Cost",
+      "required": true,
+      "description": "The initial cost of the asset."
+    },
+    {
+      "name": "Salvage",
+      "required": true,
+      "description": "The value at the end of the depreciation (sometimes called the salvage value of the asset). This value can be 0."
+    },
+    {
+      "name": "Life",
+      "required": true,
+      "description": "The number of periods over which the asset is being depreciated (sometimes called the useful life of the asset)."
+    },
+    {
+      "name": "Period",
+      "required": true,
+      "description": "The period for which you want to calculate the depreciation. Period must use the same units as life."
+    },
+    {
+      "name": "Factor",
+      "required": false,
+      "description": "The rate at which the balance declines. If factor is omitted, it is assumed to be 2 (the double-declining balance method)."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/ddb-function-519a7a37-8772-4c96-85c0-ed2c209717a5"
+}

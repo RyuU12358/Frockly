@@ -1,0 +1,22 @@
+{
+  "function": "IF",
+  "syntax": "Use the IF function, one of the logical functions , to return one value if a condition is true and another value if it's false.",
+  "arguments": [
+    {
+      "name": "logical_test",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "value_if_true",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "value_if_false",
+      "required": false,
+      "description": ""
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/if-function-69aed7c9-4e8a-4755-a9bc-aa8bbff73be2"
+}

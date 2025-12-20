@@ -1,0 +1,12 @@
+{
+  "function": "KURT",
+  "syntax": "KURT(number1, [number2], ...)",
+  "arguments": [
+    {
+      "name": "Number1, number2, ...",
+      "required": null,
+      "description": "Number1 is required, subsequent numbers are optional. 1 to 255 arguments for which you want to calculate kurtosis. You can also use a single array or a reference to an array instead of arguments separated by commas."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/kurt-function-bc3a265c-5da4-4dcb-b7fd-c237789095ab"
+}

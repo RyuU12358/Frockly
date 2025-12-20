@@ -1,0 +1,32 @@
+{
+  "function": "TEXTJOIN",
+  "syntax": "TEXTJOIN(delimiter, ignore_empty, text1, [text2], …)",
+  "arguments": [
+    {
+      "name": "delimiter",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "ignore_empty",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "text1",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "text2",
+      "required": false,
+      "description": ""
+    },
+    {
+      "name": "…",
+      "required": true,
+      "description": ""
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/textjoin-function-357b449a-ec91-49d0-80c3-0e8fc845691c"
+}

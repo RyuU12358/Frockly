@@ -1,0 +1,17 @@
+{
+  "function": "ERF",
+  "syntax": "ERF(lower_limit,[upper_limit])",
+  "arguments": [
+    {
+      "name": "Lower_limit",
+      "required": true,
+      "description": "The lower bound for integrating ERF."
+    },
+    {
+      "name": "Upper_limit",
+      "required": false,
+      "description": "The upper bound for integrating ERF. If omitted, ERF integrates between zero and lower_limit."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/erf-function-c53c7e7b-5482-4b6c-883e-56df3c9af349"
+}

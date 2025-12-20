@@ -1,0 +1,12 @@
+{
+  "function": "VARPA",
+  "syntax": "VARPA(value1, [value2], ...)",
+  "arguments": [
+    {
+      "name": "Value1, value2, ...",
+      "required": null,
+      "description": "Value1 is required, subsequent values are optional. 1 to 255 value arguments corresponding to a population."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/varpa-function-59a62635-4e89-4fad-88ac-ce4dc0513b96"
+}

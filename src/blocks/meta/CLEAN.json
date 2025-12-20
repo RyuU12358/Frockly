@@ -1,0 +1,12 @@
+{
+  "function": "CLEAN",
+  "syntax": "CLEAN(text)",
+  "arguments": [
+    {
+      "name": "Text",
+      "required": true,
+      "description": "Any worksheet information from which you want to remove nonprintable characters."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/clean-function-26f3d7c5-475f-4a9c-90e5-4b8ba987ba41"
+}

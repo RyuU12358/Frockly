@@ -1,0 +1,17 @@
+{
+  "function": "DAYS",
+  "syntax": "DAYS(end_date, start_date)",
+  "arguments": [
+    {
+      "name": "End_date",
+      "required": true,
+      "description": "Start_date and End_date are the two dates between which you want to know the number of days."
+    },
+    {
+      "name": "Start_date",
+      "required": true,
+      "description": "Start_date and End_date are the two dates between which you want to know the number of days."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/days-function-57740535-d549-4395-8728-0f07bff0b9df"
+}

@@ -1,0 +1,12 @@
+{
+  "function": "IMPRODUCT",
+  "syntax": "IMPRODUCT(inumber1, [inumber2], ...)",
+  "arguments": [
+    {
+      "name": "Inumber1, [inumber2], …",
+      "required": null,
+      "description": "Inumber1 is required, subsequent inumbers are not. 1 to 255 complex numbers to multiply."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/improduct-function-2fb8651a-a4f2-444f-975e-8ba7aab3a5ba"
+}

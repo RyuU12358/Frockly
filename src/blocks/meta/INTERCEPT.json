@@ -1,0 +1,17 @@
+{
+  "function": "INTERCEPT",
+  "syntax": "INTERCEPT(known_y's, known_x's)",
+  "arguments": [
+    {
+      "name": "Known_y's",
+      "required": true,
+      "description": "The dependent set of observations or data."
+    },
+    {
+      "name": "Known_x's",
+      "required": true,
+      "description": "The independent set of observations or data."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/intercept-function-2a9b74e2-9d47-4772-b663-3bca70bf63ef"
+}

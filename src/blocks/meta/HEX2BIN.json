@@ -1,0 +1,17 @@
+{
+  "function": "HEX2BIN",
+  "syntax": "HEX2BIN(number, [places])",
+  "arguments": [
+    {
+      "name": "Number",
+      "required": true,
+      "description": "The hexadecimal number you want to convert. Number cannot contain more than 10 characters. The most significant bit of number is the sign bit (40th bit from the right). The remaining 9 bits are magnitude bits. Negative numbers are represented using two's-complement notation."
+    },
+    {
+      "name": "Places",
+      "required": false,
+      "description": "The number of characters to use. If places is omitted, HEX2BIN uses the minimum number of characters necessary. Places is useful for padding the return value with leading 0s (zeros)."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/hex2bin-function-a13aafaa-5737-4920-8424-643e581828c1"
+}

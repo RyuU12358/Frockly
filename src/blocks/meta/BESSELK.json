@@ -1,0 +1,17 @@
+{
+  "function": "BESSELK",
+  "syntax": "BESSELK(X, N)",
+  "arguments": [
+    {
+      "name": "X",
+      "required": true,
+      "description": "The value at which to evaluate the function."
+    },
+    {
+      "name": "N",
+      "required": true,
+      "description": "The order of the function. If n is not an integer, it is truncated."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/besselk-function-606d11bc-06d3-4d53-9ecb-2803e2b90b70"
+}

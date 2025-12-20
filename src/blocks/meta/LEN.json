@@ -1,0 +1,12 @@
+{
+  "function": "LEN",
+  "syntax": "LEN(text)",
+  "arguments": [
+    {
+      "name": "Text",
+      "required": true,
+      "description": "The text whose length you want to find. Spaces count as characters."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/len-function-29236f94-cedc-429d-affd-b5e33d2c67cb"
+}

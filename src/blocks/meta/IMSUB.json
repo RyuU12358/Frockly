@@ -1,0 +1,17 @@
+{
+  "function": "IMSUB",
+  "syntax": "IMSUB(inumber1, inumber2)",
+  "arguments": [
+    {
+      "name": "Inumber1",
+      "required": true,
+      "description": "The complex number from which to subtract inumber2."
+    },
+    {
+      "name": "Inumber2",
+      "required": true,
+      "description": "The complex number to subtract from inumber1."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/imsub-function-2e404b4d-4935-4e85-9f52-cb08b9a45054"
+}

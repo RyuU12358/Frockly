@@ -1,0 +1,27 @@
+{
+  "function": "SERIESSUM",
+  "syntax": "SERIESSUM(x, n, m, coefficients)",
+  "arguments": [
+    {
+      "name": "X",
+      "required": true,
+      "description": "The input value to the power series."
+    },
+    {
+      "name": "N",
+      "required": true,
+      "description": "The initial power to which you want to raise x."
+    },
+    {
+      "name": "M",
+      "required": true,
+      "description": "The step by which to increase n for each term in the series."
+    },
+    {
+      "name": "Coefficients",
+      "required": true,
+      "description": "A set of coefficients by which each successive power of x is multiplied. The number of values in coefficients determines the number of terms in the power series. For example, if there are three values in coefficients, then there will be three terms in the power series."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/seriessum-function-a3ab25b5-1093-4f5b-b084-96c49087f637"
+}

@@ -1,0 +1,17 @@
+{
+  "function": "ROUND",
+  "syntax": "ROUND(number, num_digits)",
+  "arguments": [
+    {
+      "name": "number",
+      "required": true,
+      "description": "The number that you want to round."
+    },
+    {
+      "name": "num_digits",
+      "required": true,
+      "description": "The number of digits to which you want to round the number argument."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/round-function-c018c5d8-40fb-4053-90b1-b3e7f61a213c"
+}

@@ -1,0 +1,12 @@
+{
+  "function": "ISOWEEKNUM",
+  "syntax": "ISOWEEKNUM(date)",
+  "arguments": [
+    {
+      "name": "Date",
+      "required": true,
+      "description": "Date is the date-time code used by Excel for date and time calculation."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/isoweeknum-function-1c2d0afe-d25b-4ab1-8894-8d0520e90e0e"
+}

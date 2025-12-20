@@ -1,0 +1,12 @@
+{
+  "function": "TRIM",
+  "syntax": "TRIM(text)",
+  "arguments": [
+    {
+      "name": "Text",
+      "required": true,
+      "description": "The text from which you want spaces removed."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/trim-function-410388fa-c5df-49c6-b16c-9e5630b479f9"
+}

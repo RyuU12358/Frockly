@@ -1,0 +1,12 @@
+{
+  "function": "ARABIC",
+  "syntax": "ARABIC( text )",
+  "arguments": [
+    {
+      "name": "Text",
+      "required": true,
+      "description": "A string enclosed in quotation marks, an empty string (\"\"), or a reference to a cell containing text."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/arabic-function-9a8da418-c17b-4ef9-a657-9370a30a674f"
+}

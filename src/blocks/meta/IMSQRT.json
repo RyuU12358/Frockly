@@ -1,0 +1,12 @@
+{
+  "function": "IMSQRT",
+  "syntax": "IMSQRT(inumber)",
+  "arguments": [
+    {
+      "name": "Inumber",
+      "required": true,
+      "description": "A complex number for which you want the square root."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/imsqrt-function-e1753f80-ba11-4664-a10e-e17368396b70"
+}

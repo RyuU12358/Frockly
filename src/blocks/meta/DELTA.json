@@ -1,0 +1,17 @@
+{
+  "function": "DELTA",
+  "syntax": "DELTA(number1, [number2])",
+  "arguments": [
+    {
+      "name": "Number1",
+      "required": true,
+      "description": "The first number."
+    },
+    {
+      "name": "Number2",
+      "required": false,
+      "description": "The second number. If omitted, number2 is assumed to be zero."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/delta-function-2f763672-c959-4e07-ac33-fe03220ba432"
+}

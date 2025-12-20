@@ -1,0 +1,12 @@
+{
+  "function": "ACOSH",
+  "syntax": "ACOSH(number)",
+  "arguments": [
+    {
+      "name": "Number",
+      "required": true,
+      "description": "Any real number equal to or greater than 1."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/acosh-function-e3992cc1-103f-4e72-9f04-624b9ef5ebfe"
+}

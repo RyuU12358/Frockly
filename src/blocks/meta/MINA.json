@@ -1,0 +1,12 @@
+{
+  "function": "MINA",
+  "syntax": "MINA(value1, [value2], ...)",
+  "arguments": [
+    {
+      "name": "Value1, value2, ...",
+      "required": null,
+      "description": "Value1 is required, subsequent values are optional. 1 to 255 values for which you want to find the smallest value."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/mina-function-245a6f46-7ca5-4dc7-ab49-805341bc31d3"
+}

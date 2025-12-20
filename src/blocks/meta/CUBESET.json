@@ -1,0 +1,27 @@
+{
+  "function": "CUBESET",
+  "syntax": "CUBESET(connection, set_expression, [caption], [sort_order], [sort_by])",
+  "arguments": [
+    {
+      "name": "Connection",
+      "required": true,
+      "description": "A text string of the name of the connection to the cube."
+    },
+    {
+      "name": "Set_expression",
+      "required": true,
+      "description": "A text string of a set expression that results in a set of members or tuples. Set_expression can also be a cell reference to an Excel range that contains one or more members, tuples, or sets included in the set."
+    },
+    {
+      "name": "Caption",
+      "required": false,
+      "description": "A text string that is displayed in the cell instead of the caption, if one is defined, from the cube."
+    },
+    {
+      "name": "Sort_order",
+      "required": false,
+      "description": "The type of sort, if any, to perform and can be one of the following:"
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/cubeset-function-5b2146bd-62d6-4d04-9d8f-670e993ee1d9"
+}

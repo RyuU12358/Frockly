@@ -1,0 +1,12 @@
+{
+  "function": "ACOT",
+  "syntax": "ACOT(number)",
+  "arguments": [
+    {
+      "name": "Number",
+      "required": true,
+      "description": "Number is the cotangent of the angle you want. This must be a real number."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/acot-function-dc7e5008-fe6b-402e-bdd6-2eea8383d905"
+}

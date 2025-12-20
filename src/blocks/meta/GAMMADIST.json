@@ -1,0 +1,27 @@
+{
+  "function": "GAMMADIST",
+  "syntax": "GAMMADIST(x,alpha,beta,cumulative)",
+  "arguments": [
+    {
+      "name": "X",
+      "required": true,
+      "description": "The value at which you want to evaluate the distribution."
+    },
+    {
+      "name": "Alpha",
+      "required": true,
+      "description": "A parameter to the distribution."
+    },
+    {
+      "name": "Beta",
+      "required": true,
+      "description": "A parameter to the distribution. If beta = 1, GAMMADIST returns the standard gamma distribution."
+    },
+    {
+      "name": "Cumulative",
+      "required": true,
+      "description": "A logical value that determines the form of the function. If cumulative is TRUE, GAMMADIST returns the cumulative distribution function; if FALSE, it returns the probability density function."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/gammadist-function-7327c94d-0f05-4511-83df-1dd7ed23e19e"
+}

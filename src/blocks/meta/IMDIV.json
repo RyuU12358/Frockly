@@ -1,0 +1,17 @@
+{
+  "function": "IMDIV",
+  "syntax": "IMDIV(inumber1, inumber2)",
+  "arguments": [
+    {
+      "name": "Inumber1",
+      "required": true,
+      "description": "The complex numerator or dividend."
+    },
+    {
+      "name": "Inumber2",
+      "required": true,
+      "description": "The complex denominator or divisor."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/imdiv-function-a505aff7-af8a-4451-8142-77ec3d74d83f"
+}

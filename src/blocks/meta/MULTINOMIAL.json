@@ -1,0 +1,12 @@
+{
+  "function": "MULTINOMIAL",
+  "syntax": "MULTINOMIAL(number1, [number2], ...)",
+  "arguments": [
+    {
+      "name": "Number1, number2, ...",
+      "required": null,
+      "description": "Number1 is required, subsequent numbers are optional. 1 to 255 values for which you want the multinomial."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/multinomial-function-6fa6373c-6533-41a2-a45e-a56db1db1bf6"
+}

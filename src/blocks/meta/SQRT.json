@@ -1,0 +1,12 @@
+{
+  "function": "SQRT",
+  "syntax": "SQRT(number)",
+  "arguments": [
+    {
+      "name": "Number",
+      "required": true,
+      "description": "The number for which you want the square root."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/sqrt-function-654975c2-05c4-4831-9a24-2c65e4040fdf"
+}

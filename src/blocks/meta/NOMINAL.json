@@ -1,0 +1,17 @@
+{
+  "function": "NOMINAL",
+  "syntax": "NOMINAL(effect_rate, npery)",
+  "arguments": [
+    {
+      "name": "Effect_rate",
+      "required": true,
+      "description": "The effective interest rate."
+    },
+    {
+      "name": "Npery",
+      "required": true,
+      "description": "The number of compounding periods per year."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/nominal-function-7f1ae29b-6b92-435e-b950-ad8b190ddd2b"
+}

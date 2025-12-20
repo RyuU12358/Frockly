@@ -1,0 +1,27 @@
+{
+  "function": "BINOM.DIST",
+  "syntax": "BINOM.DIST(number_s,trials,probability_s,cumulative)",
+  "arguments": [
+    {
+      "name": "Number_s",
+      "required": true,
+      "description": "The number of successes in trials."
+    },
+    {
+      "name": "Trials",
+      "required": true,
+      "description": "The number of independent trials."
+    },
+    {
+      "name": "Probability_s",
+      "required": true,
+      "description": "The probability of success on each trial."
+    },
+    {
+      "name": "Cumulative",
+      "required": true,
+      "description": "A logical value that determines the form of the function. If cumulative is TRUE, then BINOM.DIST returns the cumulative distribution function, which is the probability that there are at most number_s successes; if FALSE, it returns the probability mass function, which is the probability that there are number_s successes."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/binom-dist-function-c5ae37b6-f39c-4be2-94c2-509a1480770c"
+}

@@ -1,0 +1,22 @@
+{
+  "function": "XMATCH",
+  "syntax": "The XMATCH function returns the relative position of an item in an array or range of cells.",
+  "arguments": [
+    {
+      "name": "E3",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "C3:C7",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "1",
+      "required": true,
+      "description": ""
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/xmatch-function-d966da31-7a6b-4a13-a1c6-5a33ed6a0312"
+}

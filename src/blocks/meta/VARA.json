@@ -1,0 +1,12 @@
+{
+  "function": "VARA",
+  "syntax": "VARA(value1, [value2], ...)",
+  "arguments": [
+    {
+      "name": "Value1, value2, ...",
+      "required": null,
+      "description": "Value1 is required, subsequent values are optional. 1 to 255 value arguments corresponding to a sample of a population."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/vara-function-3de77469-fa3a-47b4-85fd-81758a1e1d07"
+}

@@ -1,0 +1,17 @@
+{
+  "function": "REPT",
+  "syntax": "REPT(text, number_times)",
+  "arguments": [
+    {
+      "name": "Text",
+      "required": true,
+      "description": "The text you want to repeat."
+    },
+    {
+      "name": "Number_times",
+      "required": true,
+      "description": "A positive number specifying the number of times to repeat text."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/rept-function-04c4d778-e712-43b4-9c15-d656582bb061"
+}

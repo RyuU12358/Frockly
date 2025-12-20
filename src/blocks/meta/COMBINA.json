@@ -1,0 +1,17 @@
+{
+  "function": "COMBINA",
+  "syntax": "COMBINA(number, number_chosen)",
+  "arguments": [
+    {
+      "name": "Number",
+      "required": true,
+      "description": "Must be greater than or equal to 0, and greater than or equal to Number_chosen. Non-integer values are truncated."
+    },
+    {
+      "name": "Number_chosen",
+      "required": true,
+      "description": "Must be greater than or equal to 0. Non-integer values are truncated."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/combina-function-efb49eaa-4f4c-4cd2-8179-0ddfcf9d035d"
+}

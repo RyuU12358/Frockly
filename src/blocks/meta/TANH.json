@@ -1,0 +1,12 @@
+{
+  "function": "TANH",
+  "syntax": "TANH(number)",
+  "arguments": [
+    {
+      "name": "Number",
+      "required": true,
+      "description": "Any real number."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/tanh-function-017222f0-a0c3-4f69-9787-b3202295dc6c"
+}

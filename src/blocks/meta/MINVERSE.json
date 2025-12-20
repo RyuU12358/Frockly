@@ -1,0 +1,12 @@
+{
+  "function": "MINVERSE",
+  "syntax": "MINVERSE(array)",
+  "arguments": [
+    {
+      "name": "array",
+      "required": true,
+      "description": "A numeric array with an equal number of rows and columns."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/minverse-function-11f55086-adde-4c9f-8eb9-59da2d72efc6"
+}

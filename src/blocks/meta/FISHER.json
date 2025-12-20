@@ -1,0 +1,12 @@
+{
+  "function": "FISHER",
+  "syntax": "FISHER(x)",
+  "arguments": [
+    {
+      "name": "X",
+      "required": true,
+      "description": "A numeric value for which you want the transformation."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/fisher-function-d656523c-5076-4f95-b87b-7741bf236c69"
+}

@@ -1,0 +1,22 @@
+{
+  "function": "CEILING.MATH",
+  "syntax": "CEILING.MATH( number , [ significance ], [ mode ])",
+  "arguments": [
+    {
+      "name": "number",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "significance",
+      "required": false,
+      "description": ""
+    },
+    {
+      "name": "mode",
+      "required": false,
+      "description": ""
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/ceiling-math-function-80f95d2f-b499-4eee-9f16-f795a8e306c8"
+}

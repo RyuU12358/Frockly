@@ -1,0 +1,17 @@
+{
+  "function": "ATAN2",
+  "syntax": "ATAN2(x_num, y_num)",
+  "arguments": [
+    {
+      "name": "X_num",
+      "required": true,
+      "description": "The x-coordinate of the point."
+    },
+    {
+      "name": "Y_num",
+      "required": true,
+      "description": "The y-coordinate of the point."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/atan2-function-c04592ab-b9e3-4908-b428-c96b3a565033"
+}

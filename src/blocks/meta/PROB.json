@@ -1,0 +1,27 @@
+{
+  "function": "PROB",
+  "syntax": "PROB(x_range, prob_range, [lower_limit], [upper_limit])",
+  "arguments": [
+    {
+      "name": "X_range",
+      "required": true,
+      "description": "The range of numeric values of x with which there are associated probabilities."
+    },
+    {
+      "name": "Prob_range",
+      "required": true,
+      "description": "A set of probabilities associated with values in x_range."
+    },
+    {
+      "name": "Lower_limit",
+      "required": false,
+      "description": "The lower bound on the value for which you want a probability."
+    },
+    {
+      "name": "Upper_limit",
+      "required": false,
+      "description": "The optional upper bound on the value for which you want a probability."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/prob-function-9ac30561-c81c-4259-8253-34f0a238fc49"
+}

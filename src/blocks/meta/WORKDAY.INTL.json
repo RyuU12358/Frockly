@@ -1,0 +1,27 @@
+{
+  "function": "WORKDAY.INTL",
+  "syntax": "WORKDAY.INTL(start_date, days, [weekend], [holidays])",
+  "arguments": [
+    {
+      "name": "start_date",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "days",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "weekend",
+      "required": false,
+      "description": ""
+    },
+    {
+      "name": "holidays",
+      "required": false,
+      "description": ""
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/workday-intl-function-a378391c-9ba7-4678-8a39-39611a9bf81d"
+}

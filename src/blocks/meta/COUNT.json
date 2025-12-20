@@ -1,0 +1,17 @@
+{
+  "function": "COUNT",
+  "syntax": "COUNT(value1, [value2], ...)",
+  "arguments": [
+    {
+      "name": "value1",
+      "required": true,
+      "description": "The first item, cell reference, or range within which you want to count numbers."
+    },
+    {
+      "name": "value2, ...",
+      "required": false,
+      "description": "Up to 255 additional items, cell references, or ranges within which you want to count numbers."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/count-function-a59cd7fc-b623-4d93-87a4-d23bf411294c"
+}

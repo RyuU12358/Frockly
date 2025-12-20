@@ -1,0 +1,22 @@
+{
+  "function": "INDEX",
+  "syntax": "INDEX(array, row_num, [column_num])",
+  "arguments": [
+    {
+      "name": "array",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "row_num",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "column_num",
+      "required": false,
+      "description": ""
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/index-function-a5dcf0dd-996d-40a4-a822-b56b061328bd"
+}

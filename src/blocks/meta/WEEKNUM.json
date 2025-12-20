@@ -1,0 +1,17 @@
+{
+  "function": "WEEKNUM",
+  "syntax": "WEEKNUM(serial_number,[return_type])",
+  "arguments": [
+    {
+      "name": "Serial_number",
+      "required": true,
+      "description": "A date within the week. Dates should be entered by using the DATE function, or as results of other formulas or functions. For example, use DATE(2008,5,23) for the 23rd day of May, 2008. Problems can occur if dates are entered as text."
+    },
+    {
+      "name": "Return_type",
+      "required": false,
+      "description": "A number that determines on which day the week begins. The default is 1."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/weeknum-function-e5c43a03-b4ab-426c-b411-b18c13c75340"
+}

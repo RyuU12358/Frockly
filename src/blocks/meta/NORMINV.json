@@ -1,0 +1,22 @@
+{
+  "function": "NORMINV",
+  "syntax": "NORMINV(probability,mean,standard_dev)",
+  "arguments": [
+    {
+      "name": "Probability",
+      "required": true,
+      "description": "A probability corresponding to the normal distribution."
+    },
+    {
+      "name": "Mean",
+      "required": true,
+      "description": "The arithmetic mean of the distribution."
+    },
+    {
+      "name": "Standard_dev",
+      "required": true,
+      "description": "The standard deviation of the distribution."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/norminv-function-87981ab8-2de0-4cb0-b1aa-e21d4cb879b8"
+}

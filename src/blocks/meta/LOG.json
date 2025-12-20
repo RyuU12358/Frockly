@@ -1,0 +1,17 @@
+{
+  "function": "LOG",
+  "syntax": "LOG(number, [base])",
+  "arguments": [
+    {
+      "name": "Number",
+      "required": true,
+      "description": "The positive real number for which you want the logarithm."
+    },
+    {
+      "name": "Base",
+      "required": false,
+      "description": "The base of the logarithm. If base is omitted, it is assumed to be 10."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/log-function-4e82f196-1ca9-4747-8fb0-6c4a3abb3280"
+}

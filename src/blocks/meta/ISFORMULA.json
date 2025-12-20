@@ -1,0 +1,12 @@
+{
+  "function": "ISFORMULA",
+  "syntax": "ISFORMULA(reference)",
+  "arguments": [
+    {
+      "name": "Reference",
+      "required": true,
+      "description": "Reference is a reference to the cell you want to test. Reference can be a cell reference, a formula, or a name that refers to a cell."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/isformula-function-e4d1355f-7121-4ef2-801e-3839bfd6b1e5"
+}

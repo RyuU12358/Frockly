@@ -1,0 +1,17 @@
+{
+  "function": "CHIDIST",
+  "syntax": "CHIDIST(x,deg_freedom)",
+  "arguments": [
+    {
+      "name": "X",
+      "required": true,
+      "description": "The value at which you want to evaluate the distribution."
+    },
+    {
+      "name": "Deg_freedom",
+      "required": true,
+      "description": "The number of degrees of freedom."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/chidist-function-c90d0fbc-5b56-4f5f-ab57-34af1bf6897e"
+}

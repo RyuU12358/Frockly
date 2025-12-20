@@ -1,0 +1,17 @@
+{
+  "function": "PERMUTATIONA",
+  "syntax": "PERMUTATIONA(number, number-chosen)",
+  "arguments": [
+    {
+      "name": "Number",
+      "required": true,
+      "description": "An integer that describes the total number of objects."
+    },
+    {
+      "name": "Number_chosen",
+      "required": true,
+      "description": "An integer that describes the number of objects in each permutation."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/permutationa-function-6c7d7fdc-d657-44e6-aa19-2857b25cae4e"
+}

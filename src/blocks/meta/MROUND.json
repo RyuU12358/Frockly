@@ -1,0 +1,17 @@
+{
+  "function": "MROUND",
+  "syntax": "MROUND(number, multiple)",
+  "arguments": [
+    {
+      "name": "Number",
+      "required": true,
+      "description": "The value to round."
+    },
+    {
+      "name": "Multiple",
+      "required": true,
+      "description": "The multiple to which you want to round number."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/mround-function-c299c3b0-15a5-426d-aa4b-d2d5b3baf427"
+}

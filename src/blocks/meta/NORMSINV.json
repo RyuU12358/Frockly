@@ -1,0 +1,12 @@
+{
+  "function": "NORMSINV",
+  "syntax": "NORMSINV(probability)",
+  "arguments": [
+    {
+      "name": "probability",
+      "required": true,
+      "description": ""
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/normsinv-function-8d1bce66-8e4d-4f3b-967c-30eed61f019d"
+}

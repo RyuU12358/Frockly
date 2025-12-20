@@ -1,0 +1,27 @@
+{
+  "function": "CALL",
+  "syntax": "Syntax 1",
+  "arguments": [
+    {
+      "name": "Module_text",
+      "required": true,
+      "description": "Quoted text specifying the name of the dynamic link library (DLL) that contains the procedure in Microsoft Excel for Windows."
+    },
+    {
+      "name": "Procedure",
+      "required": true,
+      "description": "Text specifying the name of the function in the DLL in Microsoft Excel for Windows. You can also use the ordinal value of the function from the EXPORTS statement in the module-definition file (.DEF). The ordinal value must not be in the form of text."
+    },
+    {
+      "name": "Type_text",
+      "required": true,
+      "description": "Text specifying the data type of the return value and the data types of all arguments to the DLL or code resource. The first letter of type_text specifies the return value. The codes you use for type_text are described in detail in Using the CALL and REGISTER functions . For stand-alone DLLs or code resources (XLLs), you can omit this argument."
+    },
+    {
+      "name": "Argument1,...",
+      "required": false,
+      "description": "The arguments to be passed to the procedure."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/call-function-32d58445-e646-4ffd-8d5e-b45077a5e995"
+}

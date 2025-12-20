@@ -1,0 +1,17 @@
+{
+  "function": "FREQUENCY",
+  "syntax": "FREQUENCY(data_array, bins_array)",
+  "arguments": [
+    {
+      "name": "data_array",
+      "required": true,
+      "description": "An array of or reference to a set of values for which you want to count frequencies. If data_array contains no values, FREQUENCY returns an array of zeros."
+    },
+    {
+      "name": "bins_array",
+      "required": true,
+      "description": "An array of or reference to intervals into which you want to group the values in data_array. If bins_array contains no values, FREQUENCY returns the number of elements in data_array."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/frequency-function-44e3be2b-eca0-42cd-a3f7-fd9ea898fdb9"
+}

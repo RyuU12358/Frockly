@@ -1,0 +1,12 @@
+{
+  "function": "SIN",
+  "syntax": "SIN(number)",
+  "arguments": [
+    {
+      "name": "Number",
+      "required": true,
+      "description": "The angle in radians for which you want the sine."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/sin-function-cf0e3432-8b9e-483c-bc55-a76651c95602"
+}

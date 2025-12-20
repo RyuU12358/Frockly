@@ -1,0 +1,22 @@
+{
+  "function": "MID",
+  "syntax": "MID(text, start_num, num_chars)",
+  "arguments": [
+    {
+      "name": "Text",
+      "required": true,
+      "description": "The text string containing the characters you want to extract."
+    },
+    {
+      "name": "Start_num",
+      "required": true,
+      "description": "The position of the first character you want to extract in text. The first character in text has start_num 1, and so on."
+    },
+    {
+      "name": "Num_chars",
+      "required": null,
+      "description": "Required for MID. Specifies the number of characters you want MID to return from text."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/mid-function-d5f9e25c-d7d6-472e-b568-4ecb12433028"
+}

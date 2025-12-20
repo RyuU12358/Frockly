@@ -1,0 +1,12 @@
+{
+  "function": "IMSUM",
+  "syntax": "IMSUM(inumber1, [inumber2], ...)",
+  "arguments": [
+    {
+      "name": "Inumber1, [inumber2], ...",
+      "required": null,
+      "description": "Inumber1 is required, subsequent numbers are not. 1 to 255 complex numbers to add."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/imsum-function-81542999-5f1c-4da6-9ffe-f1d7aaa9457f"
+}

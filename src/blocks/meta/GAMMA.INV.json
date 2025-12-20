@@ -1,0 +1,22 @@
+{
+  "function": "GAMMA.INV",
+  "syntax": "GAMMA.INV(probability,alpha,beta)",
+  "arguments": [
+    {
+      "name": "Probability",
+      "required": true,
+      "description": "The probability associated with the gamma distribution."
+    },
+    {
+      "name": "Alpha",
+      "required": true,
+      "description": "A parameter to the distribution."
+    },
+    {
+      "name": "Beta",
+      "required": true,
+      "description": "A parameter to the distribution. If beta = 1, GAMMA.INV returns the standard gamma distribution."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/gamma-inv-function-74991443-c2b0-4be5-aaab-1aa4d71fbb18"
+}

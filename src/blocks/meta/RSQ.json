@@ -1,0 +1,17 @@
+{
+  "function": "RSQ",
+  "syntax": "RSQ(known_y's,known_x's)",
+  "arguments": [
+    {
+      "name": "Known_y's",
+      "required": true,
+      "description": "An array or range of data points."
+    },
+    {
+      "name": "Known_x's",
+      "required": true,
+      "description": "An array or range of data points."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/rsq-function-d7161715-250d-4a01-b80d-a8364f2be08f"
+}

@@ -1,0 +1,12 @@
+{
+  "function": "ATAN",
+  "syntax": "ATAN(number)",
+  "arguments": [
+    {
+      "name": "Number",
+      "required": true,
+      "description": "The tangent of the angle you want."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/atan-function-50746fa8-630a-406b-81d0-4a2aed395543"
+}

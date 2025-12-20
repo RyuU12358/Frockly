@@ -1,0 +1,12 @@
+{
+  "function": "IMCOS",
+  "syntax": "IMCOS(inumber)",
+  "arguments": [
+    {
+      "name": "Inumber",
+      "required": true,
+      "description": "A complex number for which you want the cosine."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/imcos-function-dad75277-f592-4a6b-ad6c-be93a808a53c"
+}

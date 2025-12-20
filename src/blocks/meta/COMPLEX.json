@@ -1,0 +1,22 @@
+{
+  "function": "COMPLEX",
+  "syntax": "COMPLEX(real_num, i_num, [suffix])",
+  "arguments": [
+    {
+      "name": "Real_num",
+      "required": true,
+      "description": "The real coefficient of the complex number."
+    },
+    {
+      "name": "I_num",
+      "required": true,
+      "description": "The imaginary coefficient of the complex number."
+    },
+    {
+      "name": "Suffix",
+      "required": false,
+      "description": "The suffix for the imaginary component of the complex number. If omitted, suffix is assumed to be \"i\"."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/complex-function-f0b8f3a9-51cc-4d6d-86fb-3a9362fa4128"
+}

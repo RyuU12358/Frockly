@@ -1,0 +1,22 @@
+{
+  "function": "CONVERT",
+  "syntax": "CONVERT ( number , from_unit , to_unit )",
+  "arguments": [
+    {
+      "name": "number",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "from_unit",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "to_unit",
+      "required": true,
+      "description": ""
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/convert-function-d785bef1-808e-4aac-bdcd-666c810f9af2"
+}

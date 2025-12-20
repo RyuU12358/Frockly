@@ -1,0 +1,17 @@
+{
+  "function": "HYPERLINK",
+  "syntax": "HYPERLINK (link_location, [friendly_name])",
+  "arguments": [
+    {
+      "name": "Link_location",
+      "required": true,
+      "description": "The path and file name to the document to be opened. Link_location can refer to a place in a document — such as a specific cell or named range in an Excel worksheet or workbook, or to a bookmark in a Microsoft Word document. The path can be to a file that is stored on a hard disk drive. The path can also be a universal naming convention (UNC) path on a server (in Microsoft Excel for Windows) or a Uniform Resource Locator (URL) path on the Internet or an intranet."
+    },
+    {
+      "name": "Friendly_name",
+      "required": false,
+      "description": "The jump text or numeric value that is displayed in the cell. Friendly_name is displayed in blue and is underlined. If friendly_name is omitted, the cell displays the link_location as the jump text. Friendly_name can be a value, a text string, a name, or a cell that contains the jump text or value. If friendly_name returns an error value (for example, #VALUE!), the cell displays the error instead of the jump text."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/hyperlink-function-333c7ce6-c5ae-4164-9c47-7de9b76f577f"
+}

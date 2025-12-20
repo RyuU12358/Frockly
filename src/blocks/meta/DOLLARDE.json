@@ -1,0 +1,17 @@
+{
+  "function": "DOLLARDE",
+  "syntax": "DOLLARDE(fractional_dollar, fraction)",
+  "arguments": [
+    {
+      "name": "Fractional_dollar",
+      "required": true,
+      "description": "A number expressed as an integer part and a fraction part, separated by a decimal symbol."
+    },
+    {
+      "name": "Fraction",
+      "required": true,
+      "description": "The integer to use in the denominator of the fraction."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/dollarde-function-db85aab0-1677-428a-9dfd-a38476693427"
+}

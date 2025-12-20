@@ -1,0 +1,22 @@
+{
+  "function": "REGISTER.ID",
+  "syntax": "REGISTER.ID(module_text,procedure,[type_text])",
+  "arguments": [
+    {
+      "name": "Module_text",
+      "required": true,
+      "description": "Text specifying the name of the DLL that contains the function in Microsoft Excel for Windows."
+    },
+    {
+      "name": "Procedure",
+      "required": true,
+      "description": "Text specifying the name of the function in the DLL in Microsoft Excel for Windows. You can also use the ordinal value of the function from the EXPORTS statement in the module-definition file (.DEF). The ordinal value or resource ID number must not be in text form."
+    },
+    {
+      "name": "Type_text",
+      "required": false,
+      "description": "Text specifying the data type of the return value and the data types of all arguments to the DLL. The first letter of type_text specifies the return value. If the function or code resource is already registered, you can omit this argument."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/register-id-function-f8f0af0f-fd66-4704-a0f2-87b27b175b50"
+}

@@ -1,0 +1,22 @@
+{
+  "function": "SUMIF",
+  "syntax": "SUMIF(range, criteria, [sum_range])",
+  "arguments": [
+    {
+      "name": "range",
+      "required": true,
+      "description": "The range of cells that you want evaluated by criteria. Cells in each range must be numbers or names, arrays, or references that contain numbers. Blank and text values are ignored. The selected range may contain dates in standard Excel format (examples below)."
+    },
+    {
+      "name": "criteria",
+      "required": true,
+      "description": "The criteria in the form of a number, expression, a cell reference, text, or a function that defines which cells will be added. Wildcard characters can be included - a question mark (?) to match any single character, an asterisk (*) to match any sequence of characters. If you want to find an actual question mark or asterisk, type a tilde ( ~ ) preceding the character."
+    },
+    {
+      "name": "sum_range",
+      "required": false,
+      "description": "The actual cells to add, if you want to add cells other than those specified in the range argument. If the sum_range argument is omitted, Excel adds the cells that are specified in the range argument (the same cells to which the criteria is applied)."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/sumif-function-169b8c99-c05c-4483-a712-1697a653039b"
+}

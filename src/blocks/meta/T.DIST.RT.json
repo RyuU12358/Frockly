@@ -1,0 +1,17 @@
+{
+  "function": "T.DIST.RT",
+  "syntax": "T.DIST.RT(x,deg_freedom)",
+  "arguments": [
+    {
+      "name": "X",
+      "required": true,
+      "description": "The numeric value at which to evaluate the distribution."
+    },
+    {
+      "name": "Deg_freedom",
+      "required": true,
+      "description": "An integer indicating the number of degrees of freedom."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/t-dist-rt-function-20a30020-86f9-4b35-af1f-7ef6ae683eda"
+}

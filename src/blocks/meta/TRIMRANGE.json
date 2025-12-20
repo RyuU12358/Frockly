@@ -1,0 +1,22 @@
+{
+  "function": "TRIMRANGE",
+  "syntax": "The TRIMRANGE function scans in from the edges of a range or array until it finds a non-blank cell (or value), it then excludes those blank rows or columns.",
+  "arguments": [
+    {
+      "name": "A1:E10",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "3",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "3",
+      "required": true,
+      "description": ""
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/trimrange-function-d7812248-3bc5-4c6b-901c-1afa9564f999"
+}

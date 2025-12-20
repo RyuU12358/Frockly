@@ -1,0 +1,17 @@
+{
+  "function": "HEX2OCT",
+  "syntax": "HEX2OCT(number, [places])",
+  "arguments": [
+    {
+      "name": "Number",
+      "required": true,
+      "description": "The hexadecimal number you want to convert. Number cannot contain more than 10 characters. The most significant bit of number is the sign bit. The remaining 39 bits are magnitude bits. Negative numbers are represented using two's-complement notation."
+    },
+    {
+      "name": "Places",
+      "required": false,
+      "description": "The number of characters to use. If places is omitted, HEX2OCT uses the minimum number of characters necessary. Places is useful for padding the return value with leading 0s (zeros)."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/hex2oct-function-54d52808-5d19-4bd0-8a63-1096a5d11912"
+}

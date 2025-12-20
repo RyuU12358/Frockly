@@ -1,0 +1,12 @@
+{
+  "function": "ISEVEN",
+  "syntax": "ISEVEN(number)",
+  "arguments": [
+    {
+      "name": "Number",
+      "required": true,
+      "description": "The value to test. If number is not an integer, it is truncated."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/iseven-function-aa15929a-d77b-4fbb-92f4-2f479af55356"
+}

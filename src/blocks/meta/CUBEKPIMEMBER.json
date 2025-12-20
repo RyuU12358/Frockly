@@ -1,0 +1,22 @@
+{
+  "function": "CUBEKPIMEMBER",
+  "syntax": "CUBEKPIMEMBER(connection, kpi_name, kpi_property, [caption])",
+  "arguments": [
+    {
+      "name": "Connection",
+      "required": true,
+      "description": "A text string of the name of the connection to the cube."
+    },
+    {
+      "name": "Kpi_name",
+      "required": true,
+      "description": "A text string of the name of the KPI in the cube."
+    },
+    {
+      "name": "Kpi_property",
+      "required": true,
+      "description": "The KPI component returned and can be one of the following:"
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/cubekpimember-function-744608bf-2c62-42cd-b67a-a56109f4b03b"
+}

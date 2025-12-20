@@ -1,0 +1,12 @@
+{
+  "function": "IMARGUMENT",
+  "syntax": "IMARGUMENT(inumber)",
+  "arguments": [
+    {
+      "name": "Inumber",
+      "required": true,
+      "description": "A complex number for which you want the argument ."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/imargument-function-eed37ec1-23b3-4f59-b9f3-d340358a034a"
+}

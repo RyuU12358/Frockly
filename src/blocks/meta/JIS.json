@@ -1,0 +1,12 @@
+{
+  "function": "JIS",
+  "syntax": "JIS(text)",
+  "arguments": [
+    {
+      "name": "text",
+      "required": true,
+      "description": ""
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/jis-function-b72fb1a7-ba52-448a-b7d3-d2610868b7e2"
+}

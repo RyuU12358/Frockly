@@ -1,0 +1,27 @@
+{
+  "function": "GAMMA.DIST",
+  "syntax": "GAMMA.DIST(x,alpha,beta,cumulative)",
+  "arguments": [
+    {
+      "name": "X",
+      "required": true,
+      "description": "The value at which you want to evaluate the distribution."
+    },
+    {
+      "name": "Alpha",
+      "required": true,
+      "description": "A parameter to the distribution."
+    },
+    {
+      "name": "Beta",
+      "required": true,
+      "description": "A parameter to the distribution. If beta = 1, GAMMA.DIST returns the standard gamma distribution."
+    },
+    {
+      "name": "Cumulative",
+      "required": true,
+      "description": "A logical value that determines the form of the function. If cumulative is TRUE, GAMMA.DIST returns the cumulative distribution function; if FALSE, it returns the probability density function."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/gamma-dist-function-9b6f1538-d11c-4d5f-8966-21f6a2201def"
+}

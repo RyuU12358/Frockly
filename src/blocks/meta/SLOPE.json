@@ -1,0 +1,17 @@
+{
+  "function": "SLOPE",
+  "syntax": "SLOPE(known_y's, known_x's)",
+  "arguments": [
+    {
+      "name": "Known_y's",
+      "required": true,
+      "description": "An array or cell range of numeric dependent data points."
+    },
+    {
+      "name": "Known_x's",
+      "required": true,
+      "description": "The set of independent data points."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/slope-function-11fb8f97-3117-4813-98aa-61d7e01276b9"
+}

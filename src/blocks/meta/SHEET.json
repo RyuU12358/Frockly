@@ -1,0 +1,12 @@
+{
+  "function": "SHEET",
+  "syntax": "SHEET(value)",
+  "arguments": [
+    {
+      "name": "value",
+      "required": true,
+      "description": ""
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/sheet-function-44718b6f-8b87-47a1-a9d6-b701c06cff24"
+}

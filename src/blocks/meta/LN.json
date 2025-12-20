@@ -1,0 +1,12 @@
+{
+  "function": "LN",
+  "syntax": "LN(number)",
+  "arguments": [
+    {
+      "name": "Number",
+      "required": true,
+      "description": "The positive real number for which you want the natural logarithm."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/ln-function-81fe1ed7-dac9-4acd-ba1d-07a142c6118f"
+}

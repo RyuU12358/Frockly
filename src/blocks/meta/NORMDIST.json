@@ -1,0 +1,27 @@
+{
+  "function": "NORMDIST",
+  "syntax": "NORMDIST(x,mean,standard_dev,cumulative)",
+  "arguments": [
+    {
+      "name": "X",
+      "required": true,
+      "description": "The value for which you want the distribution"
+    },
+    {
+      "name": "Mean",
+      "required": true,
+      "description": "The arithmetic mean of the distribution"
+    },
+    {
+      "name": "Standard_dev",
+      "required": true,
+      "description": "The standard deviation of the distribution"
+    },
+    {
+      "name": "Cumulative",
+      "required": true,
+      "description": "A logical value that determines the form of the function. If cumulative is TRUE, NORMDIST returns the cumulative distribution function; if cumulative is FALSE, it returns the probability mass function."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/normdist-function-126db625-c53e-4591-9a22-c9ff422d6d58"
+}

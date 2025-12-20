@@ -1,0 +1,22 @@
+{
+  "function": "BINOM.INV",
+  "syntax": "BINOM.INV(trials,probability_s,alpha)",
+  "arguments": [
+    {
+      "name": "Trials",
+      "required": true,
+      "description": "The number of Bernoulli trials."
+    },
+    {
+      "name": "Probability_s",
+      "required": true,
+      "description": "The probability of a success on each trial."
+    },
+    {
+      "name": "Alpha",
+      "required": true,
+      "description": "The criterion value."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/binom-inv-function-80a0370c-ada6-49b4-83e7-05a91ba77ac9"
+}

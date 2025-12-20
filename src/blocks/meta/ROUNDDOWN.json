@@ -1,0 +1,17 @@
+{
+  "function": "ROUNDDOWN",
+  "syntax": "ROUNDDOWN(number, num_digits)",
+  "arguments": [
+    {
+      "name": "Number",
+      "required": true,
+      "description": "Any real number that you want rounded down."
+    },
+    {
+      "name": "Num_digits",
+      "required": true,
+      "description": "The number of digits to which you want to round number."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/rounddown-function-2ec94c73-241f-4b01-8c6f-17e6d7968f53"
+}

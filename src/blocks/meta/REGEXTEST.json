@@ -1,0 +1,22 @@
+{
+  "function": "REGEXTEST",
+  "syntax": "The REGEXTEST function determines whether any part of text matches the pattern .",
+  "arguments": [
+    {
+      "name": "text",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "pattern",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "case_sensitivity",
+      "required": false,
+      "description": ""
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/regextest-function-7d38200b-5e5c-4196-b4e6-9bff73afbd31"
+}

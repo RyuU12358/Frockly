@@ -1,0 +1,17 @@
+{
+  "function": "GESTEP",
+  "syntax": "GESTEP(number, [step])",
+  "arguments": [
+    {
+      "name": "Number",
+      "required": true,
+      "description": "The value to test against step."
+    },
+    {
+      "name": "Step",
+      "required": false,
+      "description": "The threshold value. If you omit a value for step, GESTEP uses zero."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/gestep-function-f37e7d2a-41da-4129-be95-640883fca9df"
+}

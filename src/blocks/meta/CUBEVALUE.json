@@ -1,0 +1,17 @@
+{
+  "function": "CUBEVALUE",
+  "syntax": "CUBEVALUE(connection, [member_expression1], [member_expression2], …)",
+  "arguments": [
+    {
+      "name": "Connection",
+      "required": true,
+      "description": "A text string of the name of the connection to the cube."
+    },
+    {
+      "name": "Member_expression",
+      "required": false,
+      "description": "A text string of a multidimensional expression (MDX) that evaluates to a member or tuple within the cube. Alternatively, member_expression can be a set defined with the CUBESET function. Use member_expression as a slicer to define the portion of the cube for which the aggregated value is returned. If no measure is specified in member_expression, the default measure for that cube is used."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/cubevalue-function-8733da24-26d1-4e34-9b3a-84a8f00dcbe0"
+}

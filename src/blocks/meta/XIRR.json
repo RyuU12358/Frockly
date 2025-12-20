@@ -1,0 +1,22 @@
+{
+  "function": "XIRR",
+  "syntax": "XIRR(values, dates, [guess])",
+  "arguments": [
+    {
+      "name": "Values",
+      "required": true,
+      "description": "A series of cash flows that corresponds to a schedule of payments in dates. The first payment is optional and corresponds to a cost or payment that occurs at the beginning of the investment. If the first value is a cost or payment, it must be a negative value. All succeeding payments are discounted based on a 365-day year. The series of values must contain at least one positive and one negative value."
+    },
+    {
+      "name": "Dates",
+      "required": true,
+      "description": "A schedule of payment dates that corresponds to the cash flow payments. Dates may occur in any order. Dates should be entered by using the DATE function, or as results of other formulas or functions. For example, use DATE(2008,5,23) for the 23rd day of May, 2008. Problems can occur if dates are entered as text. ."
+    },
+    {
+      "name": "Guess",
+      "required": false,
+      "description": "A number that you guess is close to the result of XIRR."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/xirr-function-de1242ec-6477-445b-b11b-a303ad9adc9d"
+}

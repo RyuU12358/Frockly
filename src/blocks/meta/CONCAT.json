@@ -1,0 +1,22 @@
+{
+  "function": "CONCAT",
+  "syntax": "CONCAT(text1, [text2],…)",
+  "arguments": [
+    {
+      "name": "text1",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "text2",
+      "required": false,
+      "description": ""
+    },
+    {
+      "name": "…",
+      "required": true,
+      "description": ""
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/concat-function-9b1a9a3f-94ff-41af-9736-694cbd6b4ca2"
+}

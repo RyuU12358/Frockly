@@ -1,0 +1,27 @@
+{
+  "function": "SYD",
+  "syntax": "SYD(cost, salvage, life, per)",
+  "arguments": [
+    {
+      "name": "Cost",
+      "required": true,
+      "description": "The initial cost of the asset."
+    },
+    {
+      "name": "Salvage",
+      "required": true,
+      "description": "The value at the end of the depreciation (sometimes called the salvage value of the asset)."
+    },
+    {
+      "name": "Life",
+      "required": true,
+      "description": "The number of periods over which the asset is depreciated (sometimes called the useful life of the asset)."
+    },
+    {
+      "name": "Per",
+      "required": true,
+      "description": "The period and must use the same units as life."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/syd-function-069f8106-b60b-4ca2-98e0-2a0f206bdb27"
+}

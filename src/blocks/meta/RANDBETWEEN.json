@@ -1,0 +1,17 @@
+{
+  "function": "RANDBETWEEN",
+  "syntax": "RANDBETWEEN(bottom, top)",
+  "arguments": [
+    {
+      "name": "Bottom",
+      "required": true,
+      "description": "The smallest integer RANDBETWEEN will return."
+    },
+    {
+      "name": "Top",
+      "required": true,
+      "description": "The largest integer RANDBETWEEN will return."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/randbetween-function-4cc7f0d1-87dc-4eb7-987f-a469ab381685"
+}

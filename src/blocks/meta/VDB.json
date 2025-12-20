@@ -1,0 +1,42 @@
+{
+  "function": "VDB",
+  "syntax": "VDB(cost, salvage, life, start_period, end_period, [factor], [no_switch])",
+  "arguments": [
+    {
+      "name": "Cost",
+      "required": true,
+      "description": "The initial cost of the asset."
+    },
+    {
+      "name": "Salvage",
+      "required": true,
+      "description": "The value at the end of the depreciation (sometimes called the salvage value of the asset). This value can be 0."
+    },
+    {
+      "name": "Life",
+      "required": true,
+      "description": "The number of periods over which the asset is depreciated (sometimes called the useful life of the asset)."
+    },
+    {
+      "name": "Start_period",
+      "required": true,
+      "description": "The starting period for which you want to calculate the depreciation. Start_period must use the same units as life."
+    },
+    {
+      "name": "End_period",
+      "required": true,
+      "description": "The ending period for which you want to calculate the depreciation. End_period must use the same units as life."
+    },
+    {
+      "name": "Factor",
+      "required": false,
+      "description": "The rate at which the balance declines. If factor is omitted, it is assumed to be 2 (the double-declining balance method). Change factor if you do not want to use the double-declining balance method. For a description of the double-declining balance method, see DDB."
+    },
+    {
+      "name": "No_switch",
+      "required": false,
+      "description": "A logical value specifying whether to switch to straight-line depreciation when depreciation is greater than the declining balance calculation."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/vdb-function-dde4e207-f3fa-488d-91d2-66d55e861d73"
+}

@@ -1,0 +1,17 @@
+{
+  "function": "INDIRECT",
+  "syntax": "INDIRECT(ref_text, [a1])",
+  "arguments": [
+    {
+      "name": "Ref_text",
+      "required": true,
+      "description": "A reference to a cell that contains an A1-style reference, an R1C1-style reference, a name defined as a reference, or a reference to a cell as a text string. If ref_text is not a valid cell reference, INDIRECT returns the #REF! error value."
+    },
+    {
+      "name": "A1",
+      "required": false,
+      "description": "A logical value that specifies what type of reference is contained in the cell ref_text."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/indirect-function-474b3a3a-8a26-4f44-b491-92b6306fa261"
+}

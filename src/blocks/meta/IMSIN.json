@@ -1,0 +1,12 @@
+{
+  "function": "IMSIN",
+  "syntax": "IMSIN(inumber)",
+  "arguments": [
+    {
+      "name": "Inumber",
+      "required": true,
+      "description": "A complex number for which you want the sine."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/imsin-function-1ab02a39-a721-48de-82ef-f52bf37859f6"
+}

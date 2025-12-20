@@ -1,0 +1,22 @@
+{
+  "function": "DATEDIF",
+  "syntax": "DATEDIF ( start_date , end_date , unit )",
+  "arguments": [
+    {
+      "name": "start_date",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "end_date",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "unit",
+      "required": true,
+      "description": ""
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/datedif-function-25dba1a4-2812-480b-84dd-8b32a451b35c"
+}

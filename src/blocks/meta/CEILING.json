@@ -1,0 +1,17 @@
+{
+  "function": "CEILING",
+  "syntax": "CEILING(number, significance)",
+  "arguments": [
+    {
+      "name": "Number",
+      "required": true,
+      "description": "The value you want to round."
+    },
+    {
+      "name": "Significance",
+      "required": true,
+      "description": "The multiple to which you want to round."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/ceiling-function-0a5cd7c8-0720-4f0a-bd2c-c943e510899f"
+}

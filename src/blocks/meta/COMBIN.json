@@ -1,0 +1,17 @@
+{
+  "function": "COMBIN",
+  "syntax": "COMBIN(number, number_chosen)",
+  "arguments": [
+    {
+      "name": "Number",
+      "required": true,
+      "description": "The number of items."
+    },
+    {
+      "name": "Number_chosen",
+      "required": true,
+      "description": "The number of items in each combination."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/combin-function-12a3f276-0a21-423a-8de6-06990aaf638a"
+}

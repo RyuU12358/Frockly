@@ -1,0 +1,22 @@
+{
+  "function": "LOGINV",
+  "syntax": "LOGINV(probability, mean, standard_dev)",
+  "arguments": [
+    {
+      "name": "Probability",
+      "required": true,
+      "description": "A probability associated with the lognormal distribution."
+    },
+    {
+      "name": "Mean",
+      "required": true,
+      "description": "The mean of ln(x)."
+    },
+    {
+      "name": "Standard_dev",
+      "required": true,
+      "description": "The standard deviation of ln(x)."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/loginv-function-0bd7631a-2725-482b-afb4-de23df77acfe"
+}

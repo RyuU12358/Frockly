@@ -1,0 +1,37 @@
+{
+  "function": "CUMPRINC",
+  "syntax": "CUMPRINC(rate, nper, pv, start_period, end_period, type)",
+  "arguments": [
+    {
+      "name": "Rate",
+      "required": true,
+      "description": "The interest rate."
+    },
+    {
+      "name": "Nper",
+      "required": true,
+      "description": "The total number of payment periods."
+    },
+    {
+      "name": "Pv",
+      "required": true,
+      "description": "The present value."
+    },
+    {
+      "name": "Start_period",
+      "required": true,
+      "description": "The first period in the calculation. Payment periods are numbered beginning with 1."
+    },
+    {
+      "name": "End_period",
+      "required": true,
+      "description": "The last period in the calculation."
+    },
+    {
+      "name": "Type",
+      "required": true,
+      "description": "The timing of the payment."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/cumprinc-function-94a4516d-bd65-41a1-bc16-053a6af4c04d"
+}

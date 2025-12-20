@@ -1,0 +1,22 @@
+{
+  "function": "RRI",
+  "syntax": "RRI(nper, pv, fv)",
+  "arguments": [
+    {
+      "name": "Nper",
+      "required": true,
+      "description": "Nper is the number of periods for the investment."
+    },
+    {
+      "name": "Pv",
+      "required": true,
+      "description": "Pv is the present value of the investment."
+    },
+    {
+      "name": "Fv",
+      "required": true,
+      "description": "Fv is the future value of the investment."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/rri-function-6f5822d8-7ef1-4233-944c-79e8172930f4"
+}

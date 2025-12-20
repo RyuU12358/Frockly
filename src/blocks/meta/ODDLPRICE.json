@@ -1,0 +1,47 @@
+{
+  "function": "ODDLPRICE",
+  "syntax": "ODDLPRICE(settlement, maturity, last_interest, rate, yld, redemption, frequency, [basis])",
+  "arguments": [
+    {
+      "name": "Settlement",
+      "required": true,
+      "description": "The security's settlement date. The security settlement date is the date after the issue date when the security is traded to the buyer."
+    },
+    {
+      "name": "Maturity",
+      "required": true,
+      "description": "The security's maturity date. The maturity date is the date when the security expires."
+    },
+    {
+      "name": "Last_interest",
+      "required": true,
+      "description": "The security's last coupon date."
+    },
+    {
+      "name": "Rate",
+      "required": true,
+      "description": "The security's interest rate."
+    },
+    {
+      "name": "Yld",
+      "required": true,
+      "description": "The security's annual yield."
+    },
+    {
+      "name": "Redemption",
+      "required": true,
+      "description": "The security's redemption value per $100 face value."
+    },
+    {
+      "name": "Frequency",
+      "required": true,
+      "description": "The number of coupon payments per year. For annual payments, frequency = 1; for semiannual, frequency = 2; for quarterly, frequency = 4."
+    },
+    {
+      "name": "Basis",
+      "required": false,
+      "description": "The type of day count basis to use."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/oddlprice-function-fb657749-d200-4902-afaf-ed5445027fc4"
+}

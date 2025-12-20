@@ -1,0 +1,12 @@
+{
+  "function": "ERFC",
+  "syntax": "ERFC(x)",
+  "arguments": [
+    {
+      "name": "X",
+      "required": true,
+      "description": "The lower bound for integrating ERFC."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/erfc-function-736e0318-70ba-4e8b-8d08-461fe68b71b3"
+}

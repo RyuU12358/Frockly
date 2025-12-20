@@ -1,0 +1,22 @@
+{
+  "function": "Z.TEST",
+  "syntax": "Z.TEST(array,x,[sigma])",
+  "arguments": [
+    {
+      "name": "Array",
+      "required": true,
+      "description": "The array or range of data against which to test x."
+    },
+    {
+      "name": "x",
+      "required": true,
+      "description": "The value to test."
+    },
+    {
+      "name": "Sigma",
+      "required": false,
+      "description": "The population (known) standard deviation. If omitted, the sample standard deviation is used."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/z-test-function-d633d5a3-2031-4614-a016-92180ad82bee"
+}

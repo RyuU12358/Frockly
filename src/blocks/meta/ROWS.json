@@ -1,0 +1,12 @@
+{
+  "function": "ROWS",
+  "syntax": "ROWS(array)",
+  "arguments": [
+    {
+      "name": "array",
+      "required": true,
+      "description": ""
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/rows-function-b592593e-3fc2-47f2-bec1-bda493811597"
+}

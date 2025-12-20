@@ -1,0 +1,22 @@
+{
+  "function": "AVERAGEIFS",
+  "syntax": "AVERAGEIFS(average_range, criteria_range1, criteria1, [criteria_range2, criteria2], ...)",
+  "arguments": [
+    {
+      "name": "Average_range",
+      "required": true,
+      "description": "One or more cells to average, including numbers or names, arrays, or references that contain numbers."
+    },
+    {
+      "name": "Criteria_range1, criteria_range2, …",
+      "required": null,
+      "description": "Criteria_range1 is required, subsequent criteria_ranges are optional. 1 to 127 ranges in which to evaluate the associated criteria."
+    },
+    {
+      "name": "Criteria1, criteria2, ...",
+      "required": null,
+      "description": "Criteria1 is required, subsequent criteria are optional. 1 to 127 criteria in the form of a number, expression, cell reference, or text that define which cells will be averaged. For example, criteria can be expressed as 32, \"32\", \">32\", \"apples\", or B4."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/averageifs-function-48910c45-1fc0-4389-a028-f7c5c3001690"
+}

@@ -1,0 +1,17 @@
+{
+  "function": "POWER",
+  "syntax": "POWER(number, power)",
+  "arguments": [
+    {
+      "name": "Number",
+      "required": true,
+      "description": "The base number. It can be any real number."
+    },
+    {
+      "name": "Power",
+      "required": true,
+      "description": "The exponent to which the base number is raised."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/power-function-d3f2908b-56f4-4c3f-895a-07fb519c362a"
+}

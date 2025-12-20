@@ -1,0 +1,52 @@
+{
+  "function": "ODDFYIELD",
+  "syntax": "ODDFYIELD(settlement, maturity, issue, first_coupon, rate, pr, redemption, frequency, [basis])",
+  "arguments": [
+    {
+      "name": "Settlement",
+      "required": true,
+      "description": "The security's settlement date. The security settlement date is the date after the issue date when the security is traded to the buyer."
+    },
+    {
+      "name": "Maturity",
+      "required": true,
+      "description": "The security's maturity date. The maturity date is the date when the security expires."
+    },
+    {
+      "name": "Issue",
+      "required": true,
+      "description": "The security's issue date."
+    },
+    {
+      "name": "First_coupon",
+      "required": true,
+      "description": "The security's first coupon date."
+    },
+    {
+      "name": "Rate",
+      "required": true,
+      "description": "The security's interest rate."
+    },
+    {
+      "name": "Pr",
+      "required": true,
+      "description": "The security's price."
+    },
+    {
+      "name": "Redemption",
+      "required": true,
+      "description": "The security's redemption value per $100 face value."
+    },
+    {
+      "name": "Frequency",
+      "required": true,
+      "description": "The number of coupon payments per year. For annual payments, frequency = 1; for semiannual, frequency = 2; for quarterly, frequency = 4."
+    },
+    {
+      "name": "Basis",
+      "required": false,
+      "description": "The type of day count basis to use."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/oddfyield-function-66bc8b7b-6501-4c93-9ce3-2fd16220fe37"
+}

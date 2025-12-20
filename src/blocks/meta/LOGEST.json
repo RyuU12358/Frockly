@@ -1,0 +1,27 @@
+{
+  "function": "LOGEST",
+  "syntax": "LOGEST(known_y's, [known_x's], [const], [stats])",
+  "arguments": [
+    {
+      "name": "known_y's",
+      "required": true,
+      "description": "The set of y-values you already know in the relationship y = b*m^x."
+    },
+    {
+      "name": "known_x's",
+      "required": false,
+      "description": "An optional set of x-values that you may already know in the relationship y = b*m^x."
+    },
+    {
+      "name": "const",
+      "required": false,
+      "description": "A logical value specifying whether to force the constant b to equal 1."
+    },
+    {
+      "name": "stats",
+      "required": false,
+      "description": "A logical value specifying whether to return additional regression statistics."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/logest-function-f27462d8-3657-4030-866b-a272c1d18b4b"
+}

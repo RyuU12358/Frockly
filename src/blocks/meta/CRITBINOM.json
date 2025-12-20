@@ -1,0 +1,22 @@
+{
+  "function": "CRITBINOM",
+  "syntax": "CRITBINOM(trials,probability_s,alpha)",
+  "arguments": [
+    {
+      "name": "Trials",
+      "required": true,
+      "description": "The number of Bernoulli trials."
+    },
+    {
+      "name": "Probability_s",
+      "required": true,
+      "description": "The probability of a success on each trial."
+    },
+    {
+      "name": "Alpha",
+      "required": true,
+      "description": "The criterion value."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/critbinom-function-eb6b871d-796b-4d21-b69b-e4350d5f407b"
+}

@@ -1,0 +1,27 @@
+{
+  "function": "VLOOKUP",
+  "syntax": "VLOOKUP (lookup_value, table_array, col_index_num, [range_lookup])",
+  "arguments": [
+    {
+      "name": "lookup_value",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "table_array",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "col_index_num",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "range_lookup",
+      "required": false,
+      "description": ""
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/vlookup-function-0bbc8083-26fe-4963-8ab8-93a18ad188a1"
+}

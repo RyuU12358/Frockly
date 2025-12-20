@@ -1,0 +1,12 @@
+{
+  "function": "INT",
+  "syntax": "INT(number)",
+  "arguments": [
+    {
+      "name": "Number",
+      "required": true,
+      "description": "The real number you want to round down to an integer."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/int-function-a6c4af9e-356d-4369-ab6a-cb1fd9d343ef"
+}

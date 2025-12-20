@@ -1,0 +1,17 @@
+{
+  "function": "BITAND",
+  "syntax": "BITAND( number1, number2)",
+  "arguments": [
+    {
+      "name": "Number1",
+      "required": true,
+      "description": "Must be in decimal form and greater than or equal to 0."
+    },
+    {
+      "name": "Number2",
+      "required": true,
+      "description": "Must be in decimal form and greater than or equal to 0."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/bitand-function-8a2be3d7-91c3-4b48-9517-64548008563a"
+}

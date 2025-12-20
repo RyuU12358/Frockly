@@ -1,0 +1,62 @@
+{
+  "function": "PIVOTBY",
+  "syntax": "The PIVOTBY function allows you to group, aggregate, sort, and filter data based on the row and column fields that you specify.",
+  "arguments": [
+    {
+      "name": "row_fields",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "col_fields",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "values",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "function",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "field_headers",
+      "required": false,
+      "description": ""
+    },
+    {
+      "name": "row_total_depth",
+      "required": false,
+      "description": ""
+    },
+    {
+      "name": "row_sort_order",
+      "required": false,
+      "description": ""
+    },
+    {
+      "name": "col_total_depth",
+      "required": false,
+      "description": ""
+    },
+    {
+      "name": "col_sort_order",
+      "required": false,
+      "description": ""
+    },
+    {
+      "name": "filter_array",
+      "required": false,
+      "description": ""
+    },
+    {
+      "name": "relative_to",
+      "required": false,
+      "description": ""
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/pivotby-function-de86516a-90ad-4ced-8522-3a25fac389cf"
+}

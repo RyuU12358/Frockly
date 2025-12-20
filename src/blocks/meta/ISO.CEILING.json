@@ -1,0 +1,17 @@
+{
+  "function": "ISO.CEILING",
+  "syntax": "ISO.CEILING(number, [significance])",
+  "arguments": [
+    {
+      "name": "Number",
+      "required": true,
+      "description": "The value to be rounded."
+    },
+    {
+      "name": "Significance",
+      "required": false,
+      "description": "The optional multiple to which number is to be rounded."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/iso-ceiling-function-e587bb73-6cc2-4113-b664-ff5b09859a83"
+}

@@ -1,0 +1,17 @@
+{
+  "function": "BITRSHIFT",
+  "syntax": "BITRSHIFT(number, shift_amount)",
+  "arguments": [
+    {
+      "name": "Number",
+      "required": true,
+      "description": "Must be an integer greater than or equal to 0."
+    },
+    {
+      "name": "Shift_amount",
+      "required": true,
+      "description": "Must be an integer."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/bitrshift-function-274d6996-f42c-4743-abdb-4ff95351222c"
+}

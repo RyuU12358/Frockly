@@ -1,0 +1,22 @@
+{
+  "function": "FORECAST.LINEAR",
+  "syntax": "FORECAST.LINEAR(x, known_y's, known_x's)",
+  "arguments": [
+    {
+      "name": "x",
+      "required": null,
+      "description": "If x is nonnumeric, FORECAST and FORECAST.LINEAR return the #VALUE! error value."
+    },
+    {
+      "name": "known_y's",
+      "required": null,
+      "description": "If known_y's or known_x's is empty or one has more data points than the other, FORECAST and FORECAST.LINEAR return the #N/A error value."
+    },
+    {
+      "name": "known_x's",
+      "required": null,
+      "description": "If the variance of known_x's equals zero, then FORECAST and FORECAST.LINEAR return the #DIV/0! error value."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/forecast-and-forecast-linear-functions-50ca49c9-7b40-4892-94e4-7ad38bbeda99"
+}

@@ -1,0 +1,17 @@
+{
+  "function": "NORM.S.DIST",
+  "syntax": "For a standard normal distribution, this is the syntax:",
+  "arguments": [
+    {
+      "name": "z",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "cumulative",
+      "required": true,
+      "description": ""
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/norm-s-dist-function-1e787282-3832-4520-a9ae-bd2a8d99ba88"
+}

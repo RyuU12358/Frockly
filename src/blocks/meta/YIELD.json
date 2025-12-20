@@ -1,0 +1,42 @@
+{
+  "function": "YIELD",
+  "syntax": "YIELD(settlement, maturity, rate, pr, redemption, frequency, [basis])",
+  "arguments": [
+    {
+      "name": "Settlement",
+      "required": true,
+      "description": "The security's settlement date. The security settlement date is the date after the issue date when the security is traded to the buyer."
+    },
+    {
+      "name": "Maturity",
+      "required": true,
+      "description": "The security's maturity date. The maturity date is the date when the security expires."
+    },
+    {
+      "name": "Rate",
+      "required": true,
+      "description": "The security's annual coupon rate."
+    },
+    {
+      "name": "Pr",
+      "required": true,
+      "description": "The security's price per $100 face value."
+    },
+    {
+      "name": "Redemption",
+      "required": true,
+      "description": "The security's redemption value per $100 face value."
+    },
+    {
+      "name": "Frequency",
+      "required": true,
+      "description": "The number of coupon payments per year. For annual payments, frequency = 1; for semiannual, frequency = 2; for quarterly, frequency = 4."
+    },
+    {
+      "name": "Basis",
+      "required": false,
+      "description": "The type of day count basis to use."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/yield-function-f5f5ca43-c4bd-434f-8bd2-ed3c9727a4fe"
+}

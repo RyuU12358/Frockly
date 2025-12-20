@@ -1,0 +1,12 @@
+{
+  "function": "WEBSERVICE",
+  "syntax": "WEBSERVICE(url)",
+  "arguments": [
+    {
+      "name": "url",
+      "required": true,
+      "description": ""
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/webservice-function-0546a35a-ecc6-4739-aed7-c0b7ce1562c4"
+}

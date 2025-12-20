@@ -1,0 +1,22 @@
+{
+  "function": "GAMMAINV",
+  "syntax": "GAMMAINV(probability,alpha,beta)",
+  "arguments": [
+    {
+      "name": "Probability",
+      "required": true,
+      "description": "The probability associated with the gamma distribution."
+    },
+    {
+      "name": "Alpha",
+      "required": true,
+      "description": "A parameter to the distribution."
+    },
+    {
+      "name": "Beta",
+      "required": true,
+      "description": "A parameter to the distribution. If beta = 1, GAMMAINV returns the standard gamma distribution."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/gammainv-function-06393558-37ab-47d0-aa63-432f99e7916d"
+}

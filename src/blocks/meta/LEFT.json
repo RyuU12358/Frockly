@@ -1,0 +1,17 @@
+{
+  "function": "LEFT",
+  "syntax": "LEFT(text, [num_chars])",
+  "arguments": [
+    {
+      "name": "Text",
+      "required": true,
+      "description": "The text string that contains the characters you want to extract."
+    },
+    {
+      "name": "Num_chars",
+      "required": false,
+      "description": "Specifies the number of characters you want LEFT to extract."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/left-function-9203d2d2-7960-479b-84c6-1ea52b99640c"
+}

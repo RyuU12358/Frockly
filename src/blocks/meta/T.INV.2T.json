@@ -1,0 +1,17 @@
+{
+  "function": "T.INV.2T",
+  "syntax": "T.INV.2T(probability,deg_freedom)",
+  "arguments": [
+    {
+      "name": "Probability",
+      "required": true,
+      "description": "The probability associated with the Student's t-distribution."
+    },
+    {
+      "name": "Deg_freedom",
+      "required": true,
+      "description": "The number of degrees of freedom with which to characterize the distribution."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/t-inv-2t-function-ce72ea19-ec6c-4be7-bed2-b9baf2264f17"
+}

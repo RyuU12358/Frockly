@@ -1,0 +1,32 @@
+{
+  "function": "SUMIFS",
+  "syntax": "SUMIFS(sum_range, criteria_range1, criteria1, [criteria_range2, criteria2], ...)",
+  "arguments": [
+    {
+      "name": "sum_range",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "criteria_range1",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "criteria1",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "[criteria_range2",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "criteria2]",
+      "required": true,
+      "description": ""
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/sumifs-function-c9e748f5-7ea7-455d-9406-611cebce642b"
+}

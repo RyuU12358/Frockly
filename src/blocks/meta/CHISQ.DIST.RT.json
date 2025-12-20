@@ -1,0 +1,17 @@
+{
+  "function": "CHISQ.DIST.RT",
+  "syntax": "CHISQ.DIST.RT(x,deg_freedom)",
+  "arguments": [
+    {
+      "name": "X",
+      "required": true,
+      "description": "The value at which you want to evaluate the distribution."
+    },
+    {
+      "name": "Deg_freedom",
+      "required": true,
+      "description": "The number of degrees of freedom."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/chisq-dist-rt-function-dc4832e8-ed2b-49ae-8d7c-b28d5804c0f2"
+}

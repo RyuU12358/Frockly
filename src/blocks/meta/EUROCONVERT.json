@@ -1,0 +1,17 @@
+{
+  "function": "EUROCONVERT",
+  "syntax": "EUROCONVERT(number,source,target,full_precision,triangulation_precision)",
+  "arguments": [
+    {
+      "name": "Number",
+      "required": true,
+      "description": "The currency value you want to convert, or a reference to a cell containing the value."
+    },
+    {
+      "name": "Source",
+      "required": true,
+      "description": "A three-letter string, or reference to a cell containing the string, corresponding to the ISO code for the source currency. The following currency codes are available in the EUROCONVERT function:"
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/euroconvert-function-79c8fd67-c665-450c-bb6c-15fc92f8345c"
+}

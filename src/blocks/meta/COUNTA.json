@@ -1,0 +1,17 @@
+{
+  "function": "COUNTA",
+  "syntax": "COUNTA(value1, [value2], ...)",
+  "arguments": [
+    {
+      "name": "value1",
+      "required": true,
+      "description": "The first argument representing the values that you want to count."
+    },
+    {
+      "name": "value2, ...",
+      "required": false,
+      "description": "Additional arguments representing the values that you want to count, up to a maximum of 255 arguments."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/counta-function-7dc98875-d5c1-46f1-9a82-53f3219e2509"
+}

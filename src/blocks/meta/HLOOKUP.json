@@ -1,0 +1,27 @@
+{
+  "function": "HLOOKUP",
+  "syntax": "HLOOKUP(lookup_value, table_array, row_index_num, [range_lookup])",
+  "arguments": [
+    {
+      "name": "Lookup_value",
+      "required": true,
+      "description": "The value to be found in the first row of the table. Lookup_value can be a value, a reference, or a text string."
+    },
+    {
+      "name": "Table_array",
+      "required": true,
+      "description": "A table of information in which data is looked up. Use a reference to a range or a range name."
+    },
+    {
+      "name": "Row_index_num",
+      "required": true,
+      "description": "The row number in table_array from which the matching value will be returned. A row_index_num of 1 returns the first row value in table_array, a row_index_num of 2 returns the second row value in table_array, and so on. If row_index_num is less than 1, HLOOKUP returns the #VALUE! error value; if row_index_num is greater than the number of rows on table_array, HLOOKUP returns the #REF! error value."
+    },
+    {
+      "name": "Range_lookup",
+      "required": false,
+      "description": "A logical value that specifies whether you want HLOOKUP to find an exact match or an approximate match. If TRUE or omitted, an approximate match is returned. In other words, if an exact match is not found, the next largest value that is less than lookup_value is returned. If FALSE, HLOOKUP will find an exact match. If one is not found, the error value #N/A is returned."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/hlookup-function-a3034eec-b719-4ba3-bb65-e1ad662ed95f"
+}

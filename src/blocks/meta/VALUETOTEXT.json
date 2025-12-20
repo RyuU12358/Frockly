@@ -1,0 +1,5 @@
+{
+  "function": "VALUETOTEXT",
+  "syntax": "VALUETOTEXT(value, [format])",
+  "url": "https://support.microsoft.com/en-us/office/valuetotext-function-5fff61a2-301a-4ab2-9ffa-0a5242a08fea"
+}

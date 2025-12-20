@@ -1,0 +1,12 @@
+{
+  "function": "IMSECH",
+  "syntax": "IMSECH(inumber)",
+  "arguments": [
+    {
+      "name": "Inumber",
+      "required": true,
+      "description": "A complex number for which you want the hyperbolic secant."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/imsech-function-f250304f-788b-4505-954e-eb01fa50903b"
+}

@@ -1,0 +1,32 @@
+{
+  "function": "BETADIST",
+  "syntax": "BETADIST(x,alpha,beta,[A],[B])",
+  "arguments": [
+    {
+      "name": "X",
+      "required": true,
+      "description": "The value between A and B at which to evaluate the function."
+    },
+    {
+      "name": "Alpha",
+      "required": true,
+      "description": "A parameter of the distribution."
+    },
+    {
+      "name": "Beta",
+      "required": true,
+      "description": "A parameter of the distribution."
+    },
+    {
+      "name": "A",
+      "required": false,
+      "description": "A lower bound to the interval of x."
+    },
+    {
+      "name": "B",
+      "required": false,
+      "description": "An upper bound to the interval of x."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/betadist-function-49f1b9a9-a5da-470f-8077-5f1730b5fd47"
+}

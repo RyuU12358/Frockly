@@ -1,0 +1,12 @@
+{
+  "function": "FACTDOUBLE",
+  "syntax": "FACTDOUBLE(number)",
+  "arguments": [
+    {
+      "name": "Number",
+      "required": true,
+      "description": "The value for which to return the double factorial. If number is not an integer, it is truncated."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/factdouble-function-e67697ac-d214-48eb-b7b7-cce2589ecac8"
+}

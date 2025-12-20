@@ -1,0 +1,42 @@
+{
+  "function": "IFS",
+  "syntax": "IFS(logical_test1, value_if_true1, [logical_test2, value_if_true2], [logical_test3, value_if_true3],…)",
+  "arguments": [
+    {
+      "name": "logical_test1",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "value_if_true1",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "[logical_test2",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "value_if_true2]",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "[logical_test3",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "value_if_true3]",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "…",
+      "required": true,
+      "description": ""
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/ifs-function-36329a26-37b2-467c-972b-4a39bd951d45"
+}

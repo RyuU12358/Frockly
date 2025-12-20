@@ -1,0 +1,22 @@
+{
+  "function": "DATE",
+  "syntax": "DATE(year,month,day)",
+  "arguments": [
+    {
+      "name": "Year",
+      "required": true,
+      "description": "The value of the year argument can include one to four digits. Excel interprets the year argument according to the date system your computer is using. By default, Microsoft Excel for Windows uses the 1900 date system, which means the first date is January 1, 1900."
+    },
+    {
+      "name": "Month",
+      "required": true,
+      "description": "A positive or negative integer representing the month of the year from 1 to 12 (January to December)."
+    },
+    {
+      "name": "Day",
+      "required": true,
+      "description": "A positive or negative integer representing the day of the month from 1 to 31."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/date-function-e36c0c8c-4104-49da-ab83-82328b832349"
+}

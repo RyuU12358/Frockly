@@ -1,0 +1,17 @@
+{
+  "function": "BESSELY",
+  "syntax": "BESSELY(X, N)",
+  "arguments": [
+    {
+      "name": "X",
+      "required": true,
+      "description": "The value at which to evaluate the function."
+    },
+    {
+      "name": "N",
+      "required": true,
+      "description": "The order of the function. If n is not an integer, it is truncated."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/bessely-function-f3a356b3-da89-42c3-8974-2da54d6353a2"
+}

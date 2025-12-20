@@ -1,0 +1,32 @@
+{
+  "function": "BETA.INV",
+  "syntax": "BETA.INV(probability,alpha,beta,[A],[B])",
+  "arguments": [
+    {
+      "name": "Probability",
+      "required": true,
+      "description": "A probability associated with the beta distribution."
+    },
+    {
+      "name": "Alpha",
+      "required": true,
+      "description": "A parameter of the distribution."
+    },
+    {
+      "name": "Beta",
+      "required": true,
+      "description": "A parameter the distribution."
+    },
+    {
+      "name": "A",
+      "required": false,
+      "description": "A lower bound to the interval of x."
+    },
+    {
+      "name": "B",
+      "required": false,
+      "description": "An upper bound to the interval of x."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/beta-inv-function-e84cb8aa-8df0-4cf6-9892-83a341d252eb"
+}

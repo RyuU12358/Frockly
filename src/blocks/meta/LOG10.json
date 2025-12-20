@@ -1,0 +1,12 @@
+{
+  "function": "LOG10",
+  "syntax": "LOG10(number)",
+  "arguments": [
+    {
+      "name": "Number",
+      "required": true,
+      "description": "The positive real number for which you want the base-10 logarithm."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/log10-function-c75b881b-49dd-44fb-b6f4-37e3486a0211"
+}

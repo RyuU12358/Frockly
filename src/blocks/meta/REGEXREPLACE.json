@@ -1,0 +1,32 @@
+{
+  "function": "REGEXREPLACE",
+  "syntax": "The REGEXREPLACE function replaces strings within the provided text that matches the pattern with replacement .",
+  "arguments": [
+    {
+      "name": "text",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "pattern",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "replacement",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "occurrence",
+      "required": false,
+      "description": ""
+    },
+    {
+      "name": "case_sensitivity",
+      "required": false,
+      "description": ""
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/regexreplace-function-9c030bb2-5e47-4efc-bad5-4582d7100897"
+}

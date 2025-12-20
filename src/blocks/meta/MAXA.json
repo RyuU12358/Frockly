@@ -1,0 +1,17 @@
+{
+  "function": "MAXA",
+  "syntax": "MAXA(value1,[value2],...)",
+  "arguments": [
+    {
+      "name": "Value1",
+      "required": true,
+      "description": "The first number argument for which you want to find the largest value."
+    },
+    {
+      "name": "Value2,...",
+      "required": false,
+      "description": "Number arguments 2 to 255 for which you want to find the largest value."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/maxa-function-814bda1e-3840-4bff-9365-2f59ac2ee62d"
+}

@@ -1,0 +1,12 @@
+{
+  "function": "UNICHAR",
+  "syntax": "UNICHAR(number)",
+  "arguments": [
+    {
+      "name": "Number",
+      "required": true,
+      "description": "Number is the Unicode number that represents the character."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/unichar-function-ffeb64f5-f131-44c6-b332-5cd72f0659b8"
+}

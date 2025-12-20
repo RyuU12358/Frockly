@@ -1,0 +1,22 @@
+{
+  "function": "YEARFRAC",
+  "syntax": "YEARFRAC(start_date, end_date, [basis])",
+  "arguments": [
+    {
+      "name": "Start_date",
+      "required": true,
+      "description": "A date that represents the start date."
+    },
+    {
+      "name": "End_date",
+      "required": true,
+      "description": "A date that represents the end date."
+    },
+    {
+      "name": "Basis",
+      "required": false,
+      "description": "The type of day count basis to use."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/yearfrac-function-3844141e-c76d-4143-82b6-208454ddc6a8"
+}

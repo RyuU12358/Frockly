@@ -1,0 +1,12 @@
+{
+  "function": "CHAR",
+  "syntax": "CHAR(number)",
+  "arguments": [
+    {
+      "name": "Number",
+      "required": true,
+      "description": "A number between 1 and 255 specifying which character you want. The character is from the character set used by your computer."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/char-function-bbd249c8-b36e-4a91-8017-1c133f9b837a"
+}

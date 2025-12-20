@@ -1,0 +1,17 @@
+{
+  "function": "GETPIVOTDATA",
+  "syntax": "GETPIVOTDATA(data_field, pivot_table, [field1, item1, field2, item2], ...)",
+  "arguments": [
+    {
+      "name": "=",
+      "required": null,
+      "description": "You can quickly enter a simple GETPIVOTDATA formula by typing = (the equal sign) in the cell you want to return the value to and then clicking the cell in the PivotTable that contains the data you want to return."
+    },
+    {
+      "name": "PivotTable Analyze",
+      "required": null,
+      "description": "You can turn this feature off by selecting any cell within an existing PivotTable, then go to the PivotTable Analyze tab > PivotTable > Options > Uncheck the Generate GetPivotData option."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/getpivotdata-function-8c083b99-a922-4ca0-af5e-3af55960761f"
+}

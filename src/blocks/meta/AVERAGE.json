@@ -1,0 +1,17 @@
+{
+  "function": "AVERAGE",
+  "syntax": "AVERAGE(number1, [number2], ...)",
+  "arguments": [
+    {
+      "name": "Number1",
+      "required": true,
+      "description": "The first number, cell reference, or range for which you want the average."
+    },
+    {
+      "name": "Number2, ...",
+      "required": false,
+      "description": "Additional numbers, cell references or ranges for which you want the average, up to a maximum of 255."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/average-function-047bac88-d466-426c-a32b-8f33eb960cf6"
+}

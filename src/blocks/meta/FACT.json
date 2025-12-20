@@ -1,0 +1,12 @@
+{
+  "function": "FACT",
+  "syntax": "FACT(number)",
+  "arguments": [
+    {
+      "name": "Number",
+      "required": true,
+      "description": "The nonnegative number for which you want the factorial. If number is not an integer, it is truncated."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/fact-function-ca8588c2-15f2-41c0-8e8c-c11bd471a4f3"
+}

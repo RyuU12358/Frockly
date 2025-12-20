@@ -1,0 +1,12 @@
+{
+  "function": "TYPE",
+  "syntax": "TYPE(value)",
+  "arguments": [
+    {
+      "name": "Value",
+      "required": true,
+      "description": "Can be any Microsoft Excel value, such as a number, text, logical value, and so on."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/type-function-45b4e688-4bc3-48b3-a105-ffa892995899"
+}

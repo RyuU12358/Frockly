@@ -1,0 +1,17 @@
+{
+  "function": "ROMAN",
+  "syntax": "ROMAN(number, [form])",
+  "arguments": [
+    {
+      "name": "Number",
+      "required": true,
+      "description": "The Arabic numeral you want converted."
+    },
+    {
+      "name": "Form",
+      "required": false,
+      "description": "A number specifying the type of roman numeral you want. The roman numeral style ranges from Classic to Simplified, becoming more concise as the value of form increases. See the example following ROMAN(499,0) below."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/roman-function-d6b0b99e-de46-4704-a518-b45a0f8b56f5"
+}

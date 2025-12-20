@@ -1,0 +1,17 @@
+{
+  "function": "T.INV",
+  "syntax": "T.INV(probability,deg_freedom)",
+  "arguments": [
+    {
+      "name": "Probability",
+      "required": true,
+      "description": "The probability associated with the Student's t-distribution."
+    },
+    {
+      "name": "Deg_freedom",
+      "required": true,
+      "description": "The number of degrees of freedom with which to characterize the distribution."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/t-inv-function-2908272b-4e61-4942-9df9-a25fec9b0e2e"
+}

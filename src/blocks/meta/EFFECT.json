@@ -1,0 +1,17 @@
+{
+  "function": "EFFECT",
+  "syntax": "EFFECT(nominal_rate, npery)",
+  "arguments": [
+    {
+      "name": "Nominal_rate",
+      "required": true,
+      "description": "The nominal interest rate."
+    },
+    {
+      "name": "Npery",
+      "required": true,
+      "description": "The number of compounding periods per year."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/effect-function-910d4e4c-79e2-4009-95e6-507e04f11bc4"
+}

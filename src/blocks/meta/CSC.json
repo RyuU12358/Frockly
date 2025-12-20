@@ -1,0 +1,12 @@
+{
+  "function": "CSC",
+  "syntax": "CSC(number)",
+  "arguments": [
+    {
+      "name": "Number",
+      "required": true,
+      "description": ""
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/csc-function-07379361-219a-4398-8675-07ddc4f135c1"
+}

@@ -1,0 +1,17 @@
+{
+  "function": "STEYX",
+  "syntax": "STEYX(known_y's, known_x's)",
+  "arguments": [
+    {
+      "name": "Known_y's",
+      "required": true,
+      "description": "An array or range of dependent data points."
+    },
+    {
+      "name": "Known_x's",
+      "required": true,
+      "description": "An array or range of independent data points."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/steyx-function-6ce74b2c-449d-4a6e-b9ac-f9cef5ba48ab"
+}

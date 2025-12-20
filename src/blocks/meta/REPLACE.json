@@ -1,0 +1,27 @@
+{
+  "function": "REPLACE",
+  "syntax": "REPLACE(old_text, start_num, num_chars, new_text)",
+  "arguments": [
+    {
+      "name": "Old_text",
+      "required": true,
+      "description": "Text in which you want to replace some characters."
+    },
+    {
+      "name": "Start_num",
+      "required": true,
+      "description": "The position of the character in old_text that you want to replace with new_text."
+    },
+    {
+      "name": "Num_chars",
+      "required": true,
+      "description": "The number of characters in old_text that you want REPLACE to replace with new_text."
+    },
+    {
+      "name": "New_text",
+      "required": true,
+      "description": "The text that will replace characters in old_text."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/replace-function-8d799074-2425-4a8a-84bc-82472868878a"
+}

@@ -1,0 +1,17 @@
+{
+  "function": "MOD",
+  "syntax": "MOD(number, divisor)",
+  "arguments": [
+    {
+      "name": "Number",
+      "required": true,
+      "description": "The number for which you want to find the remainder."
+    },
+    {
+      "name": "Divisor",
+      "required": true,
+      "description": "The number by which you want to divide number."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/mod-function-9b6cd169-b6ee-406a-a97b-edf2a9dc24f3"
+}

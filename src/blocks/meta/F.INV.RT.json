@@ -1,0 +1,22 @@
+{
+  "function": "F.INV.RT",
+  "syntax": "F.INV.RT(probability,deg_freedom1,deg_freedom2)",
+  "arguments": [
+    {
+      "name": "Probability",
+      "required": true,
+      "description": "A probability associated with the F cumulative distribution."
+    },
+    {
+      "name": "Deg_freedom1",
+      "required": true,
+      "description": "The numerator degrees of freedom."
+    },
+    {
+      "name": "Deg_freedom2",
+      "required": true,
+      "description": "The denominator degrees of freedom."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/f-inv-rt-function-d371aa8f-b0b1-40ef-9cc2-496f0693ac00"
+}

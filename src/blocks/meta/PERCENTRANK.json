@@ -1,0 +1,22 @@
+{
+  "function": "PERCENTRANK",
+  "syntax": "PERCENTRANK(array,x,[significance])",
+  "arguments": [
+    {
+      "name": "Array",
+      "required": true,
+      "description": "The range of data (or pre-defined array) of numeric values within which percent rank is determined."
+    },
+    {
+      "name": "X",
+      "required": true,
+      "description": "The value for which you want to know the rank within the array."
+    },
+    {
+      "name": "Significance",
+      "required": false,
+      "description": "A value that identifies the number of significant digits for the returned percentage value. If omitted, PERCENTRANK uses three digits (0.xxx)."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/percentrank-function-f1b5836c-9619-4847-9fc9-080ec9024442"
+}

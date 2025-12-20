@@ -1,0 +1,22 @@
+{
+  "function": "NEGBINOMDIST",
+  "syntax": "NEGBINOMDIST(number_f,number_s,probability_s)",
+  "arguments": [
+    {
+      "name": "Number_f",
+      "required": true,
+      "description": "The number of failures."
+    },
+    {
+      "name": "Number_s",
+      "required": true,
+      "description": "The threshold number of successes."
+    },
+    {
+      "name": "Probability_s",
+      "required": true,
+      "description": "The probability of a success."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/negbinomdist-function-f59b0a37-bae2-408d-b115-a315609ba714"
+}

@@ -1,0 +1,12 @@
+{
+  "function": "IMSINH",
+  "syntax": "IMSINH(inumber)",
+  "arguments": [
+    {
+      "name": "inumber",
+      "required": true,
+      "description": "A complex number for which you want the hyperbolic sine."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/imsinh-function-dfb9ec9e-8783-4985-8c42-b028e9e8da3d"
+}

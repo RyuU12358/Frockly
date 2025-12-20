@@ -1,0 +1,17 @@
+{
+  "function": "EXACT",
+  "syntax": "EXACT(text1, text2)",
+  "arguments": [
+    {
+      "name": "Text1",
+      "required": true,
+      "description": "The first text string."
+    },
+    {
+      "name": "Text2",
+      "required": true,
+      "description": "The second text string."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/exact-function-d3087698-fc15-4a15-9631-12575cf29926"
+}

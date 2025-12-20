@@ -1,0 +1,27 @@
+{
+  "function": "HYPGEOMDIST",
+  "syntax": "HYPGEOMDIST(sample_s,number_sample,population_s,number_pop)",
+  "arguments": [
+    {
+      "name": "Sample_s",
+      "required": true,
+      "description": "The number of successes in the sample."
+    },
+    {
+      "name": "Number_sample",
+      "required": true,
+      "description": "The size of the sample."
+    },
+    {
+      "name": "Population_s",
+      "required": true,
+      "description": "The number of successes in the population."
+    },
+    {
+      "name": "Number_pop",
+      "required": true,
+      "description": "The population size."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/hypgeomdist-function-23e37961-2871-4195-9629-d0b2c108a12e"
+}

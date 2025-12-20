@@ -1,0 +1,22 @@
+{
+  "function": "RANK.AVG",
+  "syntax": "RANK.AVG(number,ref,[order])",
+  "arguments": [
+    {
+      "name": "Number",
+      "required": true,
+      "description": "The number whose rank you want to find."
+    },
+    {
+      "name": "Ref",
+      "required": true,
+      "description": "An array of, or a reference to, a list of numbers. Nonnumeric values in Ref are ignored."
+    },
+    {
+      "name": "Order",
+      "required": false,
+      "description": "A number specifying how to rank number."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/rank-avg-function-bd406a6f-eb38-4d73-aa8e-6d1c3c72e83a"
+}

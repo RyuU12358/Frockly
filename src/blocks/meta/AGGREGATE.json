@@ -1,0 +1,12 @@
+{
+  "function": "AGGREGATE",
+  "syntax": "AGGREGATE(function_num, options, ref1, [ref2], …)",
+  "arguments": [
+    {
+      "name": "Function_num",
+      "required": true,
+      "description": "A number 1 to 19 that specifies which function to use."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/aggregate-function-43b9278e-6aa7-4f17-92b6-e19993fa26df"
+}

@@ -1,0 +1,17 @@
+{
+  "function": "MODE.MULT",
+  "syntax": "MODE.MULT((number1,[number2],...)",
+  "arguments": [
+    {
+      "name": "Number1",
+      "required": true,
+      "description": "The first number argument for which you want to calculate the mode."
+    },
+    {
+      "name": "Number2, ...",
+      "required": false,
+      "description": "Number arguments 2 to 254 for which you want to calculate the mode. You can also use a single array or a reference to an array instead of arguments separated by commas."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/mode-mult-function-50fd9464-b2ba-4191-b57a-39446689ae8c"
+}

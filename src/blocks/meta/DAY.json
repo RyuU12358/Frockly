@@ -1,0 +1,12 @@
+{
+  "function": "DAY",
+  "syntax": "DAY(serial_number)",
+  "arguments": [
+    {
+      "name": "Serial_number",
+      "required": true,
+      "description": "The date of the day you are trying to find. Dates should be entered by using the DATE function, or as results of other formulas or functions. For example, use DATE(2008,5,23) for the 23rd day of May, 2008. Problems can occur if dates are entered as text ."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/day-function-8a7d1cbb-6c7d-4ba1-8aea-25c134d03101"
+}

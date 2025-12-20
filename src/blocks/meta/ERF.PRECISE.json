@@ -1,0 +1,12 @@
+{
+  "function": "ERF.PRECISE",
+  "syntax": "ERF.PRECISE(x)",
+  "arguments": [
+    {
+      "name": "x",
+      "required": true,
+      "description": ""
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/erf-precise-function-9a349593-705c-4278-9a98-e4122831a8e0"
+}

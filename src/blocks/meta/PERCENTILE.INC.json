@@ -1,0 +1,17 @@
+{
+  "function": "PERCENTILE.INC",
+  "syntax": "PERCENTILE.INC(array,k)",
+  "arguments": [
+    {
+      "name": "Array",
+      "required": true,
+      "description": "The array or range of data that defines relative standing."
+    },
+    {
+      "name": "K",
+      "required": true,
+      "description": "The percentile value in the range 0 to 1, inclusive."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/percentile-inc-function-680f9539-45eb-410b-9a5e-c1355e5fe2ed"
+}

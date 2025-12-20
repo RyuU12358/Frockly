@@ -1,0 +1,12 @@
+{
+  "function": "MINUTE",
+  "syntax": "MINUTE(serial_number)",
+  "arguments": [
+    {
+      "name": "Serial_number",
+      "required": true,
+      "description": "The time that contains the minute you want to find. Times may be entered as text strings within quotation marks (for example, \"6:45 PM\"), as decimal numbers (for example, 0.78125, which represents 6:45 PM), or as results of other formulas or functions (for example, TIMEVALUE(\"6:45 PM\"))."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/minute-function-af728df0-05c4-4b07-9eed-a84801a60589"
+}

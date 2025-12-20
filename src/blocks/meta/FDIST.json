@@ -1,0 +1,22 @@
+{
+  "function": "FDIST",
+  "syntax": "FDIST(x,deg_freedom1,deg_freedom2)",
+  "arguments": [
+    {
+      "name": "X",
+      "required": true,
+      "description": "The value at which to evaluate the function."
+    },
+    {
+      "name": "Deg_freedom1",
+      "required": true,
+      "description": "The numerator degrees of freedom."
+    },
+    {
+      "name": "Deg_freedom2",
+      "required": true,
+      "description": "The denominator degrees of freedom."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/fdist-function-ecf76fba-b3f1-4e7d-a57e-6a5b7460b786"
+}

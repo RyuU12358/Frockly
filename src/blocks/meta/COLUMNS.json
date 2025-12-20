@@ -1,0 +1,12 @@
+{
+  "function": "COLUMNS",
+  "syntax": "COLUMNS(array)",
+  "arguments": [
+    {
+      "name": "array",
+      "required": true,
+      "description": ""
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/columns-function-4e8e7b4e-e603-43e8-b177-956088fa48ca"
+}

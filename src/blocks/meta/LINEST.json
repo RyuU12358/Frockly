@@ -1,0 +1,27 @@
+{
+  "function": "LINEST",
+  "syntax": "LINEST(known_y's, [known_x's], [const], [stats])",
+  "arguments": [
+    {
+      "name": "known_y's",
+      "required": true,
+      "description": "The set of y-values that you already know in the relationship y = mx + b."
+    },
+    {
+      "name": "known_x's",
+      "required": false,
+      "description": "A set of x-values that you may already know in the relationship y = mx + b."
+    },
+    {
+      "name": "const",
+      "required": false,
+      "description": "A logical value specifying whether to force the constant b to equal 0."
+    },
+    {
+      "name": "stats",
+      "required": false,
+      "description": "A logical value specifying whether to return additional regression statistics."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/linest-function-84d7d0d9-6e50-4101-977a-fa7abf772b6d"
+}

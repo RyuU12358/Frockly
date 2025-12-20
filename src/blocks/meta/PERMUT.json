@@ -1,0 +1,17 @@
+{
+  "function": "PERMUT",
+  "syntax": "PERMUT(number, number_chosen)",
+  "arguments": [
+    {
+      "name": "Number",
+      "required": true,
+      "description": "An integer that describes the number of objects."
+    },
+    {
+      "name": "Number_chosen",
+      "required": true,
+      "description": "An integer that describes the number of objects in each permutation."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/permut-function-3bd1cb9a-2880-41ab-a197-f246a7a602d3"
+}

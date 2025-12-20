@@ -1,0 +1,12 @@
+{
+  "function": "ERFC.PRECISE",
+  "syntax": "ERFC.PRECISE(x)",
+  "arguments": [
+    {
+      "name": "X",
+      "required": true,
+      "description": "The lower bound for integrating ERFC.PRECISE."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/erfc-precise-function-e90e6bab-f45e-45df-b2ac-cd2eb4d4a273"
+}

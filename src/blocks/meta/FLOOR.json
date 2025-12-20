@@ -1,0 +1,17 @@
+{
+  "function": "FLOOR",
+  "syntax": "FLOOR(number, significance)",
+  "arguments": [
+    {
+      "name": "Number",
+      "required": true,
+      "description": "The numeric value you want to round."
+    },
+    {
+      "name": "Significance",
+      "required": true,
+      "description": "The multiple to which you want to round."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/floor-function-14bb497c-24f2-4e04-b327-b0b4de5a8886"
+}

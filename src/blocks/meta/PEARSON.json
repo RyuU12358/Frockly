@@ -1,0 +1,17 @@
+{
+  "function": "PEARSON",
+  "syntax": "PEARSON(array1, array2)",
+  "arguments": [
+    {
+      "name": "Array1",
+      "required": true,
+      "description": "A set of independent values."
+    },
+    {
+      "name": "Array2",
+      "required": true,
+      "description": "A set of dependent values."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/pearson-function-0c3e30fc-e5af-49c4-808a-3ef66e034c18"
+}

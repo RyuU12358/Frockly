@@ -1,0 +1,12 @@
+{
+  "function": "IMSEC",
+  "syntax": "IMSEC(inumber)",
+  "arguments": [
+    {
+      "name": "Inumber",
+      "required": true,
+      "description": "A complex number for which you want the secant."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/imsec-function-6df11132-4411-4df4-a3dc-1f17372459e0"
+}

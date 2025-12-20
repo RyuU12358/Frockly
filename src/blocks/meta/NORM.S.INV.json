@@ -1,0 +1,12 @@
+{
+  "function": "NORM.S.INV",
+  "syntax": "NORM.S.INV(probability)",
+  "arguments": [
+    {
+      "name": "Probability",
+      "required": true,
+      "description": "A probability corresponding to the normal distribution."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/norm-s-inv-function-d6d556b4-ab7f-49cd-b526-5a20918452b1"
+}

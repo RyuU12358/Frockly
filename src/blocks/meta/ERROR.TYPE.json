@@ -1,0 +1,12 @@
+{
+  "function": "ERROR.TYPE",
+  "syntax": "ERROR.TYPE(error_val)",
+  "arguments": [
+    {
+      "name": "Error_val",
+      "required": true,
+      "description": "The error value whose identifying number you want to find. Although error_val can be the actual error value, it will usually be a reference to a cell containing a formula that you want to test."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/error-type-function-10958677-7c8d-44f7-ae77-b9a9ee6eefaa"
+}

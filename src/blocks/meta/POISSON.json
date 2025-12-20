@@ -1,0 +1,22 @@
+{
+  "function": "POISSON",
+  "syntax": "POISSON(x,mean,cumulative)",
+  "arguments": [
+    {
+      "name": "X",
+      "required": true,
+      "description": "The number of events."
+    },
+    {
+      "name": "Mean",
+      "required": true,
+      "description": "The expected numeric value."
+    },
+    {
+      "name": "Cumulative",
+      "required": true,
+      "description": "A logical value that determines the form of the probability distribution returned. If cumulative is TRUE, POISSON returns the cumulative Poisson probability that the number of random events occurring will be between zero and x inclusive; if FALSE, it returns the Poisson probability mass function that the number of events occurring will be exactly x."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/poisson-function-d81f7294-9d7c-4f75-bc23-80aa8624173a"
+}

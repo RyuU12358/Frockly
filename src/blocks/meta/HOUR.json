@@ -1,0 +1,12 @@
+{
+  "function": "HOUR",
+  "syntax": "HOUR(serial_number)",
+  "arguments": [
+    {
+      "name": "Serial_number",
+      "required": true,
+      "description": "The time that contains the hour you want to find. Times may be entered as text strings within quotation marks (for example, \"6:45 PM\"), as decimal numbers (for example, 0.78125, which represents 6:45 PM), or as results of other formulas or functions (for example, TIMEVALUE(\"6:45 PM\"))."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/hour-function-a3afa879-86cb-4339-b1b5-2dd2d7310ac7"
+}

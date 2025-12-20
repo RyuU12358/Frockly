@@ -1,0 +1,17 @@
+{
+  "function": "SUMSQ",
+  "syntax": "SUMSQ(number1, [number2], ...)",
+  "arguments": [
+    {
+      "name": "number1",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "number2",
+      "required": false,
+      "description": ""
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/sumsq-function-e3313c02-51cc-4963-aae6-31442d9ec307"
+}

@@ -1,0 +1,22 @@
+{
+  "function": "F.DIST.RT",
+  "syntax": "F.DIST.RT(x,deg_freedom1,deg_freedom2)",
+  "arguments": [
+    {
+      "name": "X",
+      "required": true,
+      "description": "The value at which to evaluate the function."
+    },
+    {
+      "name": "Deg_freedom1",
+      "required": true,
+      "description": "The numerator degrees of freedom."
+    },
+    {
+      "name": "Deg_freedom2",
+      "required": true,
+      "description": "The denominator degrees of freedom."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/f-dist-rt-function-d74cbb00-6017-4ac9-b7d7-6049badc0520"
+}

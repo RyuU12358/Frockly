@@ -1,0 +1,17 @@
+{
+  "function": "QUARTILE",
+  "syntax": "QUARTILE(array,quart)",
+  "arguments": [
+    {
+      "name": "Array",
+      "required": true,
+      "description": "The array or cell range of numeric values for which you want the quartile value."
+    },
+    {
+      "name": "Quart",
+      "required": true,
+      "description": "Indicates which value to return."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/quartile-function-93cf8f62-60cd-4fdb-8a92-8451041e1a2a"
+}

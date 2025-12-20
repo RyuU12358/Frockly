@@ -1,0 +1,17 @@
+{
+  "function": "TRUNC",
+  "syntax": "TRUNC(number, [num_digits])",
+  "arguments": [
+    {
+      "name": "Number",
+      "required": true,
+      "description": "The number you want to truncate."
+    },
+    {
+      "name": "Num_digits",
+      "required": false,
+      "description": "A number specifying the precision of the truncation. The default value for num_digits is 0 (zero)."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/trunc-function-8b86a64c-3127-43db-ba14-aa5ceb292721"
+}

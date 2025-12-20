@@ -1,0 +1,12 @@
+{
+  "function": "COLUMN",
+  "syntax": "COLUMN([reference])",
+  "arguments": [
+    {
+      "name": "reference",
+      "required": false,
+      "description": ""
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/column-function-44e8c754-711c-4df3-9da4-47a55042554b"
+}

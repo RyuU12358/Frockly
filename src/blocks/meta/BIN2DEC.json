@@ -1,0 +1,12 @@
+{
+  "function": "BIN2DEC",
+  "syntax": "BIN2DEC(number)",
+  "arguments": [
+    {
+      "name": "Number",
+      "required": true,
+      "description": "The binary number you want to convert. Number cannot contain more than 10 characters (10 bits). The most significant bit of number is the sign bit. The remaining 9 bits are magnitude bits. Negative numbers are represented using two's-complement notation."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/bin2dec-function-63905b57-b3a0-453d-99f4-647bb519cd6c"
+}

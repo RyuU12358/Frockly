@@ -1,0 +1,17 @@
+{
+  "function": "DOLLARFR",
+  "syntax": "DOLLARFR(decimal_dollar, fraction)",
+  "arguments": [
+    {
+      "name": "Decimal_dollar",
+      "required": true,
+      "description": "A decimal number."
+    },
+    {
+      "name": "Fraction",
+      "required": true,
+      "description": "The integer to use in the denominator of a fraction."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/dollarfr-function-0835d163-3023-4a33-9824-3042c5d4f495"
+}

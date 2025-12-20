@@ -1,0 +1,12 @@
+{
+  "function": "TAN",
+  "syntax": "TAN(number)",
+  "arguments": [
+    {
+      "name": "Number",
+      "required": true,
+      "description": "The angle in radians for which you want the tangent."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/tan-function-08851a40-179f-4052-b789-d7f699447401"
+}

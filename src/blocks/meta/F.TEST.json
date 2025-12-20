@@ -1,0 +1,17 @@
+{
+  "function": "F.TEST",
+  "syntax": "F.TEST(array1,array2)",
+  "arguments": [
+    {
+      "name": "Array1",
+      "required": true,
+      "description": "The first array or range of data."
+    },
+    {
+      "name": "Array2",
+      "required": true,
+      "description": "The second array or range of data."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/f-test-function-100a59e7-4108-46f8-8443-78ffacb6c0a7"
+}

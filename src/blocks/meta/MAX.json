@@ -1,0 +1,12 @@
+{
+  "function": "MAX",
+  "syntax": "MAX(number1, [number2], ...)",
+  "arguments": [
+    {
+      "name": "Number1, number2, ...",
+      "required": null,
+      "description": "Number1 is required, subsequent numbers are optional. 1 to 255 numbers for which you want to find the maximum value."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/max-function-e0012414-9ac8-4b34-9a47-73e662c08098"
+}

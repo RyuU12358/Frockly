@@ -1,0 +1,12 @@
+{
+  "function": "UNICODE",
+  "syntax": "UNICODE(text)",
+  "arguments": [
+    {
+      "name": "Text",
+      "required": true,
+      "description": "Text is the character for which you want the Unicode value."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/unicode-function-adb74aaa-a2a5-4dde-aff6-966e4e81f16f"
+}

@@ -1,0 +1,12 @@
+{
+  "function": "MDETERM",
+  "syntax": "MDETERM(array)",
+  "arguments": [
+    {
+      "name": "Array",
+      "required": true,
+      "description": "A numeric array with an equal number of rows and columns."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/mdeterm-function-e7bfa857-3834-422b-b871-0ffd03717020"
+}

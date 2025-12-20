@@ -1,0 +1,17 @@
+{
+  "function": "NETWORKDAYS.INTL",
+  "syntax": "NETWORKDAYS.INTL(start_date, end_date, [weekend], [holidays])",
+  "arguments": [
+    {
+      "name": "Start_date and end_date",
+      "required": true,
+      "description": "The dates for which the difference is to be computed. The start_date can be earlier than, the same as, or later than the end_date."
+    },
+    {
+      "name": "Weekend",
+      "required": false,
+      "description": "Indicates the days of the week that are weekend days and are not included in the number of whole working days between start_date and end_date. Weekend is a weekend number or string that specifies when weekends occur."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/networkdays-intl-function-a9b26239-4f20-46a1-9ab8-4e925bfd5e28"
+}

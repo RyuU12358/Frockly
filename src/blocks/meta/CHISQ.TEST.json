@@ -1,0 +1,17 @@
+{
+  "function": "CHISQ.TEST",
+  "syntax": "CHISQ.TEST(actual_range,expected_range)",
+  "arguments": [
+    {
+      "name": "Actual_range",
+      "required": true,
+      "description": "The range of data that contains observations to test against expected values."
+    },
+    {
+      "name": "Expected_range",
+      "required": true,
+      "description": "The range of data that contains the ratio of the product of row totals and column totals to the grand total."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/chisq-test-function-2e8a7861-b14a-4985-aa93-fb88de3f260f"
+}

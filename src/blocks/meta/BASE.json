@@ -1,0 +1,22 @@
+{
+  "function": "BASE",
+  "syntax": "BASE(Number, Radix [Min_length])",
+  "arguments": [
+    {
+      "name": "Number",
+      "required": true,
+      "description": "The number that you want to convert. Must be an integer greater than or equal to 0 and less than 2^53."
+    },
+    {
+      "name": "Radix",
+      "required": true,
+      "description": "The base radix that you want to convert the number into. Must be an integer greater than or equal to 2 and less than or equal to 36."
+    },
+    {
+      "name": "Min_length",
+      "required": false,
+      "description": "The minimum length of the returned string. Must be an integer greater than or equal to 0."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/base-function-2ef61411-aee9-4f29-a811-1c42456c6342"
+}

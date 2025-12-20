@@ -1,0 +1,12 @@
+{
+  "function": "COUNTBLANK",
+  "syntax": "COUNTBLANK (range)",
+  "arguments": [
+    {
+      "name": "Range",
+      "required": true,
+      "description": "The range from which you want to count the blank cells."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/countblank-function-6a92d772-675c-4bee-b346-24af6bd3ac22"
+}

@@ -1,0 +1,22 @@
+{
+  "function": "TDIST",
+  "syntax": "TDIST(x,deg_freedom,tails)",
+  "arguments": [
+    {
+      "name": "X",
+      "required": true,
+      "description": "The numeric value at which to evaluate the distribution."
+    },
+    {
+      "name": "Deg_freedom",
+      "required": true,
+      "description": "An integer indicating the number of degrees of freedom."
+    },
+    {
+      "name": "Tails",
+      "required": true,
+      "description": "Specifies the number of distribution tails to return. If Tails = 1, TDIST returns the one-tailed distribution. If Tails = 2, TDIST returns the two-tailed distribution."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/tdist-function-630a7695-4021-4853-9468-4a1f9dcdd192"
+}

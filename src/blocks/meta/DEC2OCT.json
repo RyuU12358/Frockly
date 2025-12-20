@@ -1,0 +1,17 @@
+{
+  "function": "DEC2OCT",
+  "syntax": "DEC2OCT(number, [places])",
+  "arguments": [
+    {
+      "name": "Number",
+      "required": true,
+      "description": "The decimal integer you want to convert. If number is negative, places is ignored and DEC2OCT returns a 10-character (30-bit) octal number in which the most significant bit is the sign bit. The remaining 29 bits are magnitude bits. Negative numbers are represented using two's-complement notation."
+    },
+    {
+      "name": "Places",
+      "required": false,
+      "description": "The number of characters to use. If places is omitted, DEC2OCT uses the minimum number of characters necessary. Places is useful for padding the return value with leading 0s (zeros)."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/dec2oct-function-c9d835ca-20b7-40c4-8a9e-d3be351ce00f"
+}

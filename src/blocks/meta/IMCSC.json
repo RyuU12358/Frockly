@@ -1,0 +1,12 @@
+{
+  "function": "IMCSC",
+  "syntax": "IMCSC(inumber)",
+  "arguments": [
+    {
+      "name": "inumber",
+      "required": true,
+      "description": ""
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/imcsc-function-9e158d8f-2ddf-46cd-9b1d-98e29904a323"
+}

@@ -1,0 +1,17 @@
+{
+  "function": "IMPOWER",
+  "syntax": "IMPOWER(inumber, number)",
+  "arguments": [
+    {
+      "name": "Inumber",
+      "required": true,
+      "description": "A complex number you want to raise to a power."
+    },
+    {
+      "name": "Number",
+      "required": true,
+      "description": "The power to which you want to raise the complex number."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/impower-function-210fd2f5-f8ff-4c6a-9d60-30e34fbdef39"
+}

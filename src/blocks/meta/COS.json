@@ -1,0 +1,12 @@
+{
+  "function": "COS",
+  "syntax": "COS(number)",
+  "arguments": [
+    {
+      "name": "Number",
+      "required": true,
+      "description": "The angle in radians for which you want the cosine."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/cos-function-0fb808a5-95d6-4553-8148-22aebdce5f05"
+}

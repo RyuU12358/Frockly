@@ -1,0 +1,22 @@
+{
+  "function": "EXPON.DIST",
+  "syntax": "EXPON.DIST(x,lambda,cumulative)",
+  "arguments": [
+    {
+      "name": "X",
+      "required": true,
+      "description": "The value of the function."
+    },
+    {
+      "name": "Lambda",
+      "required": true,
+      "description": "The parameter value."
+    },
+    {
+      "name": "Cumulative",
+      "required": true,
+      "description": "A logical value that indicates which form of the exponential function to provide. If cumulative is TRUE, EXPON.DIST returns the cumulative distribution function; if FALSE, it returns the probability density function."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/expon-dist-function-4c12ae24-e563-4155-bf3e-8b78b6ae140e"
+}

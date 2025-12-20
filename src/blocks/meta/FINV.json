@@ -1,0 +1,22 @@
+{
+  "function": "FINV",
+  "syntax": "FINV(probability,deg_freedom1,deg_freedom2)",
+  "arguments": [
+    {
+      "name": "Probability",
+      "required": true,
+      "description": "A probability associated with the F cumulative distribution."
+    },
+    {
+      "name": "Deg_freedom1",
+      "required": true,
+      "description": "The numerator degrees of freedom."
+    },
+    {
+      "name": "Deg_freedom2",
+      "required": true,
+      "description": "The denominator degrees of freedom."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/finv-function-4d46c97c-c368-4852-bc15-41e8e31140b1"
+}

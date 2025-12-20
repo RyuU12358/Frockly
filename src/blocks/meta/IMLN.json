@@ -1,0 +1,12 @@
+{
+  "function": "IMLN",
+  "syntax": "IMLN(inumber)",
+  "arguments": [
+    {
+      "name": "Inumber",
+      "required": true,
+      "description": "A complex number for which you want the natural logarithm."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/imln-function-32b98bcf-8b81-437c-a636-6fb3aad509d8"
+}

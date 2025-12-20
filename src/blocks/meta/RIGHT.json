@@ -1,0 +1,17 @@
+{
+  "function": "RIGHT",
+  "syntax": "RIGHT(text,[num_chars])",
+  "arguments": [
+    {
+      "name": "text",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "num_chars",
+      "required": false,
+      "description": ""
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/right-function-240267ee-9afa-4639-a02b-f19e1786cf2f"
+}

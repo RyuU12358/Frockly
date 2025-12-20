@@ -1,0 +1,12 @@
+{
+  "function": "COSH",
+  "syntax": "COSH(number)",
+  "arguments": [
+    {
+      "name": "Number",
+      "required": true,
+      "description": "Any real number for which you want to find the hyperbolic cosine."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/cosh-function-e460d426-c471-43e8-9540-a57ff3b70555"
+}

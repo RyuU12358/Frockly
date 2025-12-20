@@ -1,0 +1,17 @@
+{
+  "function": "T.DIST.2T",
+  "syntax": "T.DIST.2T(x,deg_freedom)",
+  "arguments": [
+    {
+      "name": "X",
+      "required": true,
+      "description": "The numeric value at which to evaluate the distribution."
+    },
+    {
+      "name": "Deg_freedom",
+      "required": true,
+      "description": "An integer indicating the number of degrees of freedom."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/t-dist-2t-function-198e9340-e360-4230-bd21-f52f22ff5c28"
+}

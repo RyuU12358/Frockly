@@ -1,0 +1,27 @@
+{
+  "function": "CUBERANKEDMEMBER",
+  "syntax": "CUBERANKEDMEMBER(connection, set_expression, rank, [caption])",
+  "arguments": [
+    {
+      "name": "Connection",
+      "required": true,
+      "description": "A text string of the name of the connection to the cube."
+    },
+    {
+      "name": "Set_expression",
+      "required": true,
+      "description": "A text string of a set expression, such as \"{[Item1].children}\". Set_expression can also be the CUBESET function, or a reference to a cell that contains the CUBESET function."
+    },
+    {
+      "name": "Rank",
+      "required": true,
+      "description": "An integer value specifying the top value to return. If rank is a value of 1, it returns the top value, if rank is a value of 2, it returns the second most top value, and so on. To return the top 5 values, use CUBERANKEDMEMBER five times, specifying a different rank, 1 through 5, each time."
+    },
+    {
+      "name": "Caption",
+      "required": false,
+      "description": "A text string displayed in the cell instead of the caption, if one is defined, from the cube."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/cuberankedmember-function-07efecde-e669-4075-b4bf-6b40df2dc4b3"
+}

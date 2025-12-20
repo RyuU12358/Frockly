@@ -1,0 +1,12 @@
+{
+  "function": "CSCH",
+  "syntax": "CSCH(number)",
+  "arguments": [
+    {
+      "name": "Number",
+      "required": true,
+      "description": ""
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/csch-function-f58f2c22-eb75-4dd6-84f4-a503527f8eeb"
+}

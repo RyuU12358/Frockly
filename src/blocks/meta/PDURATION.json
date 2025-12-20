@@ -1,0 +1,22 @@
+{
+  "function": "PDURATION",
+  "syntax": "PDURATION(rate, pv, fv)",
+  "arguments": [
+    {
+      "name": "Rate",
+      "required": true,
+      "description": "Rate is the interest rate per period."
+    },
+    {
+      "name": "Pv",
+      "required": true,
+      "description": "Pv is the present value of the investment."
+    },
+    {
+      "name": "Fv",
+      "required": true,
+      "description": "Fv is the desired future value of the investment."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/pduration-function-44f33460-5be5-4c90-b857-22308892adaf"
+}

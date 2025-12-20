@@ -1,0 +1,12 @@
+{
+  "function": "ROW",
+  "syntax": "ROW([reference])",
+  "arguments": [
+    {
+      "name": "Reference",
+      "required": false,
+      "description": "The cell or range of cells for which you want the row number."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/row-function-3a63b74a-c4d0-4093-b49a-e76eb49a6d8d"
+}

@@ -1,0 +1,12 @@
+{
+  "function": "EXP",
+  "syntax": "EXP(number)",
+  "arguments": [
+    {
+      "name": "Number",
+      "required": true,
+      "description": "The exponent applied to the base e."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/exp-function-c578f034-2c45-4c37-bc8c-329660a63abe"
+}

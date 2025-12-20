@@ -1,0 +1,42 @@
+{
+  "function": "AMORLINC",
+  "syntax": "AMORLINC(cost, date_purchased, first_period, salvage, period, rate, [basis])",
+  "arguments": [
+    {
+      "name": "Cost",
+      "required": true,
+      "description": "The cost of the asset."
+    },
+    {
+      "name": "Date_purchased",
+      "required": true,
+      "description": "The date of the purchase of the asset."
+    },
+    {
+      "name": "First_period",
+      "required": true,
+      "description": "The date of the end of the first period."
+    },
+    {
+      "name": "Salvage",
+      "required": true,
+      "description": "The salvage value at the end of the life of the asset."
+    },
+    {
+      "name": "Period",
+      "required": true,
+      "description": "The period."
+    },
+    {
+      "name": "Rate",
+      "required": true,
+      "description": "The rate of depreciation."
+    },
+    {
+      "name": "Basis",
+      "required": false,
+      "description": "The year basis to be used."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/amorlinc-function-7d417b45-f7f5-4dba-a0a5-3451a81079a8"
+}

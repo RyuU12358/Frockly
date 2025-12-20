@@ -1,0 +1,17 @@
+{
+  "function": "VAR.S",
+  "syntax": "VAR.S(number1,[number2],...)",
+  "arguments": [
+    {
+      "name": "Number1",
+      "required": true,
+      "description": "The first number argument corresponding to a sample of a population."
+    },
+    {
+      "name": "Number2, ...",
+      "required": false,
+      "description": "Number arguments 2 to 254 corresponding to a sample of a population."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/var-s-function-913633de-136b-449d-813e-65a00b2b990b"
+}

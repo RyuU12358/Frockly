@@ -1,0 +1,17 @@
+{
+  "function": "COUNTIF",
+  "syntax": "COUNTIF(range, criteria)",
+  "arguments": [
+    {
+      "name": "range",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "criteria",
+      "required": true,
+      "description": ""
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/use-the-countif-function-in-microsoft-excel-e0de10c6-f885-4e71-abb4-1f464816df34"
+}

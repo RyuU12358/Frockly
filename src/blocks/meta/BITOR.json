@@ -1,0 +1,17 @@
+{
+  "function": "BITOR",
+  "syntax": "BITOR(number1, number2)",
+  "arguments": [
+    {
+      "name": "Number1",
+      "required": true,
+      "description": "Must be in decimal form and greater than or equal to 0."
+    },
+    {
+      "name": "Number2",
+      "required": true,
+      "description": "Must be in decimal form and greater than or equal to 0."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/bitor-function-f6ead5c8-5b98-4c9e-9053-8ad5234919b2"
+}

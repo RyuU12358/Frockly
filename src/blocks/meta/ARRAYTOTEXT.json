@@ -1,0 +1,5 @@
+{
+  "function": "ARRAYTOTEXT",
+  "syntax": "ARRAYTOTEXT(array, [format])",
+  "url": "https://support.microsoft.com/en-us/office/arraytotext-function-9cdcad46-2fa5-4c6b-ac92-14e7bc862b8b"
+}

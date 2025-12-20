@@ -1,0 +1,12 @@
+{
+  "function": "YEAR",
+  "syntax": "YEAR(serial_number)",
+  "arguments": [
+    {
+      "name": "Serial_number",
+      "required": true,
+      "description": "The date of the year you want to find. Dates should be entered by using the DATE function, or as results of other formulas or functions. For example, use DATE(2025,5,23) for the 23rd day of May, 2025. Problems can occur if dates are entered as text."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/year-function-c64f017a-1354-490d-981f-578e8ec8d3b9"
+}

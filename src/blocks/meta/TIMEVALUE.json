@@ -1,0 +1,12 @@
+{
+  "function": "TIMEVALUE",
+  "syntax": "TIMEVALUE(time_text)",
+  "arguments": [
+    {
+      "name": "Time_text",
+      "required": true,
+      "description": "A text string that represents a time in any one of the Microsoft Excel time formats; for example, \"6:45 PM\" and \"18:45\" text strings within quotation marks that represent time."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/timevalue-function-0b615c12-33d8-4431-bf3d-f3eb6d186645"
+}

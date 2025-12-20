@@ -1,0 +1,22 @@
+{
+  "function": "CUBEMEMBER",
+  "syntax": "CUBEMEMBER(connection, member_expression, [caption])",
+  "arguments": [
+    {
+      "name": "Connection",
+      "required": true,
+      "description": "A text string of the name of the connection to the cube."
+    },
+    {
+      "name": "Member_expression",
+      "required": true,
+      "description": "A text string of a multidimensional expression (MDX) that evaluates to a unique member in the cube. Alternatively, member_expression can be a tuple, specified as a cell range or an array constant."
+    },
+    {
+      "name": "Caption",
+      "required": false,
+      "description": "A text string displayed in the cell instead of the caption, if one is defined, from the cube. When a tuple is returned, the caption used is the one for the last member in the tuple."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/cubemember-function-0f6a15b9-2c18-4819-ae89-e1b5c8b398ad"
+}

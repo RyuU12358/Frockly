@@ -1,0 +1,17 @@
+{
+  "function": "BITXOR",
+  "syntax": "BITXOR(number1, number2)",
+  "arguments": [
+    {
+      "name": "Number1",
+      "required": true,
+      "description": "Must be greater than or equal to 0."
+    },
+    {
+      "name": "Number2",
+      "required": true,
+      "description": "Must be greater than or equal to 0."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/bitxor-function-c81306a1-03f9-4e89-85ac-b86c3cba10e4"
+}

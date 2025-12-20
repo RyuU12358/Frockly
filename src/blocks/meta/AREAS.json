@@ -1,0 +1,12 @@
+{
+  "function": "AREAS",
+  "syntax": "AREAS(reference)",
+  "arguments": [
+    {
+      "name": "reference",
+      "required": true,
+      "description": ""
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/areas-function-8392ba32-7a41-43b3-96b0-3695d2ec6152"
+}

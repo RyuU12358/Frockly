@@ -1,0 +1,27 @@
+{
+  "function": "F.DIST",
+  "syntax": "F.DIST(x,deg_freedom1,deg_freedom2,cumulative)",
+  "arguments": [
+    {
+      "name": "X",
+      "required": true,
+      "description": "The value at which to evaluate the function."
+    },
+    {
+      "name": "Deg_freedom1",
+      "required": true,
+      "description": "The numerator degrees of freedom."
+    },
+    {
+      "name": "Deg_freedom2",
+      "required": true,
+      "description": "The denominator degrees of freedom."
+    },
+    {
+      "name": "Cumulative",
+      "required": true,
+      "description": "A logical value that determines the form of the function. If cumulative is TRUE, F.DIST returns the cumulative distribution function; if FALSE, it returns the probability density function."
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/f-dist-function-a887efdc-7c8e-46cb-a74a-f884cd29b25d"
+}

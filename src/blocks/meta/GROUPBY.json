@@ -1,0 +1,47 @@
+{
+  "function": "GROUPBY",
+  "syntax": "The GROUPBY function allows you to group, aggregate, sort, and filter data based on the fields you specify.",
+  "arguments": [
+    {
+      "name": "row_fields",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "values",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "function",
+      "required": true,
+      "description": ""
+    },
+    {
+      "name": "field_headers",
+      "required": false,
+      "description": ""
+    },
+    {
+      "name": "total_depth",
+      "required": false,
+      "description": ""
+    },
+    {
+      "name": "sort_order",
+      "required": false,
+      "description": ""
+    },
+    {
+      "name": "filter_array",
+      "required": false,
+      "description": ""
+    },
+    {
+      "name": "field_relationship",
+      "required": false,
+      "description": ""
+    }
+  ],
+  "url": "https://support.microsoft.com/en-us/office/groupby-function-5e08ae8c-6800-4b72-b623-c41773611505"
+}
