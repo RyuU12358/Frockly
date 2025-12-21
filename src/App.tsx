@@ -6,15 +6,32 @@ import { FormulaDisplay } from "./components/FormulaDisplay";
 
 export default function App() {
   const [selectedCategory, setSelectedCategory] = useState("math");
-  const [uiLang, setUiLang] = useState<"en" | "ja">("en"); // ★追加
+  const [uiLang, setUiLang] = useState<"en" | "ja">("en");
 
   const [formula, setFormula] = useState("");
   const [selectedCell, setSelectedCell] = useState("A1");
+  const [ribbonTab, setRibbonTab] = useState<"functions" | "view">("functions");
+
+  // ★追加：ON/OFF表示用のstate（同時ON可能）
+  const [focusOn, setFocusOn] = useState(false);
+  const [pathOn, setPathOn] = useState(false);
 
   type WorkspaceApi = {
     insertBlock: (t: string) => void;
     insertRefBlock: (refText: string) => void;
-    insertFromFormula: (formula: string) => void; // ★追加
+    insertFromFormula: (formula: string) => void;
+
+    view?: {
+      collapseAll?: () => void;
+      expandAll?: () => void;
+      expandStep?: (dir: 1 | -1) => void;
+
+      toggleFocus?: () => void;
+      focusStep?: (dir: 1 | -1) => void;
+
+      togglePath?: () => void;
+      pathStep?: (dir: 1 | -1) => void;
+    };
   };
 
   const workspaceApiRef = useRef<WorkspaceApi | null>(null);
@@ -40,17 +57,35 @@ export default function App() {
     document.addEventListener("mouseup", onMouseUp);
   };
 
+  // ★追加：トグル操作（Workspaceにも反映、UIも反映）
+  const onToggleFocus = () => {
+    workspaceApiRef.current?.view?.toggleFocus?.();
+    setFocusOn((v) => !v);
+    setPathOn(false); // ★必須
+  };
+
+  const onTogglePath = () => {
+    workspaceApiRef.current?.view?.togglePath?.();
+    setPathOn((v) => !v);
+    setFocusOn(false); // ★必須
+  };
+
   return (
     <div className="h-screen flex flex-col bg-gray-50">
       <ExcelRibbon
-        selectedTab="functions"
-        onTabChange={() => {}}
+        selectedTab={ribbonTab}
+        onTabChange={setRibbonTab}
         onBlockClick={(blockType) =>
           workspaceApiRef.current?.insertBlock(blockType)
         }
         uiLang={uiLang}
         onUiLangChange={setUiLang}
-        onWorkspaceApi={workspaceApiRef} // pass the ref so Ribbon can read .current
+        onWorkspaceApi={workspaceApiRef}
+        // ★追加：View状態と操作を渡す
+        focusOn={focusOn}
+        pathOn={pathOn}
+        onToggleFocus={onToggleFocus}
+        onTogglePath={onTogglePath}
       />
 
       <div className="flex-1 flex overflow-hidden">

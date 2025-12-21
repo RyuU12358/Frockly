@@ -5,6 +5,7 @@ import "blockly/blocks";
 import { initFrockly } from "../blocks/initFrockly";
 import { ExcelGen } from "../blocks/basic/generators";
 import { blockFromFormula } from "../formula";
+import { createViewApi } from "./blockly/view/index.ts";
 export function BlocklyWorkspace({
   category,
   onFormulaChange,
@@ -99,6 +100,14 @@ export function BlocklyWorkspace({
         toolbox: toolboxXml,
         trashcan: true,
         scrollbars: true,
+        zoom: {
+          controls: true, // + / - / reset のUIを出す
+          wheel: true, // Ctrl+ホイール（またはホイール）で拡大縮小
+          startScale: 1.0, // 初期倍率
+          maxScale: 3,
+          minScale: 0.3,
+          scaleSpeed: 1.2, // 拡大縮小の刻み
+        },
       });
 
       wsRef.current = ws;
@@ -182,6 +191,8 @@ export function BlocklyWorkspace({
             alert("blockFromFormula が落ちた。console見て！");
           }
         },
+        // ★追加：表示タブ系 API
+        view: createViewApi({ wsRef }),
       });
 
       const onBlocklyEvent = (e: Blockly.Events.Abstract) => {
@@ -227,6 +238,31 @@ export function BlocklyWorkspace({
       };
 
       ws.addChangeListener(onBlocklyEvent);
+      let lastSelectedId: string | null = null;
+
+      const onSelectEvent = (e: Blockly.Events.Abstract) => {
+        if (e.type !== Blockly.Events.SELECTED) return;
+
+        const se = e as any;
+        const newId = se.newElementId as string | null;
+
+        // 以前の選択を解除
+        if (lastSelectedId) {
+          const prev = ws.getBlockById(lastSelectedId);
+          prev?.getSvgRoot()?.classList.remove("frockly-focused");
+        }
+
+        // 新しい選択を付与
+        if (newId) {
+          const cur = ws.getBlockById(newId);
+          cur?.getSvgRoot()?.classList.add("frockly-focused");
+          lastSelectedId = newId;
+        } else {
+          lastSelectedId = null;
+        }
+      };
+
+      ws.addChangeListener(onSelectEvent);
     })();
 
     return () => {

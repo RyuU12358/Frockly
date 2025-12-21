@@ -1,10 +1,23 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Wand2, Search } from "lucide-react";
+import { Wand2, Search, Eye } from "lucide-react";
 import { BlockPalette } from "./BlockPalette";
 import { STR_ALL, STR, tr } from "../i18n/strings";
 import { loadFnText, type FnTextMap } from "../blocks/gen/fnTextLoader";
 
-export type RibbonTab = "functions";
+export type RibbonTab = "functions" | "view";
+type WorkspaceApi = {
+  insertFromFormula?: (formula: string) => void;
+  insertBlock?: (blockType: string) => void;
+  view?: {
+    collapseAll?: () => void;
+    expandAll?: () => void;
+    expandStep?: (dir: 1 | -1) => void;
+    toggleFocus?: () => void;
+    focusStep?: (dir: 1 | -1) => void;
+    togglePath?: () => void;
+    pathStep?: (dir: 1 | -1) => void;
+  };
+};
 
 export interface ExcelRibbonProps {
   selectedTab: RibbonTab;
@@ -13,10 +26,12 @@ export interface ExcelRibbonProps {
 
   uiLang: "en" | "ja";
   onUiLangChange: (lang: "en" | "ja") => void;
-  // Parent may pass either the api object or a React ref containing it.
-  onWorkspaceApi?:
-    | { insertFromFormula?: (formula: string) => void }
-    | { current: { insertFromFormula?: (formula: string) => void } | null };
+
+  onWorkspaceApi?: React.MutableRefObject<WorkspaceApi | null>;
+  focusOn: boolean;
+  pathOn: boolean;
+  onToggleFocus: () => void;
+  onTogglePath: () => void;
 }
 
 function FrogIcon() {
@@ -104,13 +119,35 @@ export function ExcelRibbon({
   uiLang,
   onUiLangChange,
   onWorkspaceApi,
+  focusOn,
+  pathOn,
+  onToggleFocus,
+  onTogglePath,
 }: ExcelRibbonProps) {
+  const api = onWorkspaceApi?.current;
+  const getApi = () => {
+    const apiObj =
+      onWorkspaceApi &&
+      typeof onWorkspaceApi === "object" &&
+      "current" in onWorkspaceApi
+        ? (onWorkspaceApi as any).current
+        : onWorkspaceApi;
+    return apiObj as any;
+  };
+
   const [search, setSearch] = useState("");
   const searchRef = useRef<HTMLInputElement>(null);
   const t = tr(uiLang);
   const tabs = useMemo(
-    () => [{ id: "functions" as const, label: t(STR.FUNCTIONS), icon: Wand2 }],
-    [uiLang] // or [t]
+    () => [
+      { id: "functions" as const, label: t(STR.FUNCTIONS), icon: Wand2 },
+      {
+        id: "view" as const,
+        label: uiLang === "ja" ? "表示" : "View",
+        icon: Eye,
+      },
+    ],
+    [uiLang]
   );
   const [openImport, setOpenImport] = useState(false);
   const [importText, setImportText] = useState("");
@@ -263,6 +300,29 @@ export function ExcelRibbon({
       } as any);
   }, []);
 
+  // 共通ベース
+  const baseBtn = "rounded border text-sm font-medium transition select-none";
+
+  // 通常操作ボタン（薄エメラルド）
+  const emeraldBtn = `${baseBtn} px-3 py-1
+   bg-emerald-50 text-emerald-700 border-emerald-200
+   hover:bg-emerald-100`;
+
+  // 小ボタン（▲▼用）
+  const emeraldStepBtn = `${baseBtn} px-2 py-1
+   bg-emerald-50 text-emerald-700 border-emerald-200
+   hover:bg-emerald-100`;
+
+  // トグルボタン（ON/OFF）
+  const toggleBtn = (on: boolean) =>
+    [
+      baseBtn,
+      "px-3 py-1",
+      on
+        ? "bg-emerald-500 text-white border-emerald-600 hover:bg-emerald-600"
+        : "bg-emerald-50 text-emerald-700 border-emerald-200 hover:bg-emerald-100",
+    ].join(" ");
+
   return (
     <div className="bg-gradient-to-b from-emerald-600 to-emerald-700 border-b shadow-md">
       {/* Header */}
@@ -338,16 +398,16 @@ export function ExcelRibbon({
       <div className="px-4 pb-2 flex items-center gap-3">
         <button
           className="
-      flex items-center gap-2
-      px-4 py-1.5
-      rounded-lg
-      bg-emerald-100
-      border-2 border-emerald-400
-      text-emerald-800
-      shadow-sm
-      hover:bg-emerald-200
-      transition
-    "
+            flex items-center gap-2
+            px-4 py-1.5
+            rounded-lg
+            bg-emerald-100
+            border-2 border-emerald-400
+            text-emerald-800
+            shadow-sm
+            hover:bg-emerald-200
+            transition
+          "
           onClick={() => {
             setImportText("");
             setOpenImport(true);
@@ -359,14 +419,14 @@ export function ExcelRibbon({
         {/* ★ 常時表示の説明欄 */}
         <div
           className="
-      flex-1 min-w-0
-      rounded-lg
-      border border-emerald-200
-      bg-emerald-50
-      px-3 py-1.5
-      text-xs text-emerald-900
-      overflow-hidden whitespace-nowrap text-ellipsis
-    "
+            flex-1 min-w-0
+            rounded-lg
+            border border-emerald-200
+            bg-emerald-50
+            px-3 py-1.5
+            text-xs text-emerald-900
+            overflow-hidden whitespace-nowrap text-ellipsis
+          "
         >
           {fnTextErr
             ? `fn_text load failed`
@@ -407,15 +467,7 @@ export function ExcelRibbon({
                   const text = importText.trim();
                   if (!text) return;
 
-                  // onWorkspaceApi may be a ref (`{ current }`) or the plain api object.
-                  const apiObj =
-                    onWorkspaceApi &&
-                    typeof onWorkspaceApi === "object" &&
-                    "current" in onWorkspaceApi
-                      ? (onWorkspaceApi as any).current
-                      : onWorkspaceApi;
-
-                  const fn = apiObj?.insertFromFormula;
+                  const fn = getApi()?.insertFromFormula;
                   if (!fn) {
                     alert(t(STR_ALL.IMPORT_API_NOT_READY));
                     return;
@@ -440,13 +492,101 @@ export function ExcelRibbon({
       {/* Ribbon Content */}
       <div className="bg-white px-4 py-2 border-b border-gray-200">
         <div className="mt-2">
-          <BlockPalette
-            search={search}
-            uiLang={uiLang}
-            onBlockClick={onBlockClick}
-            onHoverFn={setHoverFn}
-            onSelectFn={(fn) => setSelectedFn(fn)}
-          />
+          {selectedTab === "functions" ? (
+            <BlockPalette
+              search={search}
+              uiLang={uiLang}
+              onBlockClick={onBlockClick}
+              onHoverFn={setHoverFn}
+              onSelectFn={(fn) => setSelectedFn(fn)}
+            />
+          ) : (
+            <div className="flex flex-wrap items-center gap-2">
+              {/* 展開 */}
+              <div className="flex items-center gap-2 mr-4">
+                <span className="text-xs text-emerald-700 font-medium">
+                  {uiLang === "ja" ? "展開" : "Expand"}
+                </span>
+
+                <button
+                  className={emeraldBtn}
+                  onClick={() => api?.view?.collapseAll?.()}
+                >
+                  {uiLang === "ja" ? "全閉じ" : "Collapse"}
+                </button>
+
+                <button
+                  className={emeraldBtn}
+                  onClick={() => api?.view?.expandAll?.()}
+                >
+                  {uiLang === "ja" ? "全展開" : "Expand"}
+                </button>
+
+                <button
+                  className={emeraldStepBtn}
+                  onClick={() => api?.view?.expandStep?.(-1)}
+                >
+                  ▲
+                </button>
+
+                <button
+                  className={emeraldStepBtn}
+                  onClick={() => api?.view?.expandStep?.(+1)}
+                >
+                  ▼
+                </button>
+              </div>
+
+              {/* フォーカス */}
+              <div className="flex items-center gap-2 mr-4">
+                <span className="text-xs text-emerald-700 font-medium">
+                  {uiLang === "ja" ? "フォーカス" : "Focus"}
+                </span>
+
+                <button className={toggleBtn(focusOn)} onClick={onToggleFocus}>
+                  {focusOn ? "ON" : "OFF"}
+                </button>
+
+                <button
+                  className={emeraldBtn}
+                  onClick={() => api?.view?.focusStep?.(-1)}
+                >
+                  ▲
+                </button>
+
+                <button
+                  className={emeraldBtn}
+                  onClick={() => api?.view?.focusStep?.(+1)}
+                >
+                  ▼
+                </button>
+              </div>
+
+              {/* ルート（道のり） */}
+              <div className="flex items-center gap-2">
+                <span className="text-xs text-emerald-700 font-medium">
+                  {uiLang === "ja" ? "ルート" : "Path"}
+                </span>
+
+                <button className={toggleBtn(pathOn)} onClick={onTogglePath}>
+                  {pathOn ? "ON" : "OFF"}
+                </button>
+
+                <button
+                  className={emeraldBtn}
+                  onClick={() => api?.view?.pathStep?.(-1)}
+                >
+                  ▲
+                </button>
+                <button
+                  className={emeraldBtn}
+                  onClick={() => api?.view?.pathStep?.(+1)}
+                >
+                  ▼
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
