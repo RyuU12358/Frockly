@@ -4,10 +4,12 @@ import * as en from "blockly/msg/en";
 import { initDynamicFnBlocks } from "./gen";
 import { registerBasic } from "./basic";
 import type { UiLang } from "../i18n/strings";
-
+import { patchBlocklyCollapsedSummary } from "./dbg";
 let dynamicInited = false;
 
 export async function initFrockly(uiLang: UiLang) {
+  patchBlocklyCollapsedSummary();
+
   // Blockly 標準UIは uiLang に合わせて毎回設定する（コンテキストメニュー等を切り替えるため）
   if (uiLang === "ja") {
     Blockly.setLocale(ja as any);

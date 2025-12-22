@@ -5,21 +5,16 @@ import { registerFnDynargsMutator } from "./mutatorFactory";
 import { registerFnBlocks } from "./blockFactory";
 
 import { registerFnGenerator } from "./registerFnGenerator";
+import { registerFnUiExtension } from "../extensions/fnUi";
 
 export async function initDynamicFnBlocks() {
-
-
   registerFnDynargsMutator();
-
-
+  registerFnUiExtension();
   const specs = await loadFnList();
-
 
   setFnSpecs(specs);
 
-
   registerFnBlocks(specs);
-
 
   // ★ここ
   for (const spec of specs) {
