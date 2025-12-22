@@ -13,7 +13,8 @@ https://ryuu12358.github.io/Frockly/
 ## Example
 Same formula, different representation.
 
-<!-- screenshot -->
+<!-- Screenshot will be added later -->
+
 
 ## Updates
 - **2025-12-22** – Added View tab for formula structure visualization and navigation
