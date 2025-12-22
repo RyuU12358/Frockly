@@ -18,3 +18,17 @@ https://ryuu12358.github.io/Frockly/
 Same formula, different representation.
 
 ![screenshot](./screenshot.jpg)
+
+## Updates
+
+- 2025-12-22
+  - Added View tab for formula structure visualization and navigation
+
+- 2025-12-20
+  - UI improvement: added function description panel
+
+- 2025-12-19
+  - Supported converting formulas into blocks
+
+- 2025-12-17
+  - Initial public release of Frockly
