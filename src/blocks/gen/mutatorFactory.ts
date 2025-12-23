@@ -114,18 +114,7 @@ function bump(block: DynBlock, spec: any, dir: -1 | 1) {
   Blockly.Events.setGroup(false);
 }
 
-function mdbg(block: DynBlock, ...args: any[]) {
-  const id = block.id.slice(0, 6);
-  console.log(`[MUT ${id}]`, ...args);
-}
-
 function applyShape(block: DynBlock, spec: any, argc: number) {
-  mdbg(block, "applyShape start", {
-    fn: block.type,
-    argc,
-    variadic: spec?.variadic,
-  });
-
   const min = minOf(spec);
   const max = maxOf(spec);
 
@@ -138,12 +127,6 @@ function applyShape(block: DynBlock, spec: any, argc: number) {
   ensureCtrlRow(block, spec);
   ensureArgs(block, a, spec);
   updateLabel(block, spec);
-
-  mdbg(block, "applyShape end", {
-    hasFNHeader: !!block.getInput("FN_HEADER"),
-    hasARG0: !!block.getInput("ARG0"),
-    hasMinus: !!block.getField("BTN_MINUS"),
-  });
 
   (block as any).render?.();
 }

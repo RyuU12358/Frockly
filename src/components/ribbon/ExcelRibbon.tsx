@@ -1,13 +1,26 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Wand2, Search, Eye } from "lucide-react";
-import { BlockPalette } from "./BlockPalette";
-import { STR_ALL, STR, tr } from "../i18n/strings";
-import { loadFnText, type FnTextMap } from "../blocks/gen/fnTextLoader";
+import { Wand2, Search, Eye, FunctionSquare } from "lucide-react";
+import { BlockPalette } from "./tabs/BlockPalette";
+import { STR_ALL, STR, tr } from "../../i18n/strings";
+import { loadFnText, type FnTextMap } from "../../blocks/gen/fnTextLoader";
+import {
+  NamedFunctionsTab,
+  type NamedFnItem,
+  type WorkspaceItem,
+} from "./tabs/NamedFunctionsTab";
+import { createNamedFunction } from "../../state/project/workspaceOps";
 
-export type RibbonTab = "functions" | "view";
+export type RibbonTab = "functions" | "named" | "view";
+
 type WorkspaceApi = {
   insertFromFormula?: (formula: string) => void;
   insertBlock?: (blockType: string) => void;
+
+  // ★ 追加：名前付き関数
+  insertFnCall?: (fnId: string) => void; // 現在WSに挿入
+  insertFnToMain?: (fnId: string) => void; // メインへ切替→挿入（確定仕様）
+  switchWorkspace?: (wsId: string) => void;
+
   view?: {
     collapseAll?: () => void;
     expandAll?: () => void;
@@ -32,6 +45,18 @@ export interface ExcelRibbonProps {
   pathOn: boolean;
   onToggleFocus: () => void;
   onTogglePath: () => void;
+
+  // ★ 追加：名前付き関数タブの入力
+  namedFns?: NamedFnItem[];
+  workspaces?: WorkspaceItem[];
+  activeWorkspaceId?: string;
+
+  // ★ 追加：管理操作（基本は親(App)から渡す）
+  onCreateNamedFn?: () => void;
+  onDuplicateNamedFn?: (fnId: string) => void;
+  onDeleteNamedFn?: (fnId: string) => void;
+  onRenameNamedFn?: (fnId: string, newName: string) => void;
+  activeWorkspaceTitle: string;
 }
 
 function FrogIcon() {
@@ -123,8 +148,19 @@ export function ExcelRibbon({
   pathOn,
   onToggleFocus,
   onTogglePath,
+
+  // ★ new
+  namedFns = [],
+  workspaces = [],
+  activeWorkspaceId = "ws_main",
+  onCreateNamedFn,
+  onDuplicateNamedFn,
+  onDeleteNamedFn,
+  onRenameNamedFn,
+  activeWorkspaceTitle,
 }: ExcelRibbonProps) {
   const api = onWorkspaceApi?.current;
+
   const getApi = () => {
     const apiObj =
       onWorkspaceApi &&
@@ -138,17 +174,31 @@ export function ExcelRibbon({
   const [search, setSearch] = useState("");
   const searchRef = useRef<HTMLInputElement>(null);
   const t = tr(uiLang);
-  const tabs = useMemo(
-    () => [
+
+  const tabs = useMemo(() => {
+    const base = [
       { id: "functions" as const, label: t(STR.FUNCTIONS), icon: Wand2 },
+      {
+        id: "named" as const,
+        label: uiLang === "ja" ? "名前付き関数" : "Named",
+        icon: FunctionSquare,
+      },
       {
         id: "view" as const,
         label: uiLang === "ja" ? "表示" : "View",
         icon: Eye,
       },
-    ],
-    [uiLang]
-  );
+    ];
+
+    // namedFnsも管理APIも無い場合はタブ自体隠す（段階導入用）
+    const canNamed =
+      (namedFns?.length ?? 0) > 0 ||
+      !!onCreateNamedFn ||
+      !!getApi()?.insertFnCall;
+
+    return canNamed ? base : base.filter((x) => x.id !== "named");
+  }, [uiLang, namedFns, onCreateNamedFn]);
+
   const [openImport, setOpenImport] = useState(false);
   const [importText, setImportText] = useState("");
 
@@ -194,6 +244,7 @@ export function ExcelRibbon({
       window.removeEventListener("compositionend", onCompEnd, true);
     };
   }, []);
+
   useEffect(() => {
     const focusSearch = (opts?: { clear?: boolean; selectAll?: boolean }) => {
       const el = searchRef.current;
@@ -202,33 +253,28 @@ export function ExcelRibbon({
       if (opts?.clear) setSearch("");
       el.focus();
 
-      // 次フレームで選択（focus直後は反映されへん環境がある）
       if (opts?.selectAll) {
         requestAnimationFrame(() => el.select());
       }
     };
 
     const onKeyDown = (e: KeyboardEvent) => {
-      // ★ Ctrl+K / Ctrl+F：検索へ
       if ((e.ctrlKey || e.metaKey) && !e.altKey) {
         const k = e.key.toLowerCase();
 
         if (k === "k") {
           e.preventDefault();
-          // Ctrl+K は「検索起動」っぽく：クリアして全選択
           focusSearch({ clear: true, selectAll: true });
           return;
         }
 
         if (k === "f") {
           e.preventDefault();
-          // Ctrl+F は「検索」：現状の検索語を全選択
           focusSearch({ clear: false, selectAll: true });
           return;
         }
       }
 
-      // 既に入力中なら奪わない
       const t = e.target as HTMLElement | null;
       const tag = t?.tagName?.toLowerCase();
       const isTyping =
@@ -243,14 +289,12 @@ export function ExcelRibbon({
         return;
       }
 
-      // ★ どこでも入力 → 検索へ（1打目は捨てる方針）
       if (!e.ctrlKey && !e.metaKey && !e.altKey && e.key.length === 1) {
         searchRef.current?.focus();
         e.preventDefault();
         return;
       }
 
-      // / で明示検索（任意）
       if (e.key === "/") {
         searchRef.current?.focus();
         e.preventDefault();
@@ -270,7 +314,6 @@ export function ExcelRibbon({
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.ctrlKey || e.metaKey || e.altKey) return;
 
-      // 既に入力中なら奪わない
       const t = e.target as HTMLElement | null;
       const tag = t?.tagName?.toLowerCase();
       const isTyping =
@@ -285,10 +328,9 @@ export function ExcelRibbon({
         return;
       }
 
-      // ここが肝：printable は「フォーカス移動だけ」して、1打目は捨てる
       if (e.key.length === 1) {
         searchRef.current?.focus();
-        e.preventDefault(); // ★ これで 1打目の "a" が入らん
+        e.preventDefault();
         return;
       }
     };
@@ -363,7 +405,6 @@ export function ExcelRibbon({
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               onKeyDown={(e) => {
-                // Enterは何もしない（送信事故防止）
                 if (e.key === "Enter") e.preventDefault();
               }}
               placeholder={t(STR.SEARCH)}
@@ -371,9 +412,12 @@ export function ExcelRibbon({
             />
           </div>
         </div>
+        <div className="text-xs text-emerald-100 ml-3">
+          {uiLang === "ja" ? "現在：" : "Active: "} {activeWorkspaceTitle}
+        </div>
       </div>
 
-      {/* Tabs（関数だけ） */}
+      {/* Tabs */}
       <div className="flex gap-1 px-2 py-2">
         {tabs.map((tab) => {
           const Icon = tab.icon;
@@ -395,6 +439,7 @@ export function ExcelRibbon({
           );
         })}
       </div>
+
       <div className="px-4 pb-2 flex items-center gap-3">
         <button
           className="
@@ -499,6 +544,45 @@ export function ExcelRibbon({
               onBlockClick={onBlockClick}
               onHoverFn={setHoverFn}
               onSelectFn={(fn) => setSelectedFn(fn)}
+            />
+          ) : selectedTab === "named" ? (
+            <NamedFunctionsTab
+              onInsertCurrentParam={() => api?.insertBlock?.("fn_param")}
+              fns={namedFns}
+              workspaces={workspaces}
+              activeWorkspaceId={activeWorkspaceId}
+              onCreateFn={() => {
+                const { fnId, wsId } = createNamedFunction("A", []);
+                return { fnId, wsId };
+              }}
+              onDuplicateFn={(fnId) => onDuplicateNamedFn?.(fnId)}
+              onDeleteFn={(fnId) => onDeleteNamedFn?.(fnId)}
+              onRenameFn={(fnId, newName) => onRenameNamedFn?.(fnId, newName)}
+              onSwitchWorkspace={(wsId) => {
+                const fn = getApi()?.switchWorkspace;
+                if (!fn) {
+                  alert("switchWorkspace API not ready");
+                  return;
+                }
+                fn(wsId);
+              }}
+              onInsertCurrent={(fnId) => {
+                const fn = getApi()?.insertFnCall;
+                if (!fn) {
+                  alert("insertFnCall API not ready");
+                  return;
+                }
+                fn(fnId);
+              }}
+              onInsertToMain={(fnId) => {
+                const fn = getApi()?.insertFnToMain;
+                if (!fn) {
+                  alert("insertFnToMain API not ready");
+                  return;
+                }
+                fn(fnId);
+              }}
+              
             />
           ) : (
             <div className="flex flex-wrap items-center gap-2">

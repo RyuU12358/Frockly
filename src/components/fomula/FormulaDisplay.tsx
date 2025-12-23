@@ -1,13 +1,16 @@
-import { Copy, Check } from 'lucide-react';
-import { useState } from 'react';
-import { STR_ALL, tr } from '../i18n/strings';
+import { Copy, Check } from "lucide-react";
+import { useState } from "react";
+import { STR_ALL, tr } from "../../i18n/strings";
 
 interface FormulaDisplayProps {
   formula: string;
   uiLang?: "en" | "ja";
 }
 
-export function FormulaDisplay({ formula, uiLang = "en" }: FormulaDisplayProps) {
+export function FormulaDisplay({
+  formula,
+  uiLang = "en",
+}: FormulaDisplayProps) {
   const t = tr(uiLang);
   const [copied, setCopied] = useState(false);
 
@@ -29,22 +32,23 @@ export function FormulaDisplay({ formula, uiLang = "en" }: FormulaDisplayProps) 
           disabled={!formula}
           className={`
             flex items-center gap-2 px-3 py-1 rounded text-sm
-            ${formula 
-              ? 'bg-emerald-600 text-white hover:bg-emerald-700 shadow-sm' 
-              : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+            ${
+              formula
+                ? "bg-emerald-600 text-white hover:bg-emerald-700 shadow-sm"
+                : "bg-gray-300 text-gray-500 cursor-not-allowed"
             }
             transition-colors
           `}
         >
-              {copied ? (
+          {copied ? (
             <>
               <Check className="w-4 h-4" />
-                  {t(STR_ALL.COPY_DONE)}
+              {t(STR_ALL.COPY_DONE)}
             </>
           ) : (
             <>
               <Copy className="w-4 h-4" />
-                  {t(STR_ALL.COPY)}
+              {t(STR_ALL.COPY)}
             </>
           )}
         </button>
@@ -62,9 +66,9 @@ export function FormulaDisplay({ formula, uiLang = "en" }: FormulaDisplayProps) 
             </div>
           ) : (
             <div className="flex items-center justify-center h-full">
-                <p className="text-gray-400 text-sm">
-                  {t(STR_ALL.SELECT_BLOCK_PROMPT)}
-                </p>
+              <p className="text-gray-400 text-sm">
+                {t(STR_ALL.SELECT_BLOCK_PROMPT)}
+              </p>
             </div>
           )}
         </div>

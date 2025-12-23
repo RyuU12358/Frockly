@@ -1,10 +1,10 @@
 // src/components/BlockPalette.tsx
 import { useEffect, useMemo, useState } from "react";
-import type { FnSpec } from "../blocks/gen/types";
-import { loadFnList } from "../blocks/gen/fnListLoader";
-import { searchFunctionsEN } from "../search/en/searchFunctionsEN";
-import { searchFunctionsJP } from "../search/jp/searchFunctionsJP";
-import { STR, tr } from "../i18n/strings";
+import type { FnSpec } from "../../../blocks/gen/types";
+import { STR, tr } from "../../../i18n/strings";
+import { searchFunctionsEN } from "../../../search/en/searchFunctionsEN";
+import { searchFunctionsJP } from "../../../search/jp";
+import { loadFnList } from "../../../blocks/gen/fnListLoader";
 
 function isAsciiOnly(s: string) {
   return /^[\x00-\x7F]*$/.test(s);
@@ -104,8 +104,8 @@ export function BlockPalette({
   const [semantic, setSemantic] = useState<
     { fn: string; score: number }[] | null
   >(null);
-  const [semErr, setSemErr] = useState<string>("");
-  const [isSearching, setIsSearching] = useState(false);
+  const [, setSemErr] = useState<string>("");
+  const [, setIsSearching] = useState(false);
 
   const langMode = useMemo(() => {
     if (uiLang === "en") return "en";

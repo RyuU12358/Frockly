@@ -1,15 +1,20 @@
 import * as Blockly from "blockly";
 import * as ja from "blockly/msg/ja";
 import * as en from "blockly/msg/en";
-import { initDynamicFnBlocks } from "./gen";
-import { registerBasic } from "./basic";
-import type { UiLang } from "../i18n/strings";
-import { patchBlocklyCollapsedSummary } from "./dbg";
+import { initDynamicFnBlocks } from "../../blocks/gen";
+import { registerBasic } from "../../blocks/basic";
+import type { UiLang } from "../../i18n/strings";
+import { registerFnRootBlock } from "../../blocks/fn/fn_root";
+import { registerFnParamBlock } from "../../blocks/fn/fn_param";
+import { registerFnCallBlock } from "../../blocks/fn/fn_call";
+import { patchBlocklyCollapsedSummary } from "../../blocks/patch/patchBlocklyCollapsedSummary";
+import { patchTempCollapsedField } from "../../blocks/patch/patchTempCollapsedField";
+
 let dynamicInited = false;
 
 export async function initFrockly(uiLang: UiLang) {
   patchBlocklyCollapsedSummary();
-
+  patchTempCollapsedField();
   // Blockly 標準UIは uiLang に合わせて毎回設定する（コンテキストメニュー等を切り替えるため）
   if (uiLang === "ja") {
     Blockly.setLocale(ja as any);
@@ -38,7 +43,9 @@ export async function initFrockly(uiLang: UiLang) {
     dynamicInited = true;
     await initDynamicFnBlocks();
   }
-
+  registerFnRootBlock();
+  registerFnParamBlock();
+  registerFnCallBlock();
   // 言語に依存する基本ブロックは毎回登録し直す（ラベル/ツールチップ反映のため）
   registerBasic(uiLang);
 }

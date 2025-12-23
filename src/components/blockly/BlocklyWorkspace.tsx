@@ -1,18 +1,52 @@
 import { useEffect, useMemo, useRef } from "react";
 import * as Blockly from "blockly";
-import { STR_ALL, tr } from "../i18n/strings";
+import { STR_ALL, tr } from "../../i18n/strings";
 import "blockly/blocks";
-import { initFrockly } from "../blocks/initFrockly";
-import { ExcelGen } from "../blocks/basic/generators";
-import { blockFromFormula } from "../formula";
-import { createViewApi } from "./blockly/view/index.ts";
+import { initFrockly } from "../../blockly/init/initFrockly";
+import { ExcelGen } from "../../blocks/basic/generators";
+import { blockFromFormula } from "../../formula";
+import { createViewApi } from "../blockly/view/index.ts";
+import { useProject } from "../../state/project/projectStore";
+import {
+  setActiveWorkspaceId,
+  saveActiveWorkspaceXml,
+} from "../../state/project/workspaceOps";
+
+import { ensureGridPattern } from "./ui/workspaceDecor";
+
+// もしくは project にメソッドが生えてるなら import 不要
+
 export function BlocklyWorkspace({
-  category,
   onFormulaChange,
   selectedCell,
   onWorkspaceApi,
   uiLang,
 }: any) {
+  const initReadyRef = useRef<Promise<void> | null>(null);
+
+  const ensureBlocklyReady = async () => {
+    if (!initReadyRef.current) {
+      initReadyRef.current = initFrockly(uiLang);
+    }
+    await initReadyRef.current;
+
+    // 念のためログ（安定したら消してOK）
+    console.log("[WS] ready", {
+      fn_root: !!Blockly.Blocks["fn_root"],
+      fn_param: !!Blockly.Blocks["fn_param"],
+      fn_call: !!Blockly.Blocks["fn_call"],
+    });
+  };
+  useEffect(() => {
+    initReadyRef.current = null; // 言語変わったら再init
+  }, [uiLang]);
+
+  const project = useProject();
+  const projectRef = useRef(project);
+  useEffect(() => {
+    projectRef.current = project;
+  }, [project]);
+
   const hostRef = useRef<HTMLDivElement>(null);
   const wsRef = useRef<Blockly.WorkspaceSvg | null>(null);
 
@@ -62,6 +96,48 @@ export function BlocklyWorkspace({
       </xml>
     `;
   }, [uiLang]);
+  // ★ここ！！（useEffect より前）
+  const ensureFnRoot = (wsId: string) => {
+    const ws = wsRef.current;
+    if (!ws) return;
+
+    const p = projectRef.current;
+    const wsInfo = p.workspaces.find((w) => w.id === wsId);
+    if (!wsInfo || wsInfo.kind !== "fn") return;
+
+    // ブロック登録前に来たら何もできん
+    if (!Blockly.Blocks["fn_root"]) return;
+
+    const roots = ws.getAllBlocks(false).filter((b) => b.type === "fn_root");
+
+    if (roots.length === 0) {
+      const b = ws.newBlock("fn_root");
+      b.initSvg();
+      (b as any).render?.();
+      b.moveBy(40, 40);
+    } else {
+      for (let i = 1; i < roots.length; i++) roots[i].dispose(true);
+    }
+  };
+
+  const ensureFnParams = (wsId: string) => {
+    const ws = wsRef.current;
+    if (!ws) return;
+
+    const p = projectRef.current;
+    const wsInfo = p.workspaces.find((w) => w.id === wsId);
+    if (!wsInfo || wsInfo.kind !== "fn") return;
+
+    const roots = ws.getAllBlocks(false).filter((b) => b.type === "fn_root");
+    if (roots.length !== 1) return;
+
+    const root = roots[0];
+    const params = ws.getAllBlocks(false).filter((b) => b.type === "fn_param");
+
+    for (const b of params) {
+      if (b.getParent() !== root) b.dispose(true);
+    }
+  };
 
   useEffect(() => {
     const hostEl = hostRef.current;
@@ -87,6 +163,47 @@ export function BlocklyWorkspace({
       historyRef.current = arr.slice(0, HISTORY_MAX);
       queueMicrotask(() => (wsRef.current as any)?.refreshToolboxSelection?.());
     };
+    const saveXmlOfActive = () => {
+      const w = wsRef.current;
+      if (!w) return;
+      try {
+        const dom = Blockly.Xml.workspaceToDom(w);
+        const xml = Blockly.utils.xml.domToText(dom); // ★ここ
+        console.log("[WS] saved xml len=", xml.length);
+        saveActiveWorkspaceXml(xml);
+      } catch (e) {
+        console.warn("[WS] save xml failed", e);
+      }
+    };
+
+    const loadXml = async (wsId: string) => {
+      const w = wsRef.current;
+      if (!w) return;
+
+      try {
+        await ensureBlocklyReady();
+
+        w.clear();
+
+        const p = projectRef.current;
+        const target = p.workspaces.find((x) => x.id === wsId);
+        const xmlText = target?.xml ?? "";
+
+        if (xmlText) {
+          const dom = Blockly.utils.xml.textToDom(xmlText);
+          Blockly.Xml.domToWorkspace(dom, w);
+        }
+
+        // ★ロード後に「無かったら入れる」を確実に
+        ensureFnRoot(wsId);
+        ensureFnParams(wsId);
+
+        w.render();
+        w.resize();
+      } catch (e) {
+        console.error("[WS] load xml failed", e);
+      }
+    };
 
     (async () => {
       try {
@@ -95,9 +212,17 @@ export function BlocklyWorkspace({
         console.error("[DBG] initFrockly crashed", e);
       }
       if (disposed) return;
+      const theme = Blockly.Theme.defineTheme("frockly", {
+        name: "frockly",
+        base: Blockly.Themes.Classic,
+        componentStyles: {
+          workspaceBackgroundColour: "transparent",
+        },
+      });
 
       const ws = Blockly.inject(hostEl, {
         toolbox: toolboxXml,
+        theme,
         trashcan: true,
         scrollbars: true,
         zoom: {
@@ -111,6 +236,14 @@ export function BlocklyWorkspace({
       });
 
       wsRef.current = ws;
+
+      // ここで一拍置く（Blocklyの初回描画が終わってから上書き）
+      requestAnimationFrame(() => {
+        ensureGridPattern(ws);
+      });
+
+      // ★起動時：active workspace を復元
+      void loadXml(project.activeWorkspaceId);
 
       hostEl.addEventListener("pointerdown", onHostPointerDown, true);
 
@@ -191,6 +324,82 @@ export function BlocklyWorkspace({
             alert("blockFromFormula が落ちた。console見て！");
           }
         },
+        switchWorkspace: (wsId: string) => {
+          saveXmlOfActive();
+          setActiveWorkspaceId(wsId);
+          loadXml(wsId);
+
+          queueMicrotask(() => {
+            ensureFnRoot(wsId);
+            ensureFnParams(wsId);
+          });
+        },
+
+        insertFnCall: (fnId: string) => {
+          const w = wsRef.current;
+          if (!w) return;
+
+          if (!Blockly.Blocks["fn_call"]) {
+            // 暫定：まだfn_call無いならテキストで落とす
+            const b = w.newBlock("basic_string");
+            b.initSvg();
+            (b as any).render?.();
+            b.setFieldValue(fnId, "TEXT");
+            b.moveBy(40, 40);
+            pushHistory("basic_string");
+            onHostPointerDown();
+            return;
+          }
+
+          const b = w.newBlock("fn_call");
+          b.initSvg();
+          (b as any).render?.();
+          try {
+            b.setFieldValue(fnId, "FN");
+          } catch {
+            (b as any).data = JSON.stringify({ fnId });
+          }
+          b.moveBy(40, 40);
+          pushHistory("fn_call");
+          onHostPointerDown();
+        },
+
+        insertFnToMain: (fnId: string) => {
+          const main = project.workspaces.find((x: any) => x.kind === "main");
+          if (!main) return;
+
+          saveXmlOfActive();
+          setActiveWorkspaceId(main.id);
+          loadXml(main.id);
+
+          // メインに挿入
+          const w = wsRef.current;
+          if (!w) return;
+
+          if (!Blockly.Blocks["fn_call"]) {
+            const b = w.newBlock("basic_string");
+            b.initSvg();
+            (b as any).render?.();
+            b.setFieldValue(fnId, "TEXT");
+            b.moveBy(60, 60);
+            pushHistory("basic_string");
+            onHostPointerDown();
+            return;
+          }
+
+          const b = w.newBlock("fn_call");
+          b.initSvg();
+          (b as any).render?.();
+          try {
+            b.setFieldValue(fnId, "FN");
+          } catch {
+            (b as any).data = JSON.stringify({ fnId });
+          }
+          b.moveBy(60, 60);
+          pushHistory("fn_call");
+          onHostPointerDown();
+        },
+
         // ★追加：表示タブ系 API
         view: createViewApi({ wsRef }),
       });
@@ -214,9 +423,17 @@ export function BlocklyWorkspace({
         }
 
         // ★ここで start 起点に生成
+        const wsInfo = project.workspaces.find(
+          (w: any) => w.id === project.activeWorkspaceId
+        );
+        const isFn = wsInfo?.kind === "fn";
+
         const starts = ws
           .getAllBlocks(false)
-          .filter((b) => b.type === "basic_start");
+          .filter((b) =>
+            isFn ? b.type === "fn_root" : b.type === "basic_start"
+          );
+
         if (starts.length === 0) {
           onFormulaChangeRef.current?.(""); // start無いなら空
           return;
@@ -234,6 +451,14 @@ export function BlocklyWorkspace({
           onFormulaChangeRef.current?.(code.trim());
         } catch (err) {
           console.error("[GEN] blockToCode failed", err);
+        }
+        // 生成処理が終わった後くらいに
+        // ★ fn_root の構造保証（名前付き関数WSのみ）
+        if (
+          e.type === Blockly.Events.BLOCK_DELETE ||
+          e.type === Blockly.Events.BLOCK_CREATE ||
+          e.type === Blockly.Events.BLOCK_MOVE
+        ) {
         }
       };
 
@@ -310,6 +535,32 @@ export function BlocklyWorkspace({
       }
     })();
   }, [uiLang]);
-
-  return <div ref={hostRef} className="w-full h-full overflow-hidden" />;
+  const workspaceTitle = project.workspaces.find(
+    (w: any) => w.id === project.activeWorkspaceId
+  )?.title;
+  return (
+    <div className="relative w-full h-full">
+      <div
+        className="
+            absolute top-3 right-4 z-[5]
+            px-2 py-1 text-base font-bold
+            text-slate-500
+            pointer-events-none
+            select-none
+          "
+      >
+        {workspaceTitle}
+      </div>
+      <div
+        ref={hostRef}
+        className="
+            w-full h-full overflow-hidden
+            bg-[linear-gradient(to_right,rgba(0,0,0,0.06)_1px,transparent_1px),
+                linear-gradient(to_bottom,rgba(0,0,0,0.06)_1px,transparent_1px)]
+            bg-[size:24px_24px]
+            bg-slate-50
+          "
+      />
+    </div>
+  );
 }

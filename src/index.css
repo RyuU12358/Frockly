@@ -1345,6 +1345,7 @@ html {
   opacity: 1;
   pointer-events: auto;
 }
+
 /* 非フォーカスで薄くするのはOK */
 /* Blockly disabled 風 */
 /* ダメ: グループ全体に opacity をかけると、下流も巻き添えになる */
@@ -1375,4 +1376,11 @@ html {
 .frockly-path {
   opacity: 1;
   filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.25));
+}
+.frockly-ws-title {
+  font-size: 14px;
+  font-weight: 600;
+  opacity: 0.35;
+  pointer-events: none;
+  user-select: none;
 }

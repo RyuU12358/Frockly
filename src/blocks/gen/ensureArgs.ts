@@ -71,8 +71,4 @@ export function ensureArgs(block: Blockly.Block, argc: number, spec: FnSpec) {
   // block.render() は型的に怒られることがあるので any で叩く
   const ws = block.workspace as any;
   if (ws?.render) ws.render();
-  console.log(`[ARGS ${block.id.slice(0, 6)}] ensured argc=${argc}`, {
-    hasARG0: !!block.getInput("ARG0"),
-    hasARG1: !!block.getInput("ARG1"),
-  });
 }

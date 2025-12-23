@@ -1,6 +1,5 @@
-import * as Blockly from "blockly";
 import { loadFnList } from "./fnListLoader";
-import { setFnSpecs, getAllFnSpecs } from "./registry";
+import { setFnSpecs } from "./registry";
 import { registerFnDynargsMutator } from "./mutatorFactory";
 import { registerFnBlocks } from "./blockFactory";
 

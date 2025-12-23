@@ -131,7 +131,7 @@ export function registerBasicBlocks(lang: UiLang) {
 
       this.setOutput(true, null);
       this.setColour(C_LIT);
-
+      Blockly.Extensions.apply("frockly_basic_ui", this, false);
       this.setTooltip(t(STR.TOOLTIP_NUMBER));
     },
   };
@@ -145,7 +145,7 @@ export function registerBasicBlocks(lang: UiLang) {
 
       this.setOutput(true, null);
       this.setColour(C_LIT);
-
+      Blockly.Extensions.apply("frockly_basic_ui", this, false);
       this.setTooltip(t(STR.TOOLTIP_STRING));
     },
   };
@@ -187,7 +187,7 @@ export function registerBasicBlocks(lang: UiLang) {
 
       this.setOutput(true, null);
       this.setColour(C_REF);
-
+      Blockly.Extensions.apply("frockly_basic_ui", this, false);
       this.setTooltip(t(STR.TOOLTIP_CELL));
 
       // 初期反映
@@ -230,7 +230,7 @@ export function registerBasicBlocks(lang: UiLang) {
 
       this.setOutput(true, null);
       this.setColour(C_REF);
-
+      Blockly.Extensions.apply("frockly_basic_ui", this, false);
       this.setTooltip(t(STR.TOOLTIP_RANGE));
 
       updateAbsButtons(this, "RANGE");
@@ -257,7 +257,7 @@ export function registerBasicBlocks(lang: UiLang) {
       this.setInputsInline(true);
       this.setOutput(true, null);
       this.setColour(C_OP);
-
+      Blockly.Extensions.apply("frockly_basic_ui", this, false);
       this.setTooltip(t(STR.TOOLTIP_ARITH));
     },
   };
@@ -282,7 +282,7 @@ export function registerBasicBlocks(lang: UiLang) {
       this.setInputsInline(true);
       this.setOutput(true, null);
       this.setColour(C_CMP);
-
+      Blockly.Extensions.apply("frockly_basic_ui", this, false);
       this.setTooltip(t(STR.TOOLTIP_CMP));
     },
   };
@@ -296,7 +296,7 @@ export function registerBasicBlocks(lang: UiLang) {
       this.setInputsInline(true);
       this.setOutput(true, null);
       this.setColour(C_PAREN);
-
+      Blockly.Extensions.apply("frockly_basic_ui", this, false);
       this.setTooltip(t(STR.TOOLTIP_PAREN));
     },
   };
@@ -309,7 +309,7 @@ export function registerBasicBlocks(lang: UiLang) {
 
       this.setOutput(true, null);
       this.setColour(C_RAW);
-
+      Blockly.Extensions.apply("frockly_basic_ui", this, false);
       this.setTooltip("未解析の塊（そのまま出力）");
     },
   };
@@ -326,7 +326,7 @@ export function registerBasicBlocks(lang: UiLang) {
       this.setInputsInline(true);
       this.setOutput(true, null);
       this.setColour(C_RAW);
-
+      Blockly.Extensions.apply("frockly_basic_ui", this, false);
       this.setTooltip(
         "未登録関数（引数は接続できる。出力時はそのまま関数呼び出し）"
       );
@@ -346,7 +346,7 @@ export function registerBasicBlocks(lang: UiLang) {
 
       this.setOutput(true, null);
       this.setColour(C_BOOL);
-
+      Blockly.Extensions.apply("frockly_basic_ui", this, false);
       this.setTooltip("TRUE / FALSE");
     },
   };
