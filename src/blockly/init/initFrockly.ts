@@ -9,12 +9,26 @@ import { registerFnParamBlock } from "../../blocks/fn/fn_param";
 import { registerFnCallBlock } from "../../blocks/fn/fn_call";
 import { patchBlocklyCollapsedSummary } from "../../blocks/patch/patchBlocklyCollapsedSummary";
 import { patchTempCollapsedField } from "../../blocks/patch/patchTempCollapsedField";
+import { initSyntaxBlocks } from "../../blocks/syntax/initSyntax";
+import { registerLetDynpairsMutator } from "../../blocks/gen/letMutator";
 
 let dynamicInited = false;
 
 export async function initFrockly(uiLang: UiLang) {
   patchBlocklyCollapsedSummary();
   patchTempCollapsedField();
+  // ===== ブロック形状をExcel寄りに =====
+  // ===== Blockly 見た目（Excel寄り）: TS型が無いので any で叩く =====
+  const BS = Blockly.BlockSvg as any;
+
+  // 角丸を消す
+  BS.CORNER_RADIUS = 0;
+
+  // ノッチを低く・細く（好みで微調整）
+  BS.NOTCH_HEIGHT = 4;
+  BS.NOTCH_WIDTH = 15;
+  BS.NOTCH_OFFSET_LEFT = 6;
+
   // Blockly 標準UIは uiLang に合わせて毎回設定する（コンテキストメニュー等を切り替えるため）
   if (uiLang === "ja") {
     Blockly.setLocale(ja as any);
@@ -43,9 +57,15 @@ export async function initFrockly(uiLang: UiLang) {
     dynamicInited = true;
     await initDynamicFnBlocks();
   }
+  registerLetDynpairsMutator();
+  // fn ワークスペース系
   registerFnRootBlock();
   registerFnParamBlock();
   registerFnCallBlock();
-  // 言語に依存する基本ブロックは毎回登録し直す（ラベル/ツールチップ反映のため）
+
+  // 基本ブロック（VAR含む・言語依存）
   registerBasic(uiLang);
+
+  // 構文ブロック（LET / LAMBDA）
+  initSyntaxBlocks();
 }

@@ -15,9 +15,12 @@ export async function initDynamicFnBlocks() {
 
   registerFnBlocks(specs);
 
-  // ★ここ
+  const EXCLUDE = new Set(["LET", "LAMBDA"]);
+
   for (const spec of specs) {
     const fn = spec.name.toUpperCase();
+    if (EXCLUDE.has(fn)) continue;
+
     const type = `frockly_${fn}`;
     registerFnGenerator(type, fn);
   }

@@ -12,6 +12,9 @@ import {
   deleteNamedFunction,
   renameNamedFunction,
 } from "./state/project/workspaceOps";
+import { updateNamedFunctionMeta } from "./state/project/workspaceOps";
+import type { CellMap } from "./components/excelGrid/types";
+import { importXlsxBook } from "./components/excelGrid/importXlsxBook";
 
 export default function App() {
   // ★最初にプロジェクト初期化（二重呼びでも安全）
@@ -101,6 +104,7 @@ export default function App() {
       name: f.name,
       params: f.params,
       workspaceId: f.workspaceId,
+      description: f.description ?? "", // ★追加
     }));
   }, [project.functions]);
 
@@ -121,7 +125,20 @@ export default function App() {
     });
     return out;
   }, [project.workspaces, project.functions]);
+  const [bookSheets, setBookSheets] = useState<
+    { name: string; cells: CellMap }[]
+  >([{ name: "Sheet1", cells: {} }]);
 
+  const [activeSheet, setActiveSheet] = useState(0);
+
+  const activeCells = bookSheets[activeSheet].cells;
+  const onImportXlsx = async (file: File) => {
+    const buf = await file.arrayBuffer();
+    const book = importXlsxBook(buf);
+
+    setBookSheets(book.sheets);
+    setActiveSheet(0);
+  };
   return (
     <div className="h-screen flex flex-col bg-gray-50">
       <ExcelRibbon
@@ -147,6 +164,13 @@ export default function App() {
         onDeleteNamedFn={(fnId) => deleteNamedFunction(fnId)}
         onRenameNamedFn={(fnId, newName) => renameNamedFunction(fnId, newName)}
         activeWorkspaceTitle={activeWsTitle}
+        onUpdateNamedFnMeta={(fnId, patch) =>
+          updateNamedFunctionMeta(fnId, patch)
+        }
+        onImportXlsx={onImportXlsx}
+        sheets={bookSheets.map((s) => s.name)}
+        activeSheet={activeSheet}
+        onChangeSheet={setActiveSheet}
       />
 
       <div className="flex-1 flex overflow-hidden">
@@ -157,9 +181,17 @@ export default function App() {
           <ExcelGrid
             selectedCell={selectedCell}
             onCellSelect={setSelectedCell}
-            onAddRefBlock={(refText) =>
-              workspaceApiRef.current?.insertRefBlock(refText)
-            }
+            cells={activeCells}
+            onCellsChange={(updater) => {
+              setBookSheets((prev) => {
+                const next = [...prev];
+                next[activeSheet] = {
+                  ...next[activeSheet],
+                  cells: updater(next[activeSheet].cells),
+                };
+                return next;
+              });
+            }}
             uiLang={uiLang}
           />
         </div>
@@ -177,6 +209,7 @@ export default function App() {
               selectedCell={selectedCell}
               onWorkspaceApi={(api) => (workspaceApiRef.current = api)}
               uiLang={uiLang}
+              namedFns={namedFns}
             />
           </div>
 

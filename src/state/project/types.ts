@@ -16,6 +16,7 @@ export type FunctionEntity = {
   params: string[];
   workspaceId: string; // = 関数WSのid
   summary?: string;
+  description?: string; // ★追加
 };
 
 export type ProjectState = {

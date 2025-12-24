@@ -12,7 +12,7 @@ export const STR = {
   ARITH: { en: "Arithmetic", ja: "四則演算" },
   CMP: { en: "Compare", ja: "比較" },
   PAREN: { en: "Parentheses", ja: "括弧" },
-
+  NAME: { en: "var", ja: "変数" },
   LOADING_FUNCS: { en: "Loading function list…", ja: "関数一覧を読み込み中…" },
   LOAD_FAILED: {
     en: "Failed to load function list",

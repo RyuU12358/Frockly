@@ -1,4 +1,4 @@
-import { useRef ,useCallback, useMemo, useState } from "react";
+import { useRef, useCallback, useMemo, useState, useEffect } from "react";
 import type { CellMap, CellRef, CellRange } from "./types";
 import { makeColumns, makeRows } from "./constants";
 import { GridHeader } from "./GridHeader";
@@ -10,8 +10,8 @@ import { isInRange, normalizeRange, formatRange } from "./cellRef";
 import { ContextMenu } from "./ContextMenu";
 import { buildMenuActions, runMenuAction } from "./contextMenuActions";
 
-const MIN_COLS = 8;   // A..H
-const MIN_ROWS = 20;  // 1..20
+const MIN_COLS = 8; // A..H
+const MIN_ROWS = 20; // 1..20
 
 // 「普段見せる余白」
 const BUFFER_COLS = 10;
@@ -29,30 +29,37 @@ interface ExcelGridProps {
   selectedCell: CellRef;
   onCellSelect: (cell: CellRef) => void;
 
-  // 追加：範囲選択したとき "A1:B3" みたいなの返す（単セルなら "A1"）
+  // ★ 追加
+  cells: CellMap;
+  onCellsChange: (updater: (prev: CellMap) => CellMap) => void;
+
   onRangeSelect?: (range: string) => void;
   onAddRefBlock?: (refText: string) => void;
   uiLang: "en" | "ja";
-
 }
 
-export function ExcelGrid({ selectedCell, onCellSelect, onRangeSelect , onAddRefBlock, uiLang}: ExcelGridProps) {
+export function ExcelGrid({
+  selectedCell,
+  onCellSelect,
+  cells,
+  onCellsChange,
+  onRangeSelect,
+  onAddRefBlock,
+  uiLang,
+}: ExcelGridProps) {
   const [colCount, setColCount] = useState(MIN_COLS);
   const [rowCount, setRowCount] = useState(MIN_ROWS);
-  const [ctx, setCtx] = useState<null | { open: true; x: number; y: number; cell: CellRef; inRange: boolean }>(null);
+  const [ctx, setCtx] = useState<null | {
+    open: true;
+    x: number;
+    y: number;
+    cell: CellRef;
+    inRange: boolean;
+  }>(null);
 
   const rootRef = useRef<HTMLDivElement>(null);
   const columns = useMemo(() => makeColumns(colCount), [colCount]);
   const rows = useMemo(() => makeRows(rowCount), [rowCount]);
-
-  const [cells, setCells] = useState<CellMap>({
-    A1: { displayText: "100" },
-    A2: { displayText: "200" },
-    A3: { displayText: "300" },
-    B1: { displayText: "50" },
-    B2: { displayText: "75" },
-    B3: { displayText: "25" },
-  });
 
   // --- Range drag state ---
   const [dragging, setDragging] = useState(false);
@@ -66,18 +73,20 @@ export function ExcelGrid({ selectedCell, onCellSelect, onRangeSelect , onAddRef
     }
     return selectedCell;
   }, [range, selectedCell]);
-  const onCellContextMenu = useCallback((cell: CellRef, x: number, y: number) => {
-    
-    const inR = !!range && isInRange(cell, range);
+  const onCellContextMenu = useCallback(
+    (cell: CellRef, x: number, y: number) => {
+      const inR = !!range && isInRange(cell, range);
 
-    if (!inR) {
-      // 範囲外右クリック → そのセルに切り替え
-      setRange(null);
-      onCellSelect(cell);
-    }
+      if (!inR) {
+        // 範囲外右クリック → そのセルに切り替え
+        setRange(null);
+        onCellSelect(cell);
+      }
 
-    setCtx({ open: true, x, y, cell, inRange: inR });
-  }, [range, onCellSelect]);
+      setCtx({ open: true, x, y, cell, inRange: inR });
+    },
+    [range, onCellSelect]
+  );
   const menuActions = useMemo(() => {
     if (!ctx?.open) return [];
     return buildMenuActions({
@@ -104,39 +113,40 @@ export function ExcelGrid({ selectedCell, onCellSelect, onRangeSelect , onAddRef
     setColCount((prev) => Math.max(prev, needCols));
     setRowCount((prev) => Math.max(prev, needRows));
   }, []);
-  const onMenuAction = useCallback(async (id: any) => {
-    await runMenuAction({
-      action: id,
-      cells,
-      selectedCell,
-      range,
-      inRangeContext: !!ctx?.inRange,
-      setCells: (updater) => setCells((prev) => updater(prev)),
+  const onMenuAction = useCallback(
+    async (id: any) => {
+      await runMenuAction({
+        action: id,
+        cells,
+        selectedCell,
+        range,
+        inRangeContext: !!ctx?.inRange,
+        setCells: (updater) => onCellsChange((prev) => updater(prev)),
 
-      // ここは後でFrocklyに接続
-      onAddRefBlock: (refText) => {
+        // ここは後でFrocklyに接続
+        onAddRefBlock: (refText) => {
+          onAddRefBlock?.(refText);
+        },
 
-        onAddRefBlock?.(refText);
-      },
-
-
-      // 貼り付けは既存 handlePaste を使うのが楽：
-      onPasteRequest: async () => {
-        // “右クリック→貼り付け”は paste event が来ないので、Clipboard APIで読む
-        try {
-          const t = await navigator.clipboard.readText();
-          setCells((prev) => {
-            const next = applyPlainPaste(prev, t, "A1"); // v1: A1固定（必要なら ctx.cell 起点にもできる）
-            expandToUsedRangeWithBuffer(next);
-            return next;
-          });
-        } catch {
-          // 失敗する環境もあるから、その時は「Ctrl+Vして」って運用でもOK
-          console.warn("clipboard.readText failed");
-        }
-      },
-    });
-  }, [cells, selectedCell, range, ctx, expandToUsedRangeWithBuffer]);
+        // 貼り付けは既存 handlePaste を使うのが楽：
+        onPasteRequest: async () => {
+          // “右クリック→貼り付け”は paste event が来ないので、Clipboard APIで読む
+          try {
+            const t = await navigator.clipboard.readText();
+            onCellsChange((prev) => {
+              const next = applyPlainPaste(prev, t, "A1"); // v1: A1固定（必要なら ctx.cell 起点にもできる）
+              expandToUsedRangeWithBuffer(next);
+              return next;
+            });
+          } catch {
+            // 失敗する環境もあるから、その時は「Ctrl+Vして」って運用でもOK
+            console.warn("clipboard.readText failed");
+          }
+        },
+      });
+    },
+    [cells, selectedCell, range, ctx, expandToUsedRangeWithBuffer]
+  );
 
   const handlePaste = useCallback(
     (e: React.ClipboardEvent) => {
@@ -148,7 +158,7 @@ export function ExcelGrid({ selectedCell, onCellSelect, onRangeSelect , onAddRef
 
       e.preventDefault();
 
-      setCells((prev) => {
+      onCellsChange((prev) => {
         const next = hasTable
           ? applyHtmlPaste(prev, html, "A1") // v1: A1固定
           : applyPlainPaste(prev, plain, "A1");
@@ -160,10 +170,15 @@ export function ExcelGrid({ selectedCell, onCellSelect, onRangeSelect , onAddRef
     [expandToUsedRangeWithBuffer]
   );
 
-  const handleScrollNearEdge = useCallback((dir: { bottom?: boolean; right?: boolean }) => {
-    if (dir.bottom) setRowCount((prev) => Math.min(MAX_ROWS, prev + GROW_ROWS));
-    if (dir.right) setColCount((prev) => Math.min(MAX_COLS, prev + GROW_COLS));
-  }, []);
+  const handleScrollNearEdge = useCallback(
+    (dir: { bottom?: boolean; right?: boolean }) => {
+      if (dir.bottom)
+        setRowCount((prev) => Math.min(MAX_ROWS, prev + GROW_ROWS));
+      if (dir.right)
+        setColCount((prev) => Math.min(MAX_COLS, prev + GROW_COLS));
+    },
+    []
+  );
 
   const handleCellClick = useCallback(
     (cell: CellRef) => {
@@ -215,46 +230,53 @@ export function ExcelGrid({ selectedCell, onCellSelect, onRangeSelect , onAddRef
       return nr;
     });
   }, [dragging, onRangeSelect]);
-  const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
-  const isMac = navigator.platform.toLowerCase().includes("mac");
-  const ctrlOrCmd = isMac ? e.metaKey : e.ctrlKey;
+  const handleKeyDown = useCallback(
+    (e: React.KeyboardEvent) => {
+      const isMac = navigator.platform.toLowerCase().includes("mac");
+      const ctrlOrCmd = isMac ? e.metaKey : e.ctrlKey;
 
-  if (!ctrlOrCmd) return;
+      if (!ctrlOrCmd) return;
 
-  // Copy
-  if (e.key.toLowerCase() === "c") {
-    const text = (() => {
-      if (range) {
-        const nr = normalizeRange(range.a, range.b);
-        return nr ? formatRange(nr) : range.a;
+      // Copy
+      if (e.key.toLowerCase() === "c") {
+        const text = (() => {
+          if (range) {
+            const nr = normalizeRange(range.a, range.b);
+            return nr ? formatRange(nr) : range.a;
+          }
+          return currentRefText;
+        })();
+
+        // Clipboard API（HTTPS/許可必要な環境あり）
+        // 失敗したら execCommand fallback
+        e.preventDefault();
+
+        const doCopy = async () => {
+          try {
+            await navigator.clipboard.writeText(text);
+          } catch {
+            fallbackCopy(text);
+          }
+        };
+        void doCopy();
       }
-      return currentRefText;
-    })();
-
-    // Clipboard API（HTTPS/許可必要な環境あり）
-    // 失敗したら execCommand fallback
-    e.preventDefault();
-
-    const doCopy = async () => {
-      try {
-        await navigator.clipboard.writeText(text);
-      } catch {
-        fallbackCopy(text);
-      }
-    };
-    void doCopy();
-  }
-  }, [range, selectedCell]);
+    },
+    [range, selectedCell]
+  );
+  useEffect(() => {
+    // propsのcells（import後の巨大データ）に追従して行列を拡張
+    expandToUsedRangeWithBuffer(cells);
+  }, [cells, expandToUsedRangeWithBuffer]);
 
   return (
-      <div
-        ref={rootRef}
-        className="h-full flex flex-col"
-        tabIndex={0}
-        onClick={() => rootRef.current?.focus()}
-        onPaste={handlePaste}
-        onKeyDown={handleKeyDown}
-      >
+    <div
+      ref={rootRef}
+      className="h-full flex flex-col"
+      tabIndex={0}
+      onClick={() => rootRef.current?.focus()}
+      onPaste={handlePaste}
+      onKeyDown={handleKeyDown}
+    >
       <ContextMenu
         open={!!ctx?.open}
         x={ctx?.x ?? 0}
@@ -263,7 +285,6 @@ export function ExcelGrid({ selectedCell, onCellSelect, onRangeSelect , onAddRef
         onClose={() => setCtx(null)}
         onAction={onMenuAction}
       />
-
 
       <GridHeader
         selectedRefText={currentRefText}

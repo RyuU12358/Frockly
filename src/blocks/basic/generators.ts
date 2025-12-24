@@ -61,7 +61,13 @@ export function registerBasicGenerators() {
     const inner = G.valueToCode(block, "INNER", Order.NONE) || "";
     return [`(${inner})`, Order.ATOMIC];
   };
-
+  // ---- Name (identifier) ----
+  // LET変数 / LAMBDA引数 / 名前付き関数の引数
+  G.forBlock["basic_name"] = function (block: Blockly.Block) {
+    const name = String(block.getFieldValue("NAME") ?? "").trim();
+    // 識別子はそのまま出す（クオート不要）
+    return [name, Order.ATOMIC];
+  };
   G.forBlock["basic_raw"] = function (block: Blockly.Block) {
     const raw = String(block.getFieldValue("RAW") ?? "");
     // そのまま吐く（括弧が必要なら親が付ける運用）

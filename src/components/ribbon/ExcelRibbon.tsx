@@ -1,5 +1,11 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Wand2, Search, Eye, FunctionSquare } from "lucide-react";
+import {
+  Wand2,
+  Search,
+  Eye,
+  FunctionSquare,
+  FileSpreadsheet,
+} from "lucide-react";
 import { BlockPalette } from "./tabs/BlockPalette";
 import { STR_ALL, STR, tr } from "../../i18n/strings";
 import { loadFnText, type FnTextMap } from "../../blocks/gen/fnTextLoader";
@@ -9,8 +15,9 @@ import {
   type WorkspaceItem,
 } from "./tabs/NamedFunctionsTab";
 import { createNamedFunction } from "../../state/project/workspaceOps";
+import { FileTab } from "./tabs/FileTab";
 
-export type RibbonTab = "functions" | "named" | "view";
+export type RibbonTab = "file" | "functions" | "named" | "view";
 
 type WorkspaceApi = {
   insertFromFormula?: (formula: string) => void;
@@ -57,6 +64,14 @@ export interface ExcelRibbonProps {
   onDeleteNamedFn?: (fnId: string) => void;
   onRenameNamedFn?: (fnId: string, newName: string) => void;
   activeWorkspaceTitle: string;
+  onUpdateNamedFnMeta?: (
+    fnId: string,
+    patch: { name?: string; description?: string }
+  ) => void;
+  onImportXlsx?: (file: File) => void; // ★追加
+  sheets?: string[];
+  activeSheet?: number;
+  onChangeSheet?: (idx: number) => void;
 }
 
 function FrogIcon() {
@@ -158,9 +173,13 @@ export function ExcelRibbon({
   onDeleteNamedFn,
   onRenameNamedFn,
   activeWorkspaceTitle,
+  onUpdateNamedFnMeta,
+  onImportXlsx,
+  sheets,
+  activeSheet,
+  onChangeSheet,
 }: ExcelRibbonProps) {
   const api = onWorkspaceApi?.current;
-
   const getApi = () => {
     const apiObj =
       onWorkspaceApi &&
@@ -177,6 +196,11 @@ export function ExcelRibbon({
 
   const tabs = useMemo(() => {
     const base = [
+      {
+        id: "file" as const,
+        label: uiLang === "ja" ? "ファイル" : "File",
+        icon: FileSpreadsheet, // 仮。後で差し替えてもええ
+      },
       { id: "functions" as const, label: t(STR.FUNCTIONS), icon: Wand2 },
       {
         id: "named" as const,
@@ -190,7 +214,6 @@ export function ExcelRibbon({
       },
     ];
 
-    // namedFnsも管理APIも無い場合はタブ自体隠す（段階導入用）
     const canNamed =
       (namedFns?.length ?? 0) > 0 ||
       !!onCreateNamedFn ||
@@ -308,6 +331,31 @@ export function ExcelRibbon({
         capture: true,
       } as any);
   }, []);
+  type HoverKey = string | null; // "excel:SUM" | "named:<id>" | null
+  const [hoverKey, setHoverKey] = useState<HoverKey>(null);
+
+  const namedDescById = useMemo(() => {
+    const m = new Map<string, string>();
+    for (const f of namedFns) m.set(f.id, f.description ?? "");
+    return m;
+  }, [namedFns]);
+  const hoverText = useMemo(() => {
+    if (!hoverKey) return null;
+
+    const [kind, raw] = hoverKey.split(":");
+    if (kind === "excel") {
+      const fn = raw.toUpperCase();
+      return (
+        fnText[fn] ??
+        (uiLang === "ja" ? "（説明準備中）" : "(description coming soon)")
+      );
+    }
+    if (kind === "named") {
+      const desc = namedDescById.get(raw) ?? "";
+      return desc || (uiLang === "ja" ? "（説明未設定）" : "(no description)");
+    }
+    return null;
+  }, [hoverKey, fnText, uiLang, namedDescById]);
 
   // 文字入力で検索へ（フォーカス無くてもOK）
   useEffect(() => {
@@ -475,9 +523,8 @@ export function ExcelRibbon({
         >
           {fnTextErr
             ? `fn_text load failed`
-            : activeFn
-            ? fnText[activeFn] ??
-              (uiLang === "ja" ? "（説明準備中）" : "(description coming soon)")
+            : hoverText
+            ? hoverText
             : uiLang === "ja"
             ? "関数にマウスを乗せると簡単な説明が表示されます。"
             : "Hover a function to see a short description."}
@@ -537,16 +584,26 @@ export function ExcelRibbon({
       {/* Ribbon Content */}
       <div className="bg-white px-4 py-2 border-b border-gray-200">
         <div className="mt-2">
-          {selectedTab === "functions" ? (
+          {selectedTab === "file" ? (
+            <FileTab
+              onImportXlsx={onImportXlsx}
+              sheets={sheets}
+              activeSheet={activeSheet}
+              onChangeSheet={onChangeSheet}
+            />
+          ) : selectedTab === "functions" ? (
             <BlockPalette
               search={search}
               uiLang={uiLang}
               onBlockClick={onBlockClick}
-              onHoverFn={setHoverFn}
+              onHoverFn={setHoverKey}
               onSelectFn={(fn) => setSelectedFn(fn)}
             />
           ) : selectedTab === "named" ? (
             <NamedFunctionsTab
+              search={search}
+              onUpdateFnMeta={onUpdateNamedFnMeta}
+              onHoverNamed={setHoverKey}
               onInsertCurrentParam={() => api?.insertBlock?.("fn_param")}
               fns={namedFns}
               workspaces={workspaces}
@@ -582,7 +639,6 @@ export function ExcelRibbon({
                 }
                 fn(fnId);
               }}
-              
             />
           ) : (
             <div className="flex flex-wrap items-center gap-2">

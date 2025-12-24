@@ -1,10 +1,12 @@
-// src/components/BlockPalette.tsx
+// src\components\ribbon\tabs\BlockPalette.tsx
 import { useEffect, useMemo, useState } from "react";
 import type { FnSpec } from "../../../blocks/gen/types";
 import { STR, tr } from "../../../i18n/strings";
 import { searchFunctionsEN } from "../../../search/en/searchFunctionsEN";
 import { searchFunctionsJP } from "../../../search/jp";
 import { loadFnList } from "../../../blocks/gen/fnListLoader";
+import { RibbonButton } from "./RibbonButton";
+import { RibbonSeparator } from "./RibbonSeparator";
 
 function isAsciiOnly(s: string) {
   return /^[\x00-\x7F]*$/.test(s);
@@ -22,7 +24,8 @@ interface BlockPaletteProps {
   onBlockClick?: (blockType: string) => void;
 
   // ★追加
-  onHoverFn?: (fn: string | null) => void;
+  onHoverFn?: (key: string | null) => void; // ★ "excel:SUM" を渡す
+
   onSelectFn?: (fn: string) => void; // クリック固定したいなら
 }
 
@@ -60,6 +63,7 @@ export function BlockPalette({
   onHoverFn,
   onSelectFn,
 }: BlockPaletteProps) {
+  
   const t = useMemo(() => tr(uiLang), [uiLang]);
   useEffect(() => {
     console.log("[PATH] Palette uiLang =", uiLang);
@@ -91,6 +95,7 @@ export function BlockPalette({
       },
 
       { type: "basic_paren", label: t(STR.PAREN), haystack: "paren 括弧 ()" },
+      { type: "basic_name", label: t(STR.NAME), haystack: "name 名前" },
     ],
     [t]
   );
@@ -290,58 +295,53 @@ export function BlockPalette({
         </div>
       )}
 
-      <div className="flex items-stretch gap-2">
-        {/* 左：基本ブロック */}
-        <div className="flex flex-wrap items-center gap-2">
+      {/* ★ リボン本体：高さ固定 */}
+      <div className="h-[36px] flex items-stretch px-2 overflow-hidden">
+        {/* 左：基本ブロック（横スクロールのみ） */}
+        <div className="flex min-w-0 flex-1 items-center gap-2 overflow-x-auto overflow-y-hidden py-1">
           {BASE_BLOCKS.map((b) => (
-            <button
+            <RibbonButton
               key={b.type}
-              type="button"
+              title={b.label}
               onClick={() => onBlockClick?.(b.type)}
-              className="px-3 py-1 rounded-full border text-xs
-                       border-emerald-300 bg-emerald-50 text-emerald-700
-                       hover:bg-emerald-100 transition"
-              title={b.label}
             >
               {b.label}
-            </button>
+            </RibbonButton>
           ))}
         </div>
 
-        {/* 区切り：細線（固定） */}
+        {/* 区切り線（常に固定） */}
+        {rightBlocks.length > 0 && <RibbonSeparator />}
+
+        {/* 右：Pinned or 検索結果（横スクロールのみ） */}
         {rightBlocks.length > 0 && (
-          <div className="mx-3 border-l bg-emerald-200 self-stretch" />
-        )}
-
-        {/* 右：Pinned or 検索結果 */}
-        <div className="flex flex-wrap items-center gap-2">
-          {rightBlocks.map((b) => (
-            <button
-              key={b.type}
-              type="button"
-              onClick={() => {
-                onBlockClick?.(b.type);
-                // b.label が "SUM" とか関数名
-                onSelectFn?.(b.label.toUpperCase());
-              }}
-              onMouseEnter={() => onHoverFn?.(b.label.toUpperCase())}
-              onMouseLeave={() => onHoverFn?.(null)}
-              className="px-3 py-1 rounded-full border text-xs
-               border-emerald-300 bg-emerald-50 text-emerald-700
-               hover:bg-emerald-100 transition"
-              title={b.label}
-            >
-              {b.label}
-            </button>
-          ))}
-        </div>
-
-        {loaded && !err && q.length > 0 && rightBlocks.length === 0 && (
-          <div className="text-xs text-gray-500 py-1">
-            {t(STR.NO_BLOCKS_FOUND)}
+          <div className="flex min-w-0 flex-1 items-center gap-2 overflow-x-auto overflow-y-hidden py-1">
+            {rightBlocks.map((b) => (
+              <RibbonButton
+                key={b.type}
+                title={b.label}
+                onClick={() => {
+                  onBlockClick?.(b.type);
+                  onSelectFn?.(b.label.toUpperCase());
+                }}
+                onMouseEnter={() =>
+                  onHoverFn?.(`excel:${b.label.toUpperCase()}`)
+                }
+                onMouseLeave={() => onHoverFn?.(null)}
+              >
+                {b.label}
+              </RibbonButton>
+            ))}
           </div>
         )}
       </div>
+
+      {/* ★ リボン外に出す：固定高さを壊さない */}
+      {loaded && !err && q.length > 0 && rightBlocks.length === 0 && (
+        <div className="text-xs text-gray-500 py-1">
+          {t(STR.NO_BLOCKS_FOUND)}
+        </div>
+      )}
     </div>
   );
 }

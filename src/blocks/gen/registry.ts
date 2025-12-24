@@ -5,24 +5,26 @@ import { registerFnGenerator } from "./registerFnGenerator";
 import type { FnSpec, FnSpecMap } from "./types";
 export function ensureFnBlockDefined(name: string): boolean {
   const fn = name.toUpperCase();
+
+  // ===== 構文ブロックは特別扱い =====
+  if (fn === "LET") return true; // frockly_let は syntax.ts で定義済み
+  if (fn === "LAMBDA") return true; // frockly_lambda も同様
+
   const type = `frockly_${fn}`;
 
   // すでにブロック定義があればOK
   if (Blockly.Blocks[type]) {
-    registerFnGenerator(type, fn); // generatorだけ念のため
+    registerFnGenerator(type, fn);
     return true;
   }
 
   const spec = getFnSpec(fn);
   if (!spec) return false;
 
-  // ★ここが肝：1関数だけブロック定義
+  // 必要ならここで単体生成（今は多分使ってない）
   registerFnBlocks([spec]);
-
-  // generator 登録
   registerFnGenerator(type, fn);
-
-  return !!Blockly.Blocks[type];
+  return true;
 }
 
 const map: FnSpecMap = new Map();

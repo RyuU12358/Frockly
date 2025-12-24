@@ -1384,3 +1384,20 @@ html {
   pointer-events: none;
   user-select: none;
 }
+/* ブロックの影を完全に消す */
+.blocklyPath {
+  filter: none !important;
+}
+
+/* 引数行の縦余白を詰める */
+.blocklyEditableText,
+.blocklyText {
+  padding-top: 2px !important;
+  padding-bottom: 2px !important;
+  line-height: 1.2;
+}
+
+/* value input（引数スロット）の高さを下げる */
+.blocklyValueInput {
+  min-height: 18px !important;
+}

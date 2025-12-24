@@ -47,10 +47,13 @@ export function GridTable({
     const el = e.currentTarget;
 
     const threshold = 200; // px
-    const nearBottom = el.scrollTop + el.clientHeight >= el.scrollHeight - threshold;
-    const nearRight = el.scrollLeft + el.clientWidth >= el.scrollWidth - threshold;
+    const nearBottom =
+      el.scrollTop + el.clientHeight >= el.scrollHeight - threshold;
+    const nearRight =
+      el.scrollLeft + el.clientWidth >= el.scrollWidth - threshold;
 
-    if (nearBottom || nearRight) onScrollNearEdge({ bottom: nearBottom, right: nearRight });
+    if (nearBottom || nearRight)
+      onScrollNearEdge({ bottom: nearBottom, right: nearRight });
   };
 
   const rangeBorder = "2px solid rgba(16,185,129,0.8)";
@@ -59,11 +62,16 @@ export function GridTable({
   return (
     <div
       className="flex-1 overflow-auto"
+      tabIndex={0}
+      onMouseEnter={(e) => (e.currentTarget as HTMLDivElement).focus()}
       onScroll={handleScroll}
       onMouseUp={onMouseUpAnywhere}
       onMouseLeave={onMouseUpAnywhere}
     >
-      <table className="w-full border-collapse" style={{ fontSize: FONT_SIZE_PX }}>
+      <table
+        className="w-full border-collapse"
+        style={{ fontSize: FONT_SIZE_PX }}
+      >
         <thead className="sticky top-0 bg-gray-100 z-10">
           <tr>
             <th className="w-12 border border-gray-300 bg-gray-200 text-xs p-1" />
@@ -105,7 +113,9 @@ export function GridTable({
                 const fg = state?.style?.fg;
                 const fontWeight = state?.style?.bold ? "700" : "400";
                 const fontStyle = state?.style?.italic ? "italic" : "normal";
-                const textDecoration = state?.style?.underline ? "underline" : "none";
+                const textDecoration = state?.style?.underline
+                  ? "underline"
+                  : "none";
 
                 const bt = state?.style?.borderTop;
                 const br = state?.style?.borderRight;
@@ -114,34 +124,58 @@ export function GridTable({
 
                 // range highlight
                 const inRange = range ? isInRange(cellRef, range) : false;
-                const edge = range ? isRangeEdge(cellRef, range) : { top: false, bottom: false, left: false, right: false };
-                const rangeBg = inRange && !isSelected ? "rgba(16,185,129,0.12)" : undefined;
+                const edge = range
+                  ? isRangeEdge(cellRef, range)
+                  : { top: false, bottom: false, left: false, right: false };
+                const rangeBg =
+                  inRange && !isSelected ? "rgba(16,185,129,0.12)" : undefined;
 
                 // used range
                 const colIndex = colToIndex(col);
                 const ur = usedRange;
-                const inUsed = !!ur && row <= ur.maxRow && colIndex <= ur.maxColIndex;
+                const inUsed =
+                  !!ur && row <= ur.maxRow && colIndex <= ur.maxColIndex;
 
                 const usedTop = !!ur && row === 1 && colIndex <= ur.maxColIndex;
                 const usedLeft = !!ur && colIndex === 0 && row <= ur.maxRow;
-                const usedBottom = !!ur && row === ur.maxRow && colIndex <= ur.maxColIndex;
-                const usedRight = !!ur && colIndex === ur.maxColIndex && row <= ur.maxRow;
+                const usedBottom =
+                  !!ur && row === ur.maxRow && colIndex <= ur.maxColIndex;
+                const usedRight =
+                  !!ur && colIndex === ur.maxColIndex && row <= ur.maxRow;
 
                 const usedBg =
-                  inUsed && !isSelected && !inRange ? "rgba(0,0,0,0.02)" : undefined;
+                  inUsed && !isSelected && !inRange
+                    ? "rgba(0,0,0,0.02)"
+                    : undefined;
 
                 // border priority:
                 // selected (class border-2 emerald) > rangeBorder > html border > usedBorder
-                const topBorder = isSelected ? undefined : (edge.top ? rangeBorder : (bt ?? (usedTop ? usedBorder : undefined)));
-                const bottomBorder = isSelected ? undefined : (edge.bottom ? rangeBorder : (bb ?? (usedBottom ? usedBorder : undefined)));
-                const leftBorder = isSelected ? undefined : (edge.left ? rangeBorder : (bl ?? (usedLeft ? usedBorder : undefined)));
-                const rightBorder = isSelected ? undefined : (edge.right ? rangeBorder : (br ?? (usedRight ? usedBorder : undefined)));
+                const topBorder = isSelected
+                  ? undefined
+                  : edge.top
+                  ? rangeBorder
+                  : bt ?? (usedTop ? usedBorder : undefined);
+                const bottomBorder = isSelected
+                  ? undefined
+                  : edge.bottom
+                  ? rangeBorder
+                  : bb ?? (usedBottom ? usedBorder : undefined);
+                const leftBorder = isSelected
+                  ? undefined
+                  : edge.left
+                  ? rangeBorder
+                  : bl ?? (usedLeft ? usedBorder : undefined);
+                const rightBorder = isSelected
+                  ? undefined
+                  : edge.right
+                  ? rangeBorder
+                  : br ?? (usedRight ? usedBorder : undefined);
 
                 return (
                   <td
-                  onContextMenu={(e) => {
-                    e.preventDefault();
-                    onCellContextMenu?.(cellRef, e.clientX, e.clientY);
+                    onContextMenu={(e) => {
+                      e.preventDefault();
+                      onCellContextMenu?.(cellRef, e.clientX, e.clientY);
                     }}
                     key={cellRef}
                     rowSpan={rs > 1 ? rs : undefined}
@@ -165,7 +199,9 @@ export function GridTable({
                       height: CELL_H_PX,
                       minWidth: CELL_W_PX,
 
-                      backgroundColor: isSelected ? undefined : (rangeBg ?? usedBg ?? bg),
+                      backgroundColor: isSelected
+                        ? undefined
+                        : rangeBg ?? usedBg ?? bg,
                       color: fg,
                       fontWeight,
                       fontStyle,

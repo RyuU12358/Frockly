@@ -20,6 +20,46 @@ export function setActiveWorkspaceId(id: string) {
     activeWorkspaceId: id,
   }));
 }
+export function updateNamedFunctionMeta(
+  fnId: string,
+  patch: { name?: string; description?: string }
+) {
+  updateProjectState((s) => {
+    const fn = findFn(s, fnId);
+    if (!fn) return s;
+
+    const nextName = patch.name ?? fn.name;
+    const nextDesc =
+      patch.description !== undefined ? patch.description : fn.description;
+
+    return {
+      ...s,
+      functions: s.functions.map((f) =>
+        f.id === fnId
+          ? {
+              ...f,
+              name: nextName,
+              description: nextDesc,
+            }
+          : f
+      ),
+      // ★名前が変わる場合だけ、WSタイトルとXMLも追随（renameと同じ処理）
+      workspaces:
+        patch.name !== undefined
+          ? s.workspaces.map((w) =>
+              w.id === fn.workspaceId
+                ? {
+                    ...w,
+                    title: nextName,
+                    xml: replaceFnNameInXml(w.xml, nextName),
+                  }
+                : w
+            )
+          : s.workspaces,
+    };
+  });
+}
+
 function escapeXml(s: string) {
   return s
     .replace(/&/g, "&amp;")
@@ -107,6 +147,7 @@ export function listFnItems(s: ProjectState) {
     name: f.name,
     params: f.params,
     workspaceId: f.workspaceId,
+    description: f.description ?? "", // ★追加
   }));
 }
 
@@ -134,12 +175,14 @@ export function createNamedFunction(name = "A", params: string[] = []) {
       name,
       params,
       workspaceId: wsId,
+      description: "", // ★追加（空でOK）
     };
 
     const ws: WorkspaceEntity = {
       id: wsId,
       kind: "fn",
       title: name,
+      fnId,
       xml: FN_ROOT_XML(fnId, name),
     };
 
@@ -182,17 +225,19 @@ export function duplicateNamedFunction(fnId: string) {
     const newWsId = uid("ws_fn");
 
     const newName = `${src.name} (copy)`;
-
     const copiedFn: FunctionEntity = {
       ...src,
       id: newFnId,
       name: newName,
       workspaceId: newWsId,
+      description: src.description ?? "", // ★追加
     };
+
     const copiedWs: WorkspaceEntity = {
       id: newWsId,
       kind: "fn",
       title: newName,
+      fnId: newFnId,
       xml: FN_ROOT_XML(newFnId, newName), // ★これ
     };
 
@@ -222,6 +267,24 @@ export function deleteNamedFunction(fnId: string) {
       functions: nextFunctions,
       workspaces: nextWorkspaces,
       activeWorkspaceId: active,
+    };
+  });
+}
+export function updateNamedFunctionParams(fnId: string, params: string[]) {
+  updateProjectState((s) => {
+    const fn = findFn(s, fnId);
+    if (!fn) return s;
+
+    // 同一なら更新せん（無限ループ/無駄render防止）
+    const same =
+      fn.params.length === params.length &&
+      fn.params.every((v, i) => v === params[i]);
+
+    if (same) return s;
+
+    return {
+      ...s,
+      functions: s.functions.map((f) => (f.id === fnId ? { ...f, params } : f)),
     };
   });
 }

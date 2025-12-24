@@ -10,7 +10,7 @@ const C_CMP = 0; // 比較（赤）
 const C_PAREN = 180; // 括弧（青緑）
 const C_RAW = 120; // 未解析（灰っぽくしたいなら後で調整）
 const C_BOOL = 100; // 真偽（緑寄り）
-
+const c_NAME = 40;
 class ClickableLabel extends Blockly.FieldLabelSerializable {
   private onClick: () => void;
 
@@ -348,6 +348,23 @@ export function registerBasicBlocks(lang: UiLang) {
       this.setColour(C_BOOL);
       Blockly.Extensions.apply("frockly_basic_ui", this, false);
       this.setTooltip("TRUE / FALSE");
+    },
+  };
+
+  // ---- var ----
+  Blockly.Blocks["basic_var"] = {
+    init: function () {
+      this.appendDummyInput()
+        .appendField("変数")
+        .appendField(new Blockly.FieldTextInput("x"), "var");
+
+      // 出力は「識別子」専用
+      this.setOutput(true, "VAR");
+
+      // 無彩色グレー（超業務用）
+      this.setColour(c_NAME);
+      Blockly.Extensions.apply("frockly_basic_ui", this, false);
+      this.setTooltip("識別子（LET変数 / LAMBDA引数 / 名前付き関数の引数）");
     },
   };
 }

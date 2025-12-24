@@ -10,9 +10,11 @@ import { useProject } from "../../state/project/projectStore";
 import {
   setActiveWorkspaceId,
   saveActiveWorkspaceXml,
+  updateNamedFunctionParams,
 } from "../../state/project/workspaceOps";
 
 import { ensureGridPattern } from "./ui/workspaceDecor";
+import { setCallFnMeta } from "../../blocks/fn/fn_call.ts";
 
 // もしくは project にメソッドが生えてるなら import 不要
 
@@ -21,8 +23,13 @@ export function BlocklyWorkspace({
   selectedCell,
   onWorkspaceApi,
   uiLang,
+  namedFns,
 }: any) {
   const initReadyRef = useRef<Promise<void> | null>(null);
+  const namedFnsRef = useRef<any[]>(namedFns ?? []);
+  useEffect(() => {
+    namedFnsRef.current = namedFns ?? [];
+  }, [namedFns]);
 
   const ensureBlocklyReady = async () => {
     if (!initReadyRef.current) {
@@ -120,7 +127,7 @@ export function BlocklyWorkspace({
     }
   };
 
-  const ensureFnParams = (wsId: string) => {
+  const ensureFnParamsCount = (wsId: string) => {
     const ws = wsRef.current;
     if (!ws) return;
 
@@ -128,15 +135,83 @@ export function BlocklyWorkspace({
     const wsInfo = p.workspaces.find((w) => w.id === wsId);
     if (!wsInfo || wsInfo.kind !== "fn") return;
 
+    const fnId = wsInfo.fnId;
+    if (!fnId) return;
+
+    const fn = p.functions.find((f) => f.id === fnId);
+    const want = fn?.params?.length ?? 0;
+
     const roots = ws.getAllBlocks(false).filter((b) => b.type === "fn_root");
     if (roots.length !== 1) return;
-
     const root = roots[0];
-    const params = ws.getAllBlocks(false).filter((b) => b.type === "fn_param");
 
-    for (const b of params) {
-      if (b.getParent() !== root) b.dispose(true);
+    // ★ fn_root の statement input 名は "PARAMS"（あなたの定義通り）
+    const stackConn = root.getInput("PARAMS")?.connection;
+    if (!stackConn) return;
+
+    // いま繋がってる param チェーンを辿る
+    const chain: Blockly.Block[] = [];
+    let cur = stackConn.targetBlock();
+    while (cur && cur.type === "fn_param") {
+      chain.push(cur);
+      cur = cur.getNextBlock();
     }
+
+    // 多い分は末尾から消す
+    while (chain.length > want) {
+      chain.pop()!.dispose(true);
+    }
+
+    // 末尾に繋ぐ補助
+    const connectTail = (b: Blockly.Block) => {
+      if (chain.length === 0) {
+        stackConn.connect((b as any).previousConnection);
+      } else {
+        const tail = chain[chain.length - 1];
+        (tail as any).nextConnection.connect((b as any).previousConnection);
+      }
+    };
+
+    // 足りない分は追加して繋ぐ
+    while (chain.length < want) {
+      const b = ws.newBlock("fn_param");
+      b.initSvg();
+      (b as any).render?.();
+      connectTail(b);
+      chain.push(b);
+    }
+
+    // 名前反映（params配列をUIに出す）
+    for (let i = 0; i < chain.length; i++) {
+      chain[i].setFieldValue(fn?.params?.[i] ?? `p${i + 1}`, "NAME");
+    }
+
+    ws.render();
+  };
+  const readFnParamsFromWorkspace = (wsId: string): string[] => {
+    const ws = wsRef.current;
+    if (!ws) return [];
+
+    const p = projectRef.current;
+    const wsInfo = p.workspaces.find((w) => w.id === wsId);
+    if (!wsInfo || wsInfo.kind !== "fn") return [];
+
+    const root = ws.getAllBlocks(false).find((b) => b.type === "fn_root");
+    if (!root) return [];
+
+    const conn = root.getInput("PARAMS")?.connection;
+    if (!conn) return [];
+
+    const FIELD = "NAME";
+
+    const out: string[] = [];
+    let cur = conn.targetBlock(); // 先頭の fn_param
+    while (cur && cur.type === "fn_param") {
+      const name = String((cur as any).getFieldValue?.(FIELD) ?? "").trim();
+      if (name) out.push(name);
+      cur = cur.getNextBlock(); // ★次の param へ
+    }
+    return out;
   };
 
   useEffect(() => {
@@ -196,7 +271,7 @@ export function BlocklyWorkspace({
 
         // ★ロード後に「無かったら入れる」を確実に
         ensureFnRoot(wsId);
-        ensureFnParams(wsId);
+        ensureFnParamsCount(wsId);
 
         w.render();
         w.resize();
@@ -261,15 +336,77 @@ export function BlocklyWorkspace({
           return node;
         });
       });
+      // ★ project から名前付き関数一覧っぽいものを引く（暫定：型はanyでOK）
+      const findNamedFn = (fnId: string) => {
+        const p: any = projectRef.current;
+
+        // ここは実プロパティ名が確定したら整理する
+        const candidates =
+          p?.fns ??
+          p?.namedFns ??
+          p?.namedFunctions ??
+          p?.namedFnItems ??
+          p?.functions ??
+          [];
+
+        if (Array.isArray(candidates)) {
+          return candidates.find((x: any) => x?.id === fnId) ?? null;
+        }
+
+        // map/object 形式の可能性
+        if (candidates && typeof candidates === "object") {
+          return candidates[fnId] ?? null;
+        }
+        return null;
+      };
 
       // 外部から block を挿入する API を登録（最新refで呼ぶ）
       onWorkspaceApiRef.current?.({
         insertBlock: (blockType: string) => {
           const w = wsRef.current;
           if (!w) return;
-
           if (!Blockly.Blocks[blockType]) return;
 
+          const p = projectRef.current;
+          const wsInfo = p.workspaces.find((x) => x.id === p.activeWorkspaceId);
+          const isFn = wsInfo?.kind === "fn";
+
+          // ★ fn_param は「fnワークスペースなら root.PARAMS の末尾へ接続」
+          if (isFn && blockType === "fn_param") {
+            const root = w
+              .getAllBlocks(false)
+              .find((b) => b.type === "fn_root");
+            const stackConn = root?.getInput("PARAMS")?.connection;
+
+            if (root && stackConn) {
+              // 末尾（next chain の最後）を探す
+              let tail = stackConn.targetBlock();
+              while (tail && tail.getNextBlock()) tail = tail.getNextBlock();
+
+              const b = w.newBlock("fn_param");
+              b.initSvg();
+              (b as any).render?.();
+
+              if (!tail) {
+                // PARAMS が空なら root に直結
+                stackConn.connect((b as any).previousConnection);
+              } else {
+                // 末尾の next に繋ぐ
+                (tail as any).nextConnection.connect(
+                  (b as any).previousConnection
+                );
+              }
+
+              pushHistory("fn_param");
+              onHostPointerDown();
+              w.render();
+              w.resize();
+              return;
+            }
+            // rootが無い等ならフォールバックで通常挿入
+          }
+
+          // 通常ブロックは今まで通り
           const b = w.newBlock(blockType);
           b.initSvg();
           (b as any).render?.();
@@ -331,35 +468,43 @@ export function BlocklyWorkspace({
 
           queueMicrotask(() => {
             ensureFnRoot(wsId);
-            ensureFnParams(wsId);
+            ensureFnParamsCount(wsId);
           });
         },
 
         insertFnCall: (fnId: string) => {
           const w = wsRef.current;
+          console.log("[insertFnCall] called", { fnId, hasWs: !!w });
           if (!w) return;
 
-          if (!Blockly.Blocks["fn_call"]) {
-            // 暫定：まだfn_call無いならテキストで落とす
-            const b = w.newBlock("basic_string");
-            b.initSvg();
-            (b as any).render?.();
-            b.setFieldValue(fnId, "TEXT");
-            b.moveBy(40, 40);
-            pushHistory("basic_string");
-            onHostPointerDown();
-            return;
-          }
-
           const b = w.newBlock("fn_call");
+          console.log("[insertFnCall] newBlock", b);
+
           b.initSvg();
+
+          const fn = namedFnsRef.current.find((x) => x.id === fnId) ?? null;
+          setCallFnMeta(
+            b as any,
+            fn ? { id: fn.id, name: fn.name, params: fn.params } : null
+          );
+
+          console.log("[insertFnCall] fn meta", fn);
+
+          setCallFnMeta(b as any, fn);
+
+          console.log("[insertFnCall] after setCallFnMeta", {
+            fnId_: (b as any).fnId_,
+            params_: (b as any).params_,
+            inputs: b.inputList.map((i) => i.name),
+          });
+
+          // ★最後にrender
           (b as any).render?.();
-          try {
-            b.setFieldValue(fnId, "FN");
-          } catch {
-            (b as any).data = JSON.stringify({ fnId });
-          }
+          w.render();
+          w.resize();
+
           b.moveBy(40, 40);
+
           pushHistory("fn_call");
           onHostPointerDown();
         },
@@ -379,6 +524,12 @@ export function BlocklyWorkspace({
           if (!Blockly.Blocks["fn_call"]) {
             const b = w.newBlock("basic_string");
             b.initSvg();
+            const fn = findNamedFn(fnId);
+            setCallFnMeta(
+              b as any,
+              fn ? { id: fn.id, name: fn.name, params: fn.params } : null
+            );
+
             (b as any).render?.();
             b.setFieldValue(fnId, "TEXT");
             b.moveBy(60, 60);
@@ -405,8 +556,12 @@ export function BlocklyWorkspace({
       });
 
       const onBlocklyEvent = (e: Blockly.Events.Abstract) => {
-        if (e.isUiEvent) return; // 余計なの除外（任意）
-        // ★ドラッグ中・プレビュー系は無視（ここ重要）
+        // まずはログ（デバッグ中だけ）
+        // console.log("[EV]", e.type, { isUi: e.isUiEvent });
+
+        if (e.isUiEvent) return;
+
+        // 重要：UI系は除外
         if (
           e.type === Blockly.Events.BLOCK_DRAG ||
           e.type === Blockly.Events.SELECTED ||
@@ -414,6 +569,13 @@ export function BlocklyWorkspace({
         ) {
           return;
         }
+
+        // ★最新stateを必ずrefから取る
+        const p = projectRef.current;
+        const wsId = p.activeWorkspaceId;
+        const wsInfo = p.workspaces.find((w: any) => w.id === wsId);
+        const isFn = wsInfo?.kind === "fn";
+
         if (e.type === Blockly.Events.BLOCK_CREATE) {
           const ce = e as Blockly.Events.BlockCreate;
           for (const id of ce.ids ?? []) {
@@ -422,12 +584,7 @@ export function BlocklyWorkspace({
           }
         }
 
-        // ★ここで start 起点に生成
-        const wsInfo = project.workspaces.find(
-          (w: any) => w.id === project.activeWorkspaceId
-        );
-        const isFn = wsInfo?.kind === "fn";
-
+        // ===== 生成（start/root起点） =====
         const starts = ws
           .getAllBlocks(false)
           .filter((b) =>
@@ -435,31 +592,41 @@ export function BlocklyWorkspace({
           );
 
         if (starts.length === 0) {
-          onFormulaChangeRef.current?.(""); // start無いなら空
-          return;
+          onFormulaChangeRef.current?.("");
+        } else {
+          const start = starts[0];
+          try {
+            ExcelGen.init(ws);
+            const out = ExcelGen.blockToCode(start);
+            const code = Array.isArray(out)
+              ? String(out[0] ?? "")
+              : String(out ?? "");
+            ExcelGen.finish(code);
+            onFormulaChangeRef.current?.(code.trim());
+          } catch (err) {
+            console.error("[GEN] blockToCode failed", err);
+          }
         }
 
-        const start = starts[0]; // 複数でもとりあえず先頭
+        // ===== 名前付き関数WSなら params 同期 =====
+        if (!isFn) return;
 
-        try {
-          ExcelGen.init(ws); // ★ これが必要
-          const out = ExcelGen.blockToCode(start);
-          const code = Array.isArray(out)
-            ? String(out[0] ?? "")
-            : String(out ?? "");
-          ExcelGen.finish(code); // ★ finish も一応呼ぶ（後片付け）
-          onFormulaChangeRef.current?.(code.trim());
-        } catch (err) {
-          console.error("[GEN] blockToCode failed", err);
-        }
-        // 生成処理が終わった後くらいに
-        // ★ fn_root の構造保証（名前付き関数WSのみ）
-        if (
+        // DELETE/CREATE/MOVE の時だけ同期（連打軽減）
+        const shouldSync =
           e.type === Blockly.Events.BLOCK_DELETE ||
           e.type === Blockly.Events.BLOCK_CREATE ||
-          e.type === Blockly.Events.BLOCK_MOVE
-        ) {
-        }
+          e.type === Blockly.Events.BLOCK_MOVE ||
+          e.type === Blockly.Events.BLOCK_CHANGE; // paramのフィールド編集拾うならこれ要る
+
+        if (!shouldSync) return;
+
+        console.log("[FN] ws change", { wsId, fnId: wsInfo?.fnId, e: e.type });
+
+        const params = readFnParamsFromWorkspace(wsId);
+        console.log("[FN] extracted params", { params });
+
+        const fnId = wsInfo?.fnId;
+        if (fnId) updateNamedFunctionParams(fnId, params);
       };
 
       ws.addChangeListener(onBlocklyEvent);
