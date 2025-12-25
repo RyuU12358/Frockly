@@ -85,4 +85,25 @@ export function registerBasicGenerators() {
 
     return [`${fn}(${args.join(",")})`, Order.FUNCTION_CALL];
   };
+  function firstValueExpr(block: Blockly.Block): string {
+    const VALUE =
+      (Blockly as any).inputTypes?.VALUE ??
+      (Blockly as any).inputs?.inputTypes?.VALUE; // 互換用（環境差あるため）
+
+    const valueInputs = block.inputList
+      .filter((i) => i.type === VALUE)
+      .map((i) => i.name);
+
+    for (const name of valueInputs) {
+      const v = (G.valueToCode(block, name, Order.NONE) ?? "").trim();
+      if (v) return v;
+    }
+    return "";
+  }
+
+  G.forBlock["fn_root"] = function (block: Blockly.Block) {
+    const expr = firstValueExpr(block);
+    // ★fn側は = を付けない
+    return expr ? `${expr}\n` : "";
+  };
 }

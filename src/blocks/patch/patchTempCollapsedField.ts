@@ -23,7 +23,4 @@ export function patchTempCollapsedField() {
     return orig.call(this, v);
   };
 
-  console.log(
-    "[Frockly] patched FieldLabel.setValue for _TEMP_COLLAPSED_FIELD"
-  );
 }

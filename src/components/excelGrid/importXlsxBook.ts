@@ -43,7 +43,6 @@ export function importXlsxBook(buf: ArrayBuffer): ImportedBook {
         rawValue: c.v,
         formula,
       };
-      console.log("[XLSX]", sheetName, a1, { v: c.v, w: c.w, f: c.f, t: c.t });
     }
 
     sheets.push({ name: sheetName, cells: cellMap });

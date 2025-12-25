@@ -36,6 +36,7 @@ interface ExcelGridProps {
   onRangeSelect?: (range: string) => void;
   onAddRefBlock?: (refText: string) => void;
   uiLang: "en" | "ja";
+  highlightRange?: CellRange | null;
 }
 
 export function ExcelGrid({
@@ -46,6 +47,7 @@ export function ExcelGrid({
   onRangeSelect,
   onAddRefBlock,
   uiLang,
+  highlightRange,
 }: ExcelGridProps) {
   const [colCount, setColCount] = useState(MIN_COLS);
   const [rowCount, setRowCount] = useState(MIN_ROWS);
@@ -307,6 +309,7 @@ export function ExcelGrid({
         onMouseUpAnywhere={finalizeDrag}
         usedRange={usedRange}
         onCellContextMenu={onCellContextMenu}
+        highlightRange={highlightRange ?? range}
       />
     </div>
   );

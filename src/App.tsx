@@ -1,10 +1,10 @@
 import { useMemo, useRef, useState } from "react";
-import { ExcelRibbon } from "./components/ribbon/ExcelRibbon";
+import { ExcelRibbon,type RibbonTab } from "./components/ribbon/ExcelRibbon";
 import { ExcelGrid } from "./components/excelGrid/ExcelGrid";
 import { BlocklyWorkspace } from "./components/blockly/BlocklyWorkspace";
 import { FormulaDisplay } from "./components/fomula/FormulaDisplay";
 import { findWorkspace } from "./state/project/workspaceOps";
-import { useProject } from "./state/project/projectStore";
+import { getProjectState, useProject } from "./state/project/projectStore";
 import {
   ensureProjectInitialized,
   createNamedFunction,
@@ -13,9 +13,11 @@ import {
   renameNamedFunction,
 } from "./state/project/workspaceOps";
 import { updateNamedFunctionMeta } from "./state/project/workspaceOps";
-import type { CellMap } from "./components/excelGrid/types";
+import type { CellMap, CellRange } from "./components/excelGrid/types";
 import { importXlsxBook } from "./components/excelGrid/importXlsxBook";
-
+import { exportNamedFunctions, importNamedFunctions } from "./io/namedFnJson";
+import { importNamedFunctionLibrary } from "./state/project/workspaceOps"; // もし無ければ作る
+import type { WorkspaceApi } from "./components/blockly/types";
 export default function App() {
   // ★最初にプロジェクト初期化（二重呼びでも安全）
   ensureProjectInitialized();
@@ -30,36 +32,13 @@ export default function App() {
   const [selectedCell, setSelectedCell] = useState("A1");
 
   // ★ここを拡張
-  const [ribbonTab, setRibbonTab] = useState<"functions" | "named" | "view">(
+  const [ribbonTab, setRibbonTab] = useState<RibbonTab>(
     "functions"
   );
 
   // ★追加：ON/OFF表示用のstate（同時ON可能）
   const [focusOn, setFocusOn] = useState(false);
   const [pathOn, setPathOn] = useState(false);
-
-  type WorkspaceApi = {
-    insertBlock: (t: string) => void;
-    insertRefBlock: (refText: string) => void;
-    insertFromFormula: (formula: string) => void;
-
-    // ★追加：名前付き関数（BlocklyWorkspace側で実装する）
-    insertFnCall?: (fnId: string) => void;
-    insertFnToMain?: (fnId: string) => void;
-    switchWorkspace?: (wsId: string) => void;
-
-    view?: {
-      collapseAll?: () => void;
-      expandAll?: () => void;
-      expandStep?: (dir: 1 | -1) => void;
-
-      toggleFocus?: () => void;
-      focusStep?: (dir: 1 | -1) => void;
-
-      togglePath?: () => void;
-      pathStep?: (dir: 1 | -1) => void;
-    };
-  };
 
   const workspaceApiRef = useRef<WorkspaceApi | null>(null);
 
@@ -139,9 +118,46 @@ export default function App() {
     setBookSheets(book.sheets);
     setActiveSheet(0);
   };
+  const onImportNamedFns = async (file: File) => {
+    const text = await file.text();
+    const json = JSON.parse(text);
+
+    const imported = importNamedFunctions(json);
+    // imported: { fn: NamedFnItem, workspaceXml }[] みたいな形なら
+
+    importNamedFunctionLibrary(
+      imported.map((x) => ({
+        name: x.fn.name,
+        params: x.fn.params,
+        description: x.fn.description,
+        workspaceXml: x.workspaceXml,
+      })),
+      { activateFirst: true }
+    );
+  };
+  const onExportNamedFns = () => {
+    const project = getProjectState();
+    const data = exportNamedFunctions(project);
+
+    const blob = new Blob([JSON.stringify(data, null, 2)], {
+      type: "application/json",
+    });
+
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "frockly_named_functions.json";
+    a.click();
+
+    URL.revokeObjectURL(url);
+  };
+  const [highlightRange, setHighlightRange] = useState<CellRange | null>(null);
   return (
     <div className="h-screen flex flex-col bg-gray-50">
       <ExcelRibbon
+        onExportNamedFns={onExportNamedFns}
+        onImportNamedFns={onImportNamedFns}
         selectedTab={ribbonTab}
         onTabChange={setRibbonTab}
         onBlockClick={(blockType) =>
@@ -193,6 +209,7 @@ export default function App() {
               });
             }}
             uiLang={uiLang}
+            highlightRange={highlightRange}
           />
         </div>
 
@@ -210,6 +227,7 @@ export default function App() {
               onWorkspaceApi={(api) => (workspaceApiRef.current = api)}
               uiLang={uiLang}
               namedFns={namedFns}
+              onHighlightRange={setHighlightRange}
             />
           </div>
 

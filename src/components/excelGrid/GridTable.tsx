@@ -13,15 +13,18 @@ interface GridTableProps {
 
   onScrollNearEdge?: (dir: { bottom?: boolean; right?: boolean }) => void;
 
-  // 範囲選択（③）
+  // 範囲選択（既存）
   range?: CellRange | null;
+
+  // ★追加：参照ハイライト
+  highlightRange?: CellRange | null;
+
   dragging?: boolean;
   onCellMouseDown?: (cell: CellRef) => void;
   onCellMouseEnter?: (cell: CellRef) => void;
   onMouseUpAnywhere?: () => void;
   onCellContextMenu?: (cell: CellRef, x: number, y: number) => void;
 
-  // 使用範囲（④）
   usedRange?: { maxRow: number; maxColIndex: number };
 }
 
@@ -33,6 +36,7 @@ export function GridTable({
   onCellClick,
   onScrollNearEdge,
   range,
+  highlightRange,
   dragging,
   onCellMouseDown,
   onCellMouseEnter,
@@ -56,7 +60,8 @@ export function GridTable({
       onScrollNearEdge({ bottom: nearBottom, right: nearRight });
   };
 
-  const rangeBorder = "2px solid rgba(16,185,129,0.8)";
+  const rangeBorder = "2px solid rgba(16,185,129,0.8)"; // 緑（選択）
+  const hiBorder = "2px solid rgba(59,130,246,0.55)"; // ★青（参照）
   const usedBorder = "1px solid rgba(0,0,0,0.25)";
 
   return (
@@ -97,18 +102,15 @@ export function GridTable({
               {columns.map((col) => {
                 const cellRef = toCellRef(col, row);
 
-                // 結合に吸われてるセルは描画しない
                 if (covered.has(cellRef)) return null;
 
                 const isSelected = cellRef === selectedCell;
                 const state = cells[cellRef];
                 const text = state?.displayText ?? "";
 
-                // merge（代表セルのみ）
                 const rs = state?.merge?.rowspan ?? 1;
                 const cs = state?.merge?.colspan ?? 1;
 
-                // style
                 const bg = state?.style?.bg;
                 const fg = state?.style?.fg;
                 const fontWeight = state?.style?.bold ? "700" : "400";
@@ -122,13 +124,27 @@ export function GridTable({
                 const bb = state?.style?.borderBottom;
                 const bl = state?.style?.borderLeft;
 
-                // range highlight
-                const inRange = range ? isInRange(cellRef, range) : false;
-                const edge = range
+                // ===== 選択 range（既存） =====
+                const inSel = range ? isInRange(cellRef, range) : false;
+                const edgeSel = range
                   ? isRangeEdge(cellRef, range)
                   : { top: false, bottom: false, left: false, right: false };
-                const rangeBg =
-                  inRange && !isSelected ? "rgba(16,185,129,0.12)" : undefined;
+
+                // ===== 参照 highlightRange（追加） =====
+                const inHi = highlightRange
+                  ? isInRange(cellRef, highlightRange)
+                  : false;
+                const edgeHi = highlightRange
+                  ? isRangeEdge(cellRef, highlightRange)
+                  : { top: false, bottom: false, left: false, right: false };
+
+                // 背景：選択 > 参照 > used > セルbg
+                const selBg =
+                  inSel && !isSelected ? "rgba(16,185,129,0.12)" : undefined;
+                const hiBg =
+                  inHi && !isSelected && !inSel
+                    ? "rgba(59,130,246,0.08)"
+                    : undefined;
 
                 // used range
                 const colIndex = colToIndex(col);
@@ -144,31 +160,42 @@ export function GridTable({
                   !!ur && colIndex === ur.maxColIndex && row <= ur.maxRow;
 
                 const usedBg =
-                  inUsed && !isSelected && !inRange
+                  inUsed && !isSelected && !inSel && !inHi
                     ? "rgba(0,0,0,0.02)"
                     : undefined;
 
                 // border priority:
-                // selected (class border-2 emerald) > rangeBorder > html border > usedBorder
+                // selected(クラス) > selection green > highlight blue > html border > usedBorder
                 const topBorder = isSelected
                   ? undefined
-                  : edge.top
+                  : edgeSel.top
                   ? rangeBorder
+                  : edgeHi.top
+                  ? hiBorder
                   : bt ?? (usedTop ? usedBorder : undefined);
+
                 const bottomBorder = isSelected
                   ? undefined
-                  : edge.bottom
+                  : edgeSel.bottom
                   ? rangeBorder
+                  : edgeHi.bottom
+                  ? hiBorder
                   : bb ?? (usedBottom ? usedBorder : undefined);
+
                 const leftBorder = isSelected
                   ? undefined
-                  : edge.left
+                  : edgeSel.left
                   ? rangeBorder
+                  : edgeHi.left
+                  ? hiBorder
                   : bl ?? (usedLeft ? usedBorder : undefined);
+
                 const rightBorder = isSelected
                   ? undefined
-                  : edge.right
+                  : edgeSel.right
                   ? rangeBorder
+                  : edgeHi.right
+                  ? hiBorder
                   : br ?? (usedRight ? usedBorder : undefined);
 
                 return (
@@ -201,7 +228,8 @@ export function GridTable({
 
                       backgroundColor: isSelected
                         ? undefined
-                        : rangeBg ?? usedBg ?? bg,
+                        : selBg ?? hiBg ?? usedBg ?? bg,
+
                       color: fg,
                       fontWeight,
                       fontStyle,

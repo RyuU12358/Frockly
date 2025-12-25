@@ -65,25 +65,19 @@ export function registerFnCallBlock() {
 }
 
 function rebuildArgs(block: Blockly.Block, params: string[]) {
-  console.log("[rebuildArgs] start", {
-    params,
-    before: block.inputList.map((i) => i.name),
-  });
+
 
   for (let i = 0; i < 50; i++) {
     const name = `ARG${i}`;
     if (block.getInput(name)) {
       block.removeInput(name, true);
-      console.log("[rebuildArgs] removed", name);
     }
   }
   if (block.getInput("TAIL")) {
     block.removeInput("TAIL", true);
-    console.log("[rebuildArgs] removed TAIL");
   }
 
   for (let i = 0; i < params.length; i++) {
-    console.log("[rebuildArgs] add ARG", i);
     block
       .appendValueInput(`ARG${i}`)
       .appendField(i === 0 ? "(" : ",")
@@ -92,27 +86,13 @@ function rebuildArgs(block: Blockly.Block, params: string[]) {
 
   if (params.length > 0) {
     block.appendDummyInput("TAIL").appendField(")");
-    console.log("[rebuildArgs] add TAIL");
   }
-
-  console.log("[rebuildArgs] end", {
-    after: block.inputList.map((i) => i.name),
-  });
 }
 
 export function setCallFnMeta(
   b: Blockly.Block,
   fn: NamedFnLite | null | undefined
 ) {
-  console.log("[setCallFnMeta] enter", {
-    blockType: b.type,
-    fn,
-  });
-
-  if (b.type !== "fn_call") {
-    console.warn("[setCallFnMeta] wrong type", b.type);
-    return;
-  }
 
   const fnId = fn?.id ?? "";
   const fnName = fn?.name ?? "???";
@@ -122,20 +102,11 @@ export function setCallFnMeta(
   (b as any).params_ = params;
 
   const f = b.getField("FN_NAME");
-  console.log("[setCallFnMeta] field FN_NAME", f);
 
   if (f) f.setValue(fnName);
 
-  console.log("[setCallFnMeta] before rebuild", {
-    inputs: b.inputList.map((i) => i.name),
-  });
-
   rebuildArgs(b, params);
 
-  console.log("[setCallFnMeta] after rebuild", {
-    params,
-    inputs: b.inputList.map((i) => i.name),
-  });
 }
 
 export function getCallFnId(b: Blockly.Block): string {

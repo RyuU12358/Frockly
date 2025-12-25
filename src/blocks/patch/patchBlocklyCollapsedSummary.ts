@@ -20,7 +20,6 @@ export function patchBlocklyCollapsedSummary() {
   ];
 
   const found = candidates.filter((k) => typeof proto[k] === "function");
-  console.log("[Frockly] collapsed-summary candidates:", found);
 
   for (const key of found) {
     const orig = proto[key];
@@ -29,6 +28,5 @@ export function patchBlocklyCollapsedSummary() {
       if (typeof want === "string" && want.length) return want;
       return orig.apply(this, args);
     };
-    console.log("[Frockly] patched:", key);
   }
 }

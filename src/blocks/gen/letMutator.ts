@@ -49,7 +49,7 @@ function ensureHeader(block: LetBlock) {
 }
 
 function updateHeaderUI(block: LetBlock) {
-  console.log("[LET] updateHeaderUI", block.type, block.__pairs);
+
   const header = ensureHeader(block);
 
   if (block.getField("LET_MINUS")) return;

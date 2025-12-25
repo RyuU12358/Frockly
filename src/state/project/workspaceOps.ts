@@ -5,6 +5,13 @@ import {
   getProjectState,
   updateProjectState,
 } from "./projectStore";
+export type ImportedNamedFnPayload = {
+  name: string;
+  params: string[];
+  description?: string;
+  workspaceXml: string; // ←これが本体
+};
+
 const FN_ROOT_XML = (fnId: string, name: string) =>
   `
 <xml xmlns="https://developers.google.com/blockly/xml">
@@ -285,6 +292,70 @@ export function updateNamedFunctionParams(fnId: string, params: string[]) {
     return {
       ...s,
       functions: s.functions.map((f) => (f.id === fnId ? { ...f, params } : f)),
+    };
+  });
+}
+export function importNamedFunctionLibrary(
+  items: ImportedNamedFnPayload[],
+  opts?: { activateFirst?: boolean }
+) {
+  updateProjectState((s) => {
+    if (!items.length) return s;
+
+    // 既存名で衝突しないように rename (2)(3)...
+    const used = new Set(s.functions.map((f) => f.name));
+
+    const nextFunctions: FunctionEntity[] = [...s.functions];
+    const nextWorkspaces: WorkspaceEntity[] = [...s.workspaces];
+
+    let firstWsId: string | null = null;
+
+    for (const it of items) {
+      const newFnId = uid("fn");
+      const newWsId = uid("ws_fn");
+
+      // name 衝突回避
+      let name = it.name || "Unnamed";
+      if (used.has(name)) {
+        let i = 2;
+        while (used.has(`${name} (${i})`)) i++;
+        name = `${name} (${i})`;
+      }
+      used.add(name);
+
+      const fn: FunctionEntity = {
+        id: newFnId,
+        name,
+        params: it.params ?? [],
+        workspaceId: newWsId,
+        description: it.description ?? "",
+      };
+
+      // workspaceXml が空なら最低限の root を生成
+      const xml = (it.workspaceXml ?? "").trim() || FN_ROOT_XML(newFnId, name);
+
+      const ws: WorkspaceEntity = {
+        id: newWsId,
+        kind: "fn",
+        title: name,
+        fnId: newFnId,
+        xml,
+      };
+
+      nextFunctions.push(fn);
+      nextWorkspaces.push(ws);
+
+      if (!firstWsId) firstWsId = newWsId;
+    }
+
+    return {
+      ...s,
+      functions: nextFunctions,
+      workspaces: nextWorkspaces,
+      activeWorkspaceId:
+        opts?.activateFirst === false
+          ? s.activeWorkspaceId
+          : firstWsId ?? s.activeWorkspaceId,
     };
   });
 }

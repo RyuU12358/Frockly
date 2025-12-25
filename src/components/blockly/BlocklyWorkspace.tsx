@@ -4,7 +4,6 @@ import { STR_ALL, tr } from "../../i18n/strings";
 import "blockly/blocks";
 import { initFrockly } from "../../blockly/init/initFrockly";
 import { ExcelGen } from "../../blocks/basic/generators";
-import { blockFromFormula } from "../../formula";
 import { createViewApi } from "../blockly/view/index.ts";
 import { useProject } from "../../state/project/projectStore";
 import {
@@ -15,6 +14,33 @@ import {
 
 import { ensureGridPattern } from "./ui/workspaceDecor";
 import { setCallFnMeta } from "../../blocks/fn/fn_call.ts";
+import type { CellRange } from "../excelGrid/types";
+// components/blockly/BlocklyWorkspace.tsx
+import type { WorkspaceApi } from "./types";
+
+export type BlocklyWorkspaceProps = {
+  category: string;
+
+  uiLang: "en" | "ja";
+
+  selectedCell: string;
+  onFormulaChange: (formula: string) => void;
+
+  // App で setHighlightRange してるやつ
+  onHighlightRange?: (range: CellRange | null) => void;
+
+  // 名前付き関数（App が渡してる形に合わせる）
+  namedFns: {
+    id: string;
+    name: string;
+    params: string[];
+    workspaceId: string;
+    description?: string;
+  }[];
+
+  // ★これが肝：api の型を確定させる
+  onWorkspaceApi?: (api: WorkspaceApi) => void;
+};
 
 // もしくは project にメソッドが生えてるなら import 不要
 
@@ -24,7 +50,8 @@ export function BlocklyWorkspace({
   onWorkspaceApi,
   uiLang,
   namedFns,
-}: any) {
+  onHighlightRange,
+}: BlocklyWorkspaceProps) {
   const initReadyRef = useRef<Promise<void> | null>(null);
   const namedFnsRef = useRef<any[]>(namedFns ?? []);
   useEffect(() => {
@@ -36,13 +63,6 @@ export function BlocklyWorkspace({
       initReadyRef.current = initFrockly(uiLang);
     }
     await initReadyRef.current;
-
-    // 念のためログ（安定したら消してOK）
-    console.log("[WS] ready", {
-      fn_root: !!Blockly.Blocks["fn_root"],
-      fn_param: !!Blockly.Blocks["fn_param"],
-      fn_call: !!Blockly.Blocks["fn_call"],
-    });
   };
   useEffect(() => {
     initReadyRef.current = null; // 言語変わったら再init
@@ -213,6 +233,21 @@ export function BlocklyWorkspace({
     }
     return out;
   };
+  const parseRefToRange = (refText: string): CellRange | null => {
+    // Sheet名を捨てる
+    const t = refText.includes("!") ? refText.split("!").pop()! : refText;
+
+    // ★ $ と # を除去（スピルは今は無視）
+    const s = t.replace(/[$#]/g, "").trim();
+
+    // A1 or A1:B2
+    const m = s.match(/^([A-Z]+[0-9]+)(?::([A-Z]+[0-9]+))?$/i);
+    if (!m) return null;
+
+    const a = m[1].toUpperCase();
+    const b = (m[2] ?? m[1]).toUpperCase();
+    return { a, b };
+  };
 
   useEffect(() => {
     const hostEl = hostRef.current;
@@ -244,7 +279,6 @@ export function BlocklyWorkspace({
       try {
         const dom = Blockly.Xml.workspaceToDom(w);
         const xml = Blockly.utils.xml.domToText(dom); // ★ここ
-        console.log("[WS] saved xml len=", xml.length);
         saveActiveWorkspaceXml(xml);
       } catch (e) {
         console.warn("[WS] save xml failed", e);
@@ -442,18 +476,14 @@ export function BlocklyWorkspace({
           onHostPointerDown();
         },
         // ★追加：数式→ブロック
-        insertFromFormula: (formulaText: string) => {
+        insertFromFormula: () => {
           const w = wsRef.current;
-          console.log("[WS] insertFromFormula", { hasWs: !!w, formulaText });
 
           if (!w) return;
 
           try {
             // 既存を消したいなら一旦OFFで（まず動作優先）
             // w.clear();
-
-            const start = blockFromFormula(w, formulaText);
-            console.log("[WS] blockFromFormula OK", { startId: start?.id });
 
             w.resize();
           } catch (e) {
@@ -474,11 +504,9 @@ export function BlocklyWorkspace({
 
         insertFnCall: (fnId: string) => {
           const w = wsRef.current;
-          console.log("[insertFnCall] called", { fnId, hasWs: !!w });
           if (!w) return;
 
           const b = w.newBlock("fn_call");
-          console.log("[insertFnCall] newBlock", b);
 
           b.initSvg();
 
@@ -488,15 +516,7 @@ export function BlocklyWorkspace({
             fn ? { id: fn.id, name: fn.name, params: fn.params } : null
           );
 
-          console.log("[insertFnCall] fn meta", fn);
-
           setCallFnMeta(b as any, fn);
-
-          console.log("[insertFnCall] after setCallFnMeta", {
-            fnId_: (b as any).fnId_,
-            params_: (b as any).params_,
-            inputs: b.inputList.map((i) => i.name),
-          });
 
           // ★最後にrender
           (b as any).render?.();
@@ -556,9 +576,6 @@ export function BlocklyWorkspace({
       });
 
       const onBlocklyEvent = (e: Blockly.Events.Abstract) => {
-        // まずはログ（デバッグ中だけ）
-        // console.log("[EV]", e.type, { isUi: e.isUiEvent });
-
         if (e.isUiEvent) return;
 
         // 重要：UI系は除外
@@ -620,10 +637,7 @@ export function BlocklyWorkspace({
 
         if (!shouldSync) return;
 
-        console.log("[FN] ws change", { wsId, fnId: wsInfo?.fnId, e: e.type });
-
         const params = readFnParamsFromWorkspace(wsId);
-        console.log("[FN] extracted params", { params });
 
         const fnId = wsInfo?.fnId;
         if (fnId) updateNamedFunctionParams(fnId, params);
@@ -638,17 +652,39 @@ export function BlocklyWorkspace({
         const se = e as any;
         const newId = se.newElementId as string | null;
 
-        // 以前の選択を解除
+        // 以前の選択を解除（既存）
         if (lastSelectedId) {
           const prev = ws.getBlockById(lastSelectedId);
           prev?.getSvgRoot()?.classList.remove("frockly-focused");
         }
 
-        // 新しい選択を付与
+        // ★まず解除（何選んでも一旦消す：安全）
+        onHighlightRange?.(null);
+
         if (newId) {
           const cur = ws.getBlockById(newId);
           cur?.getSvgRoot()?.classList.add("frockly-focused");
           lastSelectedId = newId;
+
+          // ★参照ブロックなら範囲抽出
+          if (cur) {
+            let refText: string | null = null;
+
+            if (cur.type === "basic_cell") {
+              try {
+                refText = String(cur.getFieldValue("CELL") ?? "");
+              } catch {}
+            } else if (cur.type === "basic_range") {
+              try {
+                refText = String(cur.getFieldValue("RANGE") ?? "");
+              } catch {}
+            }
+
+            if (refText) {
+              const r = parseRefToRange(refText);
+              if (r) onHighlightRange?.(r);
+            }
+          }
         } else {
           lastSelectedId = null;
         }

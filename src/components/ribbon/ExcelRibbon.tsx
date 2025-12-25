@@ -40,6 +40,8 @@ type WorkspaceApi = {
 };
 
 export interface ExcelRibbonProps {
+  onImportNamedFns?: (file: File) => void; // ★追加：名前付き関数JSON import
+  onExportNamedFns?: () => void;
   selectedTab: RibbonTab;
   onTabChange: (tab: RibbonTab) => void;
   onBlockClick?: (blockType: string) => void;
@@ -178,6 +180,8 @@ export function ExcelRibbon({
   sheets,
   activeSheet,
   onChangeSheet,
+  onImportNamedFns,
+  onExportNamedFns,
 }: ExcelRibbonProps) {
   const api = onWorkspaceApi?.current;
   const getApi = () => {
@@ -587,6 +591,8 @@ export function ExcelRibbon({
           {selectedTab === "file" ? (
             <FileTab
               onImportXlsx={onImportXlsx}
+              onImportNamedFns={onImportNamedFns}
+              onExportNamedFns={onExportNamedFns} // ★追加
               sheets={sheets}
               activeSheet={activeSheet}
               onChangeSheet={onChangeSheet}

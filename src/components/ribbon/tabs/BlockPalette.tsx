@@ -63,11 +63,8 @@ export function BlockPalette({
   onHoverFn,
   onSelectFn,
 }: BlockPaletteProps) {
-  
   const t = useMemo(() => tr(uiLang), [uiLang]);
-  useEffect(() => {
-    console.log("[PATH] Palette uiLang =", uiLang);
-  }, [uiLang]);
+  useEffect(() => {}, [uiLang]);
 
   const BASE_BLOCKS: BlockDef[] = useMemo(
     () => [
