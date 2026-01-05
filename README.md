@@ -65,9 +65,17 @@ The project is still experimental, but it is usable for real inspection and refa
 
 ## Roadmap (rough)
 
-- Check tab (structural diagnostics, let hints)
+### Structural assistance
+- Check tab (structural diagnostics, LET refactoring hints)
+
+### Usability
 - Improved named function navigation
-- Mobile-friendly editing experience
+- Mobile-friendly layout and interaction adjustments
+
+### Internationalization
+- Prepare i18n infrastructure (UI strings, function descriptions)
+- Enable multilingual search for functions and blocks
+- Community-driven translations (planned)
 
 ## Notes
 
