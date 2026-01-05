@@ -16,6 +16,8 @@ import {
 } from "./tabs/NamedFunctionsTab";
 import { createNamedFunction } from "../../state/project/workspaceOps";
 import { FileTab } from "./tabs/FileTab";
+import { FrogIcon } from "../ui/FrogIcon";
+import { ImportFromFormulaModal } from "../ImportFromFormulaModal";
 
 export type RibbonTab = "file" | "functions" | "named" | "view";
 
@@ -74,84 +76,6 @@ export interface ExcelRibbonProps {
   sheets?: string[];
   activeSheet?: number;
   onChangeSheet?: (idx: number) => void;
-}
-
-function FrogIcon() {
-  return (
-    <svg
-      width="32"
-      height="32"
-      viewBox="0 0 32 32"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect
-        x="6"
-        y="12"
-        width="20"
-        height="14"
-        rx="2"
-        fill="#4ade80"
-        stroke="#16a34a"
-        strokeWidth="1.5"
-      />
-      <rect
-        x="8"
-        y="6"
-        width="16"
-        height="10"
-        rx="2"
-        fill="#4ade80"
-        stroke="#16a34a"
-        strokeWidth="1.5"
-      />
-      <circle
-        cx="13"
-        cy="10"
-        r="2.5"
-        fill="white"
-        stroke="#16a34a"
-        strokeWidth="1"
-      />
-      <circle
-        cx="19"
-        cy="10"
-        r="2.5"
-        fill="white"
-        stroke="#16a34a"
-        strokeWidth="1"
-      />
-      <circle cx="13" cy="10" r="1" fill="#16a34a" />
-      <circle cx="19" cy="10" r="1" fill="#16a34a" />
-      <path
-        d="M 14 14 Q 16 15 18 14"
-        stroke="#16a34a"
-        strokeWidth="1.5"
-        fill="none"
-        strokeLinecap="round"
-      />
-      <rect
-        x="8"
-        y="24"
-        width="5"
-        height="4"
-        rx="1"
-        fill="#4ade80"
-        stroke="#16a34a"
-        strokeWidth="1"
-      />
-      <rect
-        x="19"
-        y="24"
-        width="5"
-        height="4"
-        rx="1"
-        fill="#4ade80"
-        stroke="#16a34a"
-        strokeWidth="1"
-      />
-    </svg>
-  );
 }
 
 export function ExcelRibbon({
@@ -530,55 +454,28 @@ export function ExcelRibbon({
         </div>
       </div>
 
-      {openImport && (
-        <div className="fixed inset-0 bg-black/30 flex items-center justify-center z-[9999]">
-          <div className="bg-white rounded-xl w-[640px] max-w-[90vw] p-4">
-            <div className="text-lg font-semibold mb-2">
-              {t(STR.PASTE_FORMULA)}
-            </div>
+      <ImportFromFormulaModal
+        open={openImport}
+        uiLang={uiLang}
+        text={importText}
+        setText={setImportText}
+        onClose={() => setOpenImport(false)}
+        onSubmit={(text) => {
+          const fn = getApi()?.insertFromFormula;
+          if (!fn) {
+            alert(t(STR.IMPORT_API_NOT_READY));
+            return;
+          }
 
-            <textarea
-              className="w-full h-32 border rounded p-2 font-mono"
-              value={importText}
-              onChange={(e) => setImportText(e.target.value)}
-              placeholder={t(STR.FORMULA_PLACEHOLDER)}
-            />
-
-            <div className="flex gap-2 justify-end mt-3">
-              <button
-                className="px-3 py-1 rounded border"
-                onClick={() => setOpenImport(false)}
-              >
-                {t(STR.CANCEL)}
-              </button>
-
-              <button
-                className="px-3 py-1 rounded bg-emerald-600 text-white"
-                onClick={() => {
-                  const text = importText.trim();
-                  if (!text) return;
-
-                  const fn = getApi()?.insertFromFormula;
-                  if (!fn) {
-                    alert(t(STR.IMPORT_API_NOT_READY));
-                    return;
-                  }
-
-                  try {
-                    fn(text);
-                    setOpenImport(false);
-                  } catch (e) {
-                    console.error("[IMPORT] insertFromFormula crashed", e);
-                    alert(t(STR.IMPORT_FAILED));
-                  }
-                }}
-              >
-                {t(STR.BLOCKIFY)}
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+          try {
+            fn(text);
+            setOpenImport(false);
+          } catch (e) {
+            console.error("[IMPORT] insertFromFormula crashed", e);
+            alert(t(STR.IMPORT_FAILED));
+          }
+        }}
+      />
 
       {/* Ribbon Content */}
       <div className="bg-white px-4 py-2 border-b border-gray-200">

@@ -1,8 +1,5 @@
 import { useMemo, useRef, useState } from "react";
-import { ExcelRibbon,type RibbonTab } from "./components/ribbon/ExcelRibbon";
-import { ExcelGrid } from "./components/excelGrid/ExcelGrid";
-import { BlocklyWorkspace } from "./components/blockly/BlocklyWorkspace";
-import { FormulaDisplay } from "./components/fomula/FormulaDisplay";
+import { type RibbonTab } from "./components/ribbon/ExcelRibbon";
 import { findWorkspace } from "./state/project/workspaceOps";
 import { getProjectState, useProject } from "./state/project/projectStore";
 import {
@@ -18,23 +15,22 @@ import { importXlsxBook } from "./components/excelGrid/importXlsxBook";
 import { exportNamedFunctions, importNamedFunctions } from "./io/namedFnJson";
 import { importNamedFunctionLibrary } from "./state/project/workspaceOps"; // もし無ければ作る
 import type { WorkspaceApi } from "./components/blockly/types";
+import { DesktopApp } from "./components/desktop/DesktopApp";
+import { MobileApp } from "./components/mobile/MobileApp";
 export default function App() {
   // ★最初にプロジェクト初期化（二重呼びでも安全）
   ensureProjectInitialized();
   const project = useProject();
   const activeWs = findWorkspace(project, project.activeWorkspaceId);
   const activeWsTitle = activeWs?.title ?? "???";
-
-  const [selectedCategory] = useState("math");
+  const isMobile = window.matchMedia("(max-width: 768px)").matches;
   const [uiLang, setUiLang] = useState<"en" | "ja">("en");
 
   const [formula, setFormula] = useState("");
   const [selectedCell, setSelectedCell] = useState("A1");
 
   // ★ここを拡張
-  const [ribbonTab, setRibbonTab] = useState<RibbonTab>(
-    "functions"
-  );
+  const [ribbonTab, setRibbonTab] = useState<RibbonTab>("functions");
 
   // ★追加：ON/OFF表示用のstate（同時ON可能）
   const [focusOn, setFocusOn] = useState(false);
@@ -153,89 +149,240 @@ export default function App() {
     URL.revokeObjectURL(url);
   };
   const [highlightRange, setHighlightRange] = useState<CellRange | null>(null);
+  // function DesktopApp() {
+  //   return (
+  //     <>
+  //       {/* ← ここ以下、今のコード全部 */}
+  //       <ExcelRibbon
+  //         onExportNamedFns={onExportNamedFns}
+  //         onImportNamedFns={onImportNamedFns}
+  //         selectedTab={ribbonTab}
+  //         onTabChange={setRibbonTab}
+  //         onBlockClick={(blockType) =>
+  //           workspaceApiRef.current?.insertBlock(blockType)
+  //         }
+  //         uiLang={uiLang}
+  //         onUiLangChange={setUiLang}
+  //         onWorkspaceApi={workspaceApiRef}
+  //         // ★追加：View状態と操作を渡す
+  //         focusOn={focusOn}
+  //         pathOn={pathOn}
+  //         onToggleFocus={onToggleFocus}
+  //         onTogglePath={onTogglePath}
+  //         // ★追加：名前付き関数タブへ渡す
+  //         namedFns={namedFns}
+  //         workspaces={workspaces}
+  //         activeWorkspaceId={project.activeWorkspaceId}
+  //         onCreateNamedFn={() => createNamedFunction("A", [])}
+  //         onDuplicateNamedFn={(fnId) => duplicateNamedFunction(fnId)}
+  //         onDeleteNamedFn={(fnId) => deleteNamedFunction(fnId)}
+  //         onRenameNamedFn={(fnId, newName) =>
+  //           renameNamedFunction(fnId, newName)
+  //         }
+  //         activeWorkspaceTitle={activeWsTitle}
+  //         onUpdateNamedFnMeta={(fnId, patch) =>
+  //           updateNamedFunctionMeta(fnId, patch)
+  //         }
+  //         onImportXlsx={onImportXlsx}
+  //         sheets={bookSheets.map((s) => s.name)}
+  //         activeSheet={activeSheet}
+  //         onChangeSheet={setActiveSheet}
+  //       />
+  //       <div className="flex-1 flex overflow-hidden">
+  //         <div
+  //           style={{ width: leftWidth }}
+  //           className="border-r border-gray-300 bg-white"
+  //         >
+  //           <ExcelGrid
+  //             selectedCell={selectedCell}
+  //             onCellSelect={setSelectedCell}
+  //             cells={activeCells}
+  //             onCellsChange={(updater) => {
+  //               setBookSheets((prev) => {
+  //                 const next = [...prev];
+  //                 next[activeSheet] = {
+  //                   ...next[activeSheet],
+  //                   cells: updater(next[activeSheet].cells),
+  //                 };
+  //                 return next;
+  //               });
+  //             }}
+  //             uiLang={uiLang}
+  //             highlightRange={highlightRange}
+  //           />
+  //         </div>
+
+  //         <div
+  //           onMouseDown={startDrag}
+  //           className="w-2 cursor-col-resize bg-gray-200 hover:bg-gray-300"
+  //         />
+
+  //         <div className="flex-1 flex flex-col bg-white">
+  //           <div className="flex-1 border-b border-gray-300">
+  //             <BlocklyWorkspace
+  //               category={selectedCategory}
+  //               onFormulaChange={setFormula}
+  //               selectedCell={selectedCell}
+  //               onWorkspaceApi={(api) => (workspaceApiRef.current = api)}
+  //               uiLang={uiLang}
+  //               namedFns={namedFns}
+  //               onHighlightRange={setHighlightRange}
+  //             />
+  //           </div>
+
+  //           <div className="h-32 border-t border-gray-300">
+  //             <FormulaDisplay formula={formula} uiLang={uiLang} />
+  //           </div>
+  //         </div>
+  //       </div>
+  //     </>
+  //   );
+  // }
+  // function MobileApp() {
+  //   const [tab, setTab] = useState<"ws" | "grid">("ws");
+
+  //   return (
+  //     <div className="flex flex-col h-full">
+  //       {/* 上 */}
+  //       <div className="h-14 border-b bg-white flex items-center px-2">
+  //         <div className="font-bold">Frockly</div>
+  //       </div>
+
+  //       {/* 中 */}
+  //       <div className="flex-1 overflow-hidden">
+  //         {tab === "ws" ? (
+  //           <div className="h-full bg-gray-100 flex items-center justify-center">
+  //             Blockly WS (mock)
+  //           </div>
+  //         ) : (
+  //           <div className="h-full bg-gray-200 flex items-center justify-center">
+  //             Grid (mock)
+  //           </div>
+  //         )}
+  //       </div>
+
+  //       {/* 下 */}
+  //       <div className="h-14 border-t bg-white flex">
+  //         <button
+  //           className={`flex-1 ${tab === "ws" ? "font-bold" : ""}`}
+  //           onClick={() => setTab("ws")}
+  //         >
+  //           ワークスペース
+  //         </button>
+  //         <button
+  //           className={`flex-1 ${tab === "grid" ? "font-bold" : ""}`}
+  //           onClick={() => setTab("grid")}
+  //         >
+  //           セル
+  //         </button>
+  //       </div>
+  //     </div>
+  //   );
+  // }
+  const onGridCellsChange = (updater: (c: CellMap) => CellMap) => {
+    setBookSheets((prev) => {
+      const next = [...prev];
+      next[activeSheet] = {
+        ...next[activeSheet],
+        cells: updater(next[activeSheet].cells),
+      };
+      return next;
+    });
+  };
+
   return (
     <div className="h-screen flex flex-col bg-gray-50">
-      <ExcelRibbon
-        onExportNamedFns={onExportNamedFns}
-        onImportNamedFns={onImportNamedFns}
-        selectedTab={ribbonTab}
-        onTabChange={setRibbonTab}
-        onBlockClick={(blockType) =>
-          workspaceApiRef.current?.insertBlock(blockType)
-        }
-        uiLang={uiLang}
-        onUiLangChange={setUiLang}
-        onWorkspaceApi={workspaceApiRef}
-        // ★追加：View状態と操作を渡す
-        focusOn={focusOn}
-        pathOn={pathOn}
-        onToggleFocus={onToggleFocus}
-        onTogglePath={onTogglePath}
-        // ★追加：名前付き関数タブへ渡す
-        namedFns={namedFns}
-        workspaces={workspaces}
-        activeWorkspaceId={project.activeWorkspaceId}
-        onCreateNamedFn={() => createNamedFunction("A", [])}
-        onDuplicateNamedFn={(fnId) => duplicateNamedFunction(fnId)}
-        onDeleteNamedFn={(fnId) => deleteNamedFunction(fnId)}
-        onRenameNamedFn={(fnId, newName) => renameNamedFunction(fnId, newName)}
-        activeWorkspaceTitle={activeWsTitle}
-        onUpdateNamedFnMeta={(fnId, patch) =>
-          updateNamedFunctionMeta(fnId, patch)
-        }
-        onImportXlsx={onImportXlsx}
-        sheets={bookSheets.map((s) => s.name)}
-        activeSheet={activeSheet}
-        onChangeSheet={setActiveSheet}
-      />
-
-      <div className="flex-1 flex overflow-hidden">
-        <div
-          style={{ width: leftWidth }}
-          className="border-r border-gray-300 bg-white"
-        >
-          <ExcelGrid
-            selectedCell={selectedCell}
-            onCellSelect={setSelectedCell}
-            cells={activeCells}
-            onCellsChange={(updater) => {
-              setBookSheets((prev) => {
-                const next = [...prev];
-                next[activeSheet] = {
-                  ...next[activeSheet],
-                  cells: updater(next[activeSheet].cells),
-                };
-                return next;
-              });
-            }}
-            uiLang={uiLang}
-            highlightRange={highlightRange}
-          />
-        </div>
-
-        <div
-          onMouseDown={startDrag}
-          className="w-2 cursor-col-resize bg-gray-200 hover:bg-gray-300"
+      {isMobile ? (
+        <MobileApp
+          ui={{
+            ribbonTab,
+            setRibbonTab,
+            uiLang,
+            setUiLang,
+            leftWidth,
+            onStartSplitDrag: startDrag,
+            focusOn,
+            pathOn,
+            onToggleFocus,
+            onTogglePath,
+          }}
+          projectCtx={{
+            project,
+            activeWorkspaceTitle: activeWsTitle,
+            namedFns,
+            workspaces,
+            onCreateNamedFn: () => createNamedFunction("A", []),
+            onDuplicateNamedFn: duplicateNamedFunction,
+            onDeleteNamedFn: deleteNamedFunction,
+            onRenameNamedFn: renameNamedFunction,
+            onUpdateNamedFnMeta: updateNamedFunctionMeta,
+            onExportNamedFns: onExportNamedFns,
+            onImportNamedFns: onImportNamedFns,
+            onImportXlsx: onImportXlsx,
+            sheets: bookSheets.map((s) => s.name),
+            activeSheet,
+            onChangeSheet: setActiveSheet,
+          }}
+          refs={{ workspaceApiRef }}
+          grid={{
+            selectedCell,
+            setSelectedCell,
+            cells: activeCells,
+            onCellsChange: onGridCellsChange,
+            highlightRange,
+            setHighlightRange,
+          }}
+          formula={{
+            formula,
+            setFormula,
+          }}
         />
-
-        <div className="flex-1 flex flex-col bg-white">
-          <div className="flex-1 border-b border-gray-300">
-            <BlocklyWorkspace
-              category={selectedCategory}
-              onFormulaChange={setFormula}
-              selectedCell={selectedCell}
-              onWorkspaceApi={(api) => (workspaceApiRef.current = api)}
-              uiLang={uiLang}
-              namedFns={namedFns}
-              onHighlightRange={setHighlightRange}
-            />
-          </div>
-
-          <div className="h-32 border-t border-gray-300">
-            <FormulaDisplay formula={formula} uiLang={uiLang} />
-          </div>
-        </div>
-      </div>
+      ) : (
+        <DesktopApp
+          ui={{
+            ribbonTab,
+            setRibbonTab,
+            uiLang,
+            setUiLang,
+            leftWidth,
+            onStartSplitDrag: startDrag,
+            focusOn,
+            pathOn,
+            onToggleFocus,
+            onTogglePath,
+          }}
+          projectCtx={{
+            project,
+            activeWorkspaceTitle: activeWsTitle,
+            namedFns,
+            workspaces,
+            onCreateNamedFn: () => createNamedFunction("A", []),
+            onDuplicateNamedFn: duplicateNamedFunction,
+            onDeleteNamedFn: deleteNamedFunction,
+            onRenameNamedFn: renameNamedFunction,
+            onUpdateNamedFnMeta: updateNamedFunctionMeta,
+            onExportNamedFns: onExportNamedFns,
+            onImportNamedFns: onImportNamedFns,
+            onImportXlsx: onImportXlsx,
+            sheets: bookSheets.map((s) => s.name),
+            activeSheet,
+            onChangeSheet: setActiveSheet,
+          }}
+          refs={{ workspaceApiRef }}
+          grid={{
+            selectedCell,
+            setSelectedCell,
+            cells: activeCells,
+            onCellsChange: onGridCellsChange,
+            highlightRange,
+            setHighlightRange,
+          }}
+          formula={{
+            formula,
+            setFormula,
+          }}
+        />
+      )}
     </div>
   );
 }

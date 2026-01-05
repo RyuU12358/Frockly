@@ -350,7 +350,31 @@ export const STR_VIEW = {
   ON: { en: "ON", ja: "ON" },
   OFF: { en: "OFF", ja: "OFF" },
 } as const;
+export const STR_MOBILE = {
+  MOBILE_TAB_WORKSPACE: { en: "Workspace", ja: "ワークスペース" },
+  MOBILE_TAB_CELLS: { en: "Cells", ja: "セル" },
+  MOBILE_TAB_FORMULA: { en: "Formula", ja: "式" },
+} as const;
+export const STR_FILETAB_UI = {
+  IMPORT_XLSX: { en: "Import .xlsx", ja: "xlsx読込" },
+  IMPORT_NAMED_FNS: { en: "Import named functions", ja: "名前付き関数 読込" },
+  EXPORT_NAMED_FNS: { en: "Export named functions", ja: "名前付き関数 書出" },
+  SHEET_SWITCH: { en: "Sheet", ja: "シート" },
 
+  TOOLTIP_IMPORT_XLSX: {
+    en: "Import Excel (.xlsx)",
+    ja: "Excel (.xlsx) を読み込む",
+  },
+  TOOLTIP_SHEET_SWITCH: { en: "Switch sheet", ja: "シート切替" },
+  TOOLTIP_IMPORT_NAMED_FNS: {
+    en: "Import named functions JSON",
+    ja: "名前付き関数 JSON を読み込む",
+  },
+  TOOLTIP_EXPORT_NAMED_FNS: {
+    en: "Export named functions JSON",
+    ja: "名前付き関数 JSON を書き出す",
+  },
+} as const;
 export const STR = {
   ...STR_COMMON,
   ...STR_STATUS,
@@ -369,6 +393,8 @@ export const STR = {
   ...STR_PROJECT_OPS,
   ...STR_MISC,
   ...STR_VIEW,
+  ...STR_MOBILE,
+  ...STR_FILETAB_UI,
 } as const;
 
 export type StrKey = keyof typeof STR;

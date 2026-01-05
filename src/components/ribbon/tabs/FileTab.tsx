@@ -1,8 +1,12 @@
-import { useRef } from "react";
+// components/ribbon/tabs/FileTab.tsx
+import { useMemo, useRef } from "react";
 import { RibbonButton } from "./RibbonButton";
 import { RibbonSeparator } from "./RibbonSeparator";
+import { tr } from "../../../i18n/strings"; // パス調整して
+import type { UiLang } from "../../../i18n/strings";
 
 type Props = {
+  uiLang?: UiLang; // ★追加：i18nのため
   onImportXlsx?: (file: File) => void;
   onImportNamedFns?: (file: File) => void;
   onExportNamedFns?: () => void;
@@ -12,6 +16,7 @@ type Props = {
 };
 
 export function FileTab({
+  uiLang = "en",
   onImportXlsx,
   sheets,
   activeSheet,
@@ -19,16 +24,15 @@ export function FileTab({
   onImportNamedFns,
   onExportNamedFns,
 }: Props) {
+  const t = useMemo(() => tr(uiLang), [uiLang]);
+
   const xlsxRef = useRef<HTMLInputElement>(null);
   const jsonRef = useRef<HTMLInputElement>(null);
 
   return (
     <div className="py-1">
-      {/* リボン本体：高さ固定（NamedFunctionsTabに合わせる） */}
       <div className="h-[36px] flex items-stretch px-2 overflow-hidden">
-        {/* 左：インポート/シート */}
         <div className="flex min-w-0 flex-1 items-center gap-2 overflow-x-auto overflow-y-hidden py-1">
-          {/* Import .xlsx */}
           <input
             ref={xlsxRef}
             type="file"
@@ -43,19 +47,18 @@ export function FileTab({
           />
           <RibbonButton
             onClick={() => xlsxRef.current?.click()}
-            title="Excel (.xlsx) を読み込む"
+            title={t("TOOLTIP_IMPORT_XLSX")}
             className="shrink-0"
           >
-            Import .xlsx
+            {t("IMPORT_XLSX")}
           </RibbonButton>
 
-          {/* Sheet selector */}
           {sheets && sheets.length > 0 && (
             <select
               value={activeSheet ?? 0}
               onChange={(e) => onChangeSheet?.(Number(e.target.value))}
               className="h-[28px] px-2 text-sm rounded border bg-white shrink-0"
-              title="シート切替"
+              title={t("TOOLTIP_SHEET_SWITCH")}
             >
               {sheets.map((name, i) => (
                 <option key={name + i} value={i}>
@@ -66,10 +69,8 @@ export function FileTab({
           )}
         </div>
 
-        {/* 区切り線（固定） */}
         <RibbonSeparator />
 
-        {/* 右：NamedFns JSON */}
         <div className="flex items-center gap-2">
           <input
             ref={jsonRef}
@@ -87,17 +88,17 @@ export function FileTab({
           <RibbonButton
             onClick={() => jsonRef.current?.click()}
             disabled={!onImportNamedFns}
-            title="名前付き関数 JSON を読み込む"
+            title={t("TOOLTIP_IMPORT_NAMED_FNS")}
           >
-            Import named functions
+            {t("IMPORT_NAMED_FNS")}
           </RibbonButton>
 
           <RibbonButton
             onClick={onExportNamedFns}
             disabled={!onExportNamedFns}
-            title="名前付き関数 JSON を書き出す"
+            title={t("TOOLTIP_EXPORT_NAMED_FNS")}
           >
-            Export named functions
+            {t("EXPORT_NAMED_FNS")}
           </RibbonButton>
         </div>
       </div>
