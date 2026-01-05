@@ -1,4 +1,4 @@
-# Frockly (v0.5)
+# Frockly (v0.6)
 
 Frockly is a visual editor for understanding and refactoring complex Excel formulas.
 
@@ -48,27 +48,41 @@ Frockly is designed for **understanding and refactoring**, not execution.
 
 Below is the same Excel formula shown in different representations.
 
-#### 1. Original block structure (hard to inspect)
-Deep nesting makes the logic difficult to follow at a glance.
-
-![Nested blocks](Blocks.jpg)
-
-#### 2. Structured view
-Conditions are visually separated, making decision paths explicit.
-
-![Structured blocks](Blocks.jpg)
-
-#### 3. Focused / collapsed view
-Irrelevant branches can be collapsed to focus on what matters.
-
-![Collapsed view](Collapsed_And_Forcused.jpg)
-
-#### 4. Original formula text
+#### Original formula (text)
 All structure is hidden in a single line.
 
 ```excel
 =IFERROR(IF(D2=0,"",IF(D2>=80,"A",IF(D2>=60,"B","C"))),"")
 ```
+
+### 1. Import from formula
+Paste an existing Excel formula and convert it into blocks instantly.
+
+![Import from formula](Formula.jpg)
+
+---
+
+### 2. Structured view
+The logical structure is laid out visually.
+Nested conditions become explicit branches.
+
+![Structured view](Blocks.jpg)
+
+---
+
+### 3. Focused / collapsed view
+Collapse irrelevant branches and focus on the part you are reasoning about.
+
+![Focused view](Collapsed_And_Forcused.jpg)
+
+---
+
+### 4. Path view
+Trace which logical path is taken for a specific condition.
+
+This makes decision flows visible without mentally simulating nested IFs.
+
+![Path view](pathed.jpg)
 
 ---
 
@@ -86,7 +100,7 @@ so you can **see how a formula is built**, instead of re-deriving it in your hea
 
 ## Status
 
-Current version: **v0.5**
+Current version: **v0.6**
 
 Most core ideas are implemented.  
 The project is still experimental, but usable for real inspection and refactoring workflows.
@@ -95,6 +109,9 @@ The project is still experimental, but usable for real inspection and refactorin
 
 ## Updates
 
+- **2026-01-05** – v0.6  
+  Mobile view support  
+  Optimized layout and interactions for mobile inspection and navigation
 - **2025-12-25** – v0.5  
   File tab, `.xlsx` import, named function import/export
 - **2025-12-22** – View tab for formula structure visualization
@@ -111,7 +128,6 @@ The project is still experimental, but usable for real inspection and refactorin
 
 ### Usability
 - Improved named function navigation
-- Further mobile interaction refinements
 
 ### Internationalization
 - i18n infrastructure (UI strings, function descriptions)
