@@ -142,3 +142,13 @@ Frockly explores a different way of interacting with formulas.
 
 It does not aim to automate thinking or generate logic for you,  
 but to make **existing logic visible and easier to reason about**.
+
+
+---
+
+☕ Support
+
+If you enjoy this project or find it useful,  
+you can support its development here:
+
+[![Buy Me a Coffee](https://img.buymeacoffee.com/button-api/?text=Buy%20me%20a%20coffee&emoji=☕&slug=tqanothumew&button_colour=FFDD00&font_colour=000000)](https://buymeacoffee.com/tqanothumew)
