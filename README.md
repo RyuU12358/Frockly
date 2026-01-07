@@ -1,4 +1,4 @@
-# Frockly (v0.6)
+# Frockly (v0.7)
 
 Frockly is a visual editor for understanding and refactoring complex Excel formulas.
 
@@ -105,7 +105,7 @@ so you can **see how a formula is built**, instead of re-deriving it in your hea
 
 ## Status
 
-Current version: **v0.6**
+Current version: **v0.7**
 
 Most core ideas are implemented.  
 The project is still experimental, but usable for real inspection and refactoring workflows.
@@ -114,6 +114,9 @@ The project is still experimental, but usable for real inspection and refactorin
 
 ## Updates
 
+- **2026-01-07** – v0.7  
+  Foundation for multilingual support (English / Japanese / French infrastructure)  
+  Basic French support added
 - **2026-01-05** – v0.6  
   Mobile view support  
   Optimized layout and interactions for mobile inspection and navigation
@@ -138,9 +141,9 @@ The project is still experimental, but usable for real inspection and refactorin
 
 ### Internationalization
 
-- i18n infrastructure (UI strings, function descriptions)
-- Multilingual function search
-- Community-driven translations (planned)
+- [x] i18n infrastructure (UI strings, function descriptions) available
+- [ ] Multilingual function search (Improved search accuracy for localized names)
+- [ ] Community-driven translations (Started, see [ADD_LANGUAGE.md](ADD_LANGUAGE.md))
 
 ---
 
