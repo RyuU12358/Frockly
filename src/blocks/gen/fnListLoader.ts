@@ -1,16 +1,36 @@
 import type { FnSpec } from "./types";
 import fnListUrl from "../data/fn_list.txt?url";
 
-export async function loadFnList(): Promise<FnSpec[]> {
+// 簡易キャッシュ
+let cachedFnListText: string | null = null;
 
+export async function loadFnList(lang?: string): Promise<FnSpec[]> {
+  if (!cachedFnListText) {
+    const res = await fetch(fnListUrl);
+    cachedFnListText = await res.text();
+  }
 
-  const res = await fetch(fnListUrl);
+  const specs = parseFnList(cachedFnListText);
 
-
-  const text = await res.text();
-
-
-  const specs = parseFnList(text);
+  if (lang && lang !== "en") {
+    try {
+      const base = import.meta.env.BASE_URL;
+      // 例: meta/fr/fn_names.json -> {"SUM": "SUMME"}
+      const mapUrl = `${base}meta/${lang}/fn_names.json?t=${Date.now()}`;
+      const mapRes = await fetch(mapUrl);
+      if (mapRes.ok) {
+        const mapVals = (await mapRes.json()) as Record<string, string>;
+        for (const spec of specs) {
+          if (mapVals[spec.name]) {
+            spec.localizedName = mapVals[spec.name];
+          }
+        }
+      }
+    } catch (e) {
+      // 読み込めなくても致命的ではないのでwarnのみ
+      console.warn("Failed to load localized function names for", lang, e);
+    }
+  }
 
   return specs;
 }

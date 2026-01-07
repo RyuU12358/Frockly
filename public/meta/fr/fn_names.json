@@ -1,0 +1,10 @@
+{
+  "SUM": "SOMME",
+  "AVERAGE": "MOYENNE",
+  "COUNT": "NB",
+  "IF": "SI",
+  "AND": "ET",
+  "OR": "OU",
+  "NOT": "NON",
+  "VLOOKUP": "RECHERCHEV"
+}

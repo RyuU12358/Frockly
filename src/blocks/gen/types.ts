@@ -1,5 +1,6 @@
 export type FnSpec = {
   name: string;       // SUM
+  localizedName?: string;
   min: number;        // 1
   variadic: boolean;  // true/false
   step?: number;      // variadic only

@@ -1,0 +1,8 @@
+(SUM,"math","Additionne des nombres")
+(AVERAGE,"math","Calcule la moyenne")
+(COUNT,"stat","Compte les nombres")
+(IF,"logic","Si condition vraie alors A sinon B")
+(AND,"logic","ET logique")
+(OR,"logic","OU logique")
+(NOT,"logic","NON logique")
+(VLOOKUP,"lookup","Recherche verticale")

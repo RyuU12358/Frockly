@@ -1,25 +1,44 @@
 import * as Blockly from "blockly";
+import { getFnSpec } from "../gen/registry";
 import { ExcelGen } from "../basic/generators";
+import { localizeFormula } from "../formula/localizer";
 
 function fnNameOf(block: Blockly.Block) {
-  return block.type.startsWith("frockly_")
+  const codeName = block.type.startsWith("frockly_")
     ? block.type.slice("frockly_".length)
     : block.type;
+
+  const spec = getFnSpec(codeName);
+  return spec?.localizedName ?? codeName;
 }
 
+// function oneLine etc... (kept as is)
 function oneLine(s: string) {
   return (s ?? "").replace(/\s+/g, " ").trim();
 }
 function clamp(s: string, n = 90) {
   const t = oneLine(s);
-  const ELLIPSIS = "…";
-  return t.length > n ? t.slice(0, n - 1) + "ELLIPSIS" : t;
+  return t.length > n ? t.slice(0, n - 1) + "…" : t;
 }
 
 function computePreview(block: Blockly.Block) {
   const out = (ExcelGen as any).blockToCode(block);
   const code = Array.isArray(out) ? out[0] : out;
-  return String(code ?? "");
+
+  // Localize for display
+  // We need current UI lang... but extension doesn't easily access React state.
+  // We can try to guess from metadata or global.
+  // For now let's assume global "window.frocklyUiLang" or similar if available,
+  // or just default to EN if not found.
+  // Since we don't have global state easily, let's skip lang-dependent separator for preview
+  // OR rely on a hack.
+  // Ideally, `localizeFormula` should handle "current lang".
+  // Let's import a store or use a simple heuristic.
+  // Since we are in `fnUi.ts`, let's just use localized names (which `localizeFormula` does).
+  // Separator might be wrong if we don't know lang.
+  // Let's assume standard "," for now unless we can get lang.
+
+  return localizeFormula(String(code ?? ""));
 }
 
 export function registerFnUiExtension() {

@@ -63,8 +63,10 @@ export function registerBasicGenerators() {
   };
   // ---- Name (identifier) ----
   // LET変数 / LAMBDA引数 / 名前付き関数の引数
-  G.forBlock["basic_name"] = function (block: Blockly.Block) {
-    const name = String(block.getFieldValue("NAME") ?? "").trim();
+  // ---- Name (identifier) ----
+  // LET変数 / LAMBDA引数 / 名前付き関数の引数
+  G.forBlock["basic_var"] = function (block: Blockly.Block) {
+    const name = String(block.getFieldValue("VAR_NAME") ?? "").trim();
     // 識別子はそのまま出す（クオート不要）
     return [name, Order.ATOMIC];
   };

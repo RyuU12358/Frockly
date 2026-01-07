@@ -1,16 +1,11 @@
-// src\components\ribbon\tabs\BlockPalette.tsx
 import { useEffect, useMemo, useState } from "react";
+import { setFnSpecs } from "../../../blocks/gen/registry";
 import type { FnSpec } from "../../../blocks/gen/types";
 import { STR, tr } from "../../../i18n/strings";
-import { searchFunctionsEN } from "../../../search/en/searchFunctionsEN";
-import { searchFunctionsJP } from "../../../search/jp";
+import { searchFunctionsML } from "../../../search/ml";
 import { loadFnList } from "../../../blocks/gen/fnListLoader";
 import { RibbonButton } from "./RibbonButton";
 import { RibbonSeparator } from "./RibbonSeparator";
-
-function isAsciiOnly(s: string) {
-  return /^[\x00-\x7F]*$/.test(s);
-}
 
 interface BlockDef {
   type: string;
@@ -109,11 +104,6 @@ export function BlockPalette({
   const [, setSemErr] = useState<string>("");
   const [, setIsSearching] = useState(false);
 
-  const langMode = useMemo(() => {
-    if (uiLang === "en") return "en";
-    return isAsciiOnly(q) ? "en" : "ja";
-  }, [uiLang, q]);
-
   useEffect(() => {
     let cancelled = false;
 
@@ -130,10 +120,8 @@ export function BlockPalette({
     const t = window.setTimeout(() => {
       (async () => {
         try {
-          const hits =
-            langMode === "en"
-              ? await searchFunctionsEN(q, MAX_RESULTS)
-              : await searchFunctionsJP(q, MAX_RESULTS);
+          // Unified multilingual search
+          const hits = await searchFunctionsML(q, MAX_RESULTS);
 
           if (!cancelled) setSemantic(hits);
         } catch (e: any) {
@@ -151,18 +139,23 @@ export function BlockPalette({
       cancelled = true;
       window.clearTimeout(t);
     };
-  }, [q, loaded, err, langMode]);
+  }, [q, loaded, err]);
 
   useEffect(() => {
     let cancelled = false;
+    setLoaded(false); // 言語切り替え時に再度ロード中に戻す
 
     (async () => {
       try {
         setErr("");
-        const s = await loadFnList();
+        const s = await loadFnList(uiLang);
 
         if (cancelled) return;
+
+        // ...
+
         setSpecs(s);
+        setFnSpecs(s); // Update global registry
         setLoaded(true);
       } catch (e: any) {
         if (cancelled) return;
@@ -174,20 +167,21 @@ export function BlockPalette({
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [uiLang]);
 
   const excelBlocks: BlockDef[] = useMemo(() => {
     return specs.map((s) => {
       const name = s.name.toUpperCase();
+      const label = s.localizedName ? s.localizedName : name;
       const vari = s.variadic ? "variadic" : "fixed";
       const info = s.variadic
         ? `min=${s.min} step=${s.step ?? 1} max=${s.max ?? 0} ${vari}`
         : `args=${s.min} ${vari}`;
 
       return {
-        type: fnToBlockType(name),
-        label: name,
-        haystack: `${name} ${info}`.toLowerCase(),
+        type: fnToBlockType(name), // Block type must be canonical (EN)
+        label: label,
+        haystack: `${name} ${label} ${info}`.toLowerCase(),
       };
     });
   }, [specs]);

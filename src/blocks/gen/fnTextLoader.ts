@@ -24,7 +24,9 @@ export async function loadFnText(lang: "en" | "ja"): Promise<FnTextMap> {
   const path =
     lang === "en"
       ? `${base}meta/en/fn_text_en.txt`
-      : `${base}meta/jp/fn_text_jp.txt`;
+      : lang === "ja"
+      ? `${base}meta/jp/fn_text_jp.txt`
+      : `${base}meta/fr/fn_text_fr.txt`;
 
   const res = await fetch(path);
 

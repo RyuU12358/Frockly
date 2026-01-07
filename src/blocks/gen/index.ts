@@ -25,3 +25,8 @@ export async function initDynamicFnBlocks() {
     registerFnGenerator(type, fn);
   }
 }
+
+export async function updateDynamicFnLocales(lang: string) {
+  const specs = await loadFnList(lang);
+  setFnSpecs(specs);
+}

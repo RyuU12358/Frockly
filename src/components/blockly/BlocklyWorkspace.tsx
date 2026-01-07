@@ -14,6 +14,8 @@ import {
 
 import { ensureGridPattern } from "./ui/workspaceDecor";
 import { setCallFnMeta } from "../../blocks/fn/fn_call.ts";
+import { getFnSpec } from "../../blocks/gen/registry.ts";
+import { getBasicBlockLabel } from "../../blocks/basic/blocks.ts";
 import type { CellRange } from "../excelGrid/types";
 // components/blockly/BlocklyWorkspace.tsx
 import type { WorkspaceApi } from "./types";
@@ -718,6 +720,25 @@ export function BlocklyWorkspace({
           try {
             // 各ブロックを再初期化/再描画
             ws.getAllBlocks(false).forEach((b) => {
+              // ★名前付き関数ブロックなら、表示名を今の言語に合わせて更新する
+              if (b.type.startsWith("frockly_")) {
+                const fnName = b.type.slice("frockly_".length);
+                const spec = getFnSpec(fnName);
+                if (spec) {
+                  // タイトル更新
+                  const newLabel = spec.localizedName ?? spec.name;
+                  b.setFieldValue(newLabel, "FN_NAME");
+                }
+              }
+
+              // ★基本ブロック（basic_number等）
+              if (b.type.startsWith("basic_")) {
+                const newLabel = getBasicBlockLabel(b.type, uiLang);
+                if (newLabel) {
+                  b.setFieldValue(newLabel, "LABEL");
+                }
+              }
+
               try {
                 b.initSvg?.();
                 (b as any).render?.();

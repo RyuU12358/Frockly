@@ -17,9 +17,17 @@ import {
 import { createNamedFunction } from "../../state/project/workspaceOps";
 import { FileTab } from "./tabs/FileTab";
 import { FrogIcon } from "../ui/FrogIcon";
+import {
+  delocalizeFormula,
+  setLocalizerLang,
+} from "../../blocks/formula/localizer";
 import { ImportFromFormulaModal } from "../ImportFromFormulaModal";
 
 export type RibbonTab = "file" | "functions" | "named" | "view";
+
+// ... (WorkspaceApi and ExcelRibbonProps kept as is, skipping lines for brevity if possible, but replace tool needs context)
+// To avoid big chunk replacement, I'll do this in 2 steps or careful 1 step.
+// Let's replace the top imports first.
 
 type WorkspaceApi = {
   insertFromFormula?: (formula: string) => void;
@@ -106,7 +114,12 @@ export function ExcelRibbon({
   onImportNamedFns,
   onExportNamedFns,
 }: ExcelRibbonProps) {
+  useEffect(() => {
+    setLocalizerLang(uiLang);
+  }, [uiLang]);
+
   const api = onWorkspaceApi?.current;
+  // ... (rest)
   const getApi = () => {
     const apiObj =
       onWorkspaceApi &&
@@ -369,6 +382,7 @@ export function ExcelRibbon({
           >
             <option value="ja">JP</option>
             <option value="en">EN</option>
+            <option value="fr">FR</option>
           </select>
 
           <div className="flex items-center gap-1 bg-white rounded px-2 py-1 shadow-sm">
@@ -448,9 +462,7 @@ export function ExcelRibbon({
             ? `fn_text load failed`
             : hoverText
             ? hoverText
-            : uiLang === "ja"
-            ? "関数にマウスを乗せると簡単な説明が表示されます。"
-            : "Hover a function to see a short description."}
+            : t(STR.HOVER_DESC_HINT)}
         </div>
       </div>
 
@@ -466,9 +478,9 @@ export function ExcelRibbon({
             alert(t(STR.IMPORT_API_NOT_READY));
             return;
           }
-
           try {
-            fn(text);
+            const canonical = delocalizeFormula(text, uiLang);
+            fn(canonical);
             setOpenImport(false);
           } catch (e) {
             console.error("[IMPORT] insertFromFormula crashed", e);

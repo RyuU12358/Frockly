@@ -1,7 +1,7 @@
 import * as Blockly from "blockly";
 import * as ja from "blockly/msg/ja";
 import * as en from "blockly/msg/en";
-import { initDynamicFnBlocks } from "../../blocks/gen";
+import { initDynamicFnBlocks, updateDynamicFnLocales } from "../../blocks/gen";
 import { registerBasic } from "../../blocks/basic";
 import type { UiLang } from "../../i18n/strings";
 import { registerFnRootBlock } from "../../blocks/fn/fn_root";
@@ -57,6 +57,10 @@ export async function initFrockly(uiLang: UiLang) {
     dynamicInited = true;
     await initDynamicFnBlocks();
   }
+
+  // ★言語切り替え時は必ず辞書を更新する
+  await updateDynamicFnLocales(uiLang);
+
   registerLetDynpairsMutator();
   // fn ワークスペース系
   registerFnRootBlock();

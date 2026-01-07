@@ -28,14 +28,25 @@ export function ensureFnBlockDefined(name: string): boolean {
 }
 
 const map: FnSpecMap = new Map();
+const localizedMap = new Map<string, FnSpec>();
 
 export function setFnSpecs(specs: FnSpec[]) {
   map.clear();
-  for (const s of specs) map.set(s.name, s);
+  localizedMap.clear();
+  for (const s of specs) {
+    map.set(s.name, s);
+    if (s.localizedName) {
+      localizedMap.set(s.localizedName.toUpperCase(), s);
+    }
+  }
 }
 
 export function getFnSpec(name: string): FnSpec | undefined {
   return map.get(name.toUpperCase());
+}
+
+export function getFnSpecByLocalizedName(locName: string): FnSpec | undefined {
+  return localizedMap.get(locName.toUpperCase());
 }
 
 export function getAllFnSpecs(): FnSpec[] {

@@ -126,7 +126,7 @@ export function registerBasicBlocks(lang: UiLang) {
   Blockly.Blocks["basic_number"] = {
     init: function () {
       this.appendDummyInput()
-        .appendField(t(STR.NUMBER))
+        .appendField(t(STR.NUMBER), "LABEL")
         .appendField(new Blockly.FieldTextInput("1"), "NUM");
 
       this.setOutput(true, null);
@@ -140,7 +140,7 @@ export function registerBasicBlocks(lang: UiLang) {
   Blockly.Blocks["basic_string"] = {
     init: function () {
       this.appendDummyInput()
-        .appendField(t(STR.TEXT))
+        .appendField(t(STR.TEXT), "LABEL")
         .appendField(new Blockly.FieldTextInput("text"), "STR");
 
       this.setOutput(true, null);
@@ -160,7 +160,7 @@ export function registerBasicBlocks(lang: UiLang) {
       });
 
       this.appendDummyInput()
-        .appendField(t(STR.CELL))
+        .appendField(t(STR.CELL), "LABEL")
         .appendField(text, "CELL");
 
       // ★ 右寄せで小さく置く（横幅を増やしにくい）
@@ -204,7 +204,7 @@ export function registerBasicBlocks(lang: UiLang) {
       });
 
       this.appendDummyInput()
-        .appendField(t(STR.RANGE))
+        .appendField(t(STR.RANGE), "LABEL")
         .appendField(text, "RANGE");
 
       this.appendDummyInput("ABS_CTRL")
@@ -355,8 +355,8 @@ export function registerBasicBlocks(lang: UiLang) {
   Blockly.Blocks["basic_var"] = {
     init: function () {
       this.appendDummyInput()
-        .appendField(t("NAME"))
-        .appendField(new Blockly.FieldTextInput("x"), t("NAME"));
+        .appendField(t("NAME"), "LABEL")
+        .appendField(new Blockly.FieldTextInput("x"), "VAR_NAME"); // ★ Static ID!
 
       // 出力は「識別子」専用
       this.setOutput(true, "VAR");
@@ -367,4 +367,21 @@ export function registerBasicBlocks(lang: UiLang) {
       this.setTooltip("識別子（LET変数 / LAMBDA引数 / 名前付き関数の引数）");
     },
   };
+}
+
+export function getBasicBlockLabel(type: string, lang: UiLang): string | null {
+  const t = tr(lang);
+  switch (type) {
+    case "basic_number":
+      return t(STR.NUMBER);
+    case "basic_string":
+      return t(STR.TEXT);
+    case "basic_cell":
+      return t(STR.CELL);
+    case "basic_range":
+      return t(STR.RANGE);
+    case "basic_var":
+      return t("NAME"); // STR.NAME?
+  }
+  return null;
 }

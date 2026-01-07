@@ -461,7 +461,7 @@
 (FILTER,"array","Builds a list containing only elements that meet a condition")
 (UNIQUE,"array","Creates a list with duplicate values removed")
 (SORT,"array","Reorders elements based on a given rule")
-(SORTBY,"array","Reorders elements using another array as the 기준")
+(SORTBY,"array","Reorders elements using another array as the sort key")
 (SEQUENCE,"array","Generates a sequence of numbers as an array")
 (RANDARRAY,"array","Generates an array filled with random numbers")
 (TEXTBEFORE,"text","Extracts the part of text that appears before a delimiter")
