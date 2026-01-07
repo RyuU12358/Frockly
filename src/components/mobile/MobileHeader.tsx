@@ -6,8 +6,8 @@ import { STR, tr, type StrKey } from "../../i18n/strings";
 export function MobileHeader(props: {
   title?: string;
   subtitle?: string;
-  uiLang: "en" | "ja";
-  onChangeLang: (lang: "en" | "ja") => void;
+  uiLang: "en" | "ja" | "fr";
+  onChangeLang: (lang: "en" | "ja" | "fr") => void;
 
   search: string;
   onChangeSearch: (v: string) => void;

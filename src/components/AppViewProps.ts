@@ -3,6 +3,8 @@ import type { CellMap } from "./excelGrid";
 import type { CellRange } from "./excelGrid/types";
 import type { RibbonTab } from "./ribbon/ExcelRibbon";
 
+import type { UiLang } from "../i18n/strings";
+
 export type AppViewNamedFn = {
   id: string;
   name: string;
@@ -22,8 +24,8 @@ export type AppViewUiProps = {
   ribbonTab: RibbonTab;
   setRibbonTab: (v: RibbonTab) => void;
 
-  uiLang: "en" | "ja";
-  setUiLang: (v: "en" | "ja") => void;
+  uiLang: UiLang;
+  setUiLang: (v: UiLang) => void;
 
   leftWidth: number;
   onStartSplitDrag: (e: React.MouseEvent) => void;
@@ -89,5 +91,8 @@ export type AppViewProps = {
   // いまは固定でええなら省略してもOK
   blockCategory?: string;
   // ★追加：数式から作成（モーダルを開く）
-  onImportFromFormula?: () => void;
+  onImportFromFormula?: () => void; // Mobile用
+
+  // ★追加：WorkspaceAPIが生成された時のコールバック
+  onWorkspaceCreated?: (api: WorkspaceApi) => void;
 };

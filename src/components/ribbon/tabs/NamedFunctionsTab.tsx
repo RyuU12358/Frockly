@@ -23,7 +23,7 @@ export type WorkspaceItem = {
 type CreateFnResult = { fnId: string; wsId: string };
 
 type Props = {
-  uiLang: "en" | "ja";
+  uiLang: "en" | "ja" | "fr";
   search?: string;
   fns: NamedFnItem[];
   onInsertCurrentParam?: () => void;
@@ -161,7 +161,7 @@ export function NamedFunctionsTab(props: Props) {
 }
 
 function WorkspaceManageModal(props: {
-  uiLang: "en" | "ja"; // ★追加
+  uiLang: "en" | "ja" | "fr"; // ★追加
   workspaces: WorkspaceItem[];
   activeWorkspaceId: string;
   fns: NamedFnItem[];

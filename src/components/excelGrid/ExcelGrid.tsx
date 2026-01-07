@@ -35,7 +35,7 @@ interface ExcelGridProps {
 
   onRangeSelect?: (range: string) => void;
   onAddRefBlock?: (refText: string) => void;
-  uiLang: "en" | "ja";
+  uiLang: "en" | "ja" | "fr";
   highlightRange?: CellRange | null;
 }
 

@@ -1,11 +1,10 @@
 import type { CellMap, CellRef } from "./types";
-import { STR, tr } from "../../i18n/strings";
 
 interface GridHeaderProps {
   selectedRefText: string; // "A1" or "A1:B3"
   selectedCell: CellRef; // 代表セル（fx表示用）
   cells: CellMap;
-  uiLang?: "en" | "ja";
+  uiLang?: "en" | "ja" | "fr";
 }
 
 export function GridHeader({
@@ -14,7 +13,6 @@ export function GridHeader({
   cells,
   uiLang = "en",
 }: GridHeaderProps) {
-  const t = tr(uiLang);
   const cell = cells[selectedCell];
   const display = cell?.displayText ?? "";
   const formula = cell?.formula ?? "";

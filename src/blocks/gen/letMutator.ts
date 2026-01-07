@@ -1,4 +1,5 @@
 import * as Blockly from "blockly";
+import { ClickableLabel, ensureHeaderInput } from "./uiUtils";
 
 type LetBlock = Blockly.Block & { __pairs?: number };
 
@@ -28,29 +29,9 @@ export function registerLetDynpairsMutator() {
   );
 }
 
-class ClickableLabel extends Blockly.FieldLabelSerializable {
-  private onClick: () => void;
-  constructor(text: string, onClick: () => void) {
-    super(text);
-    this.onClick = onClick;
-  }
-  override onMouseDown_(e: MouseEvent) {
-    e.preventDefault();
-    e.stopPropagation();
-    this.onClick();
-  }
-}
-
-function ensureHeader(block: LetBlock) {
-  if (!block.getInput("FN_HEADER")) {
-    block.appendDummyInput("FN_HEADER").appendField("LET");
-  }
-  return block.getInput("FN_HEADER")!;
-}
-
 function updateHeaderUI(block: LetBlock) {
-
-  const header = ensureHeader(block);
+  // Use generic helper, appending "LET" label if creating new
+  const header = ensureHeaderInput(block, "FN_HEADER", "LET");
 
   if (block.getField("LET_MINUS")) return;
 

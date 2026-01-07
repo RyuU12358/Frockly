@@ -21,13 +21,8 @@ import { ImportFromFormulaModal } from "../ImportFromFormulaModal";
 
 type MobileMainTab = "ws" | "grid" | "formula";
 
-export function MobileApp({
-  ui,
-  projectCtx,
-  refs,
-  grid,
-  formula,
-}: AppViewProps) {
+export function MobileApp(props: AppViewProps) {
+  const { ui, projectCtx, refs, grid, formula } = props;
   const t = tr(ui.uiLang);
   const [openImport, setOpenImport] = useState(false);
   const [importText, setImportText] = useState("");
@@ -166,7 +161,10 @@ export function MobileApp({
               category="math"
               onFormulaChange={formula.setFormula}
               selectedCell={grid.selectedCell}
-              onWorkspaceApi={(a) => (refs.workspaceApiRef.current = a)}
+              onWorkspaceApi={(a) => {
+                refs.workspaceApiRef.current = a;
+                if (props.onWorkspaceCreated) props.onWorkspaceCreated(a);
+              }}
               uiLang={ui.uiLang}
               namedFns={projectCtx.namedFns}
               onHighlightRange={grid.setHighlightRange}
@@ -256,7 +254,7 @@ function MainTabBtn(props: {
 }
 
 function MobileViewSubRibbon(props: {
-  uiLang: "en" | "ja";
+  uiLang: "en" | "ja" | "fr";
   focusOn: boolean;
   pathOn: boolean;
   onToggleFocus: () => void;

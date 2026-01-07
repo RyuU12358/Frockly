@@ -17,14 +17,25 @@ import { importNamedFunctionLibrary } from "./state/project/workspaceOps"; // �
 import type { WorkspaceApi } from "./components/blockly/types";
 import { DesktopApp } from "./components/desktop/DesktopApp";
 import { MobileApp } from "./components/mobile/MobileApp";
+import { getStartupParams } from "./io/urlParams";
+
 export default function App() {
   // ★最初にプロジェクト初期化（二重呼びでも安全）
   ensureProjectInitialized();
+
+  // ★ URLパラメータ取得（初回のみ）
+  const startupParams = useMemo(() => getStartupParams(), []);
+
   const project = useProject();
   const activeWs = findWorkspace(project, project.activeWorkspaceId);
   const activeWsTitle = activeWs?.title ?? "???";
   const isMobile = window.matchMedia("(max-width: 768px)").matches;
-  const [uiLang, setUiLang] = useState<"en" | "ja">("en");
+
+  // ★初期言語をURLから反映
+  // uiLang should be compatible with "en" | "ja" | "fr"
+  const [uiLang, setUiLang] = useState<"en" | "ja" | "fr">(
+    startupParams.lang ?? "en"
+  );
 
   const [formula, setFormula] = useState("");
   const [selectedCell, setSelectedCell] = useState("A1");
@@ -37,6 +48,18 @@ export default function App() {
   const [pathOn, setPathOn] = useState(false);
 
   const workspaceApiRef = useRef<WorkspaceApi | null>(null);
+
+  // ★ WorkspaceAPIが来たタイミングで初期数式をロード
+  const handleWorkspaceApi = (api: WorkspaceApi) => {
+    workspaceApiRef.current = api;
+    if (startupParams.formula) {
+      // 少し待たないとブロック定義ロード等が間に合わない可能性への保険
+      setTimeout(() => {
+        api.insertFromFormula(startupParams.formula!);
+        // 一度読み込んだらクリアしないと再ロードでループする恐れはない（memo化してるので）
+      }, 500);
+    }
+  };
 
   const [leftWidth, setLeftWidth] = useState(700);
 
@@ -324,6 +347,7 @@ export default function App() {
             onChangeSheet: setActiveSheet,
           }}
           refs={{ workspaceApiRef }}
+          onWorkspaceCreated={handleWorkspaceApi}
           grid={{
             selectedCell,
             setSelectedCell,
@@ -369,6 +393,7 @@ export default function App() {
             onChangeSheet: setActiveSheet,
           }}
           refs={{ workspaceApiRef }}
+          onWorkspaceCreated={handleWorkspaceApi}
           grid={{
             selectedCell,
             setSelectedCell,

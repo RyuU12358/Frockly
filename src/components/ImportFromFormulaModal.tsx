@@ -1,9 +1,8 @@
-import React from "react";
 import { tr, STR } from "../i18n/strings";
 
 export function ImportFromFormulaModal(props: {
   open: boolean;
-  uiLang: "en" | "ja";
+  uiLang: "en" | "ja" | "fr";
   text: string;
   setText: (v: string) => void;
 

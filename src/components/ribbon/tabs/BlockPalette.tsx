@@ -15,7 +15,7 @@ interface BlockDef {
 
 interface BlockPaletteProps {
   search?: string;
-  uiLang: "en" | "ja";
+  uiLang: "en" | "ja" | "fr";
   onBlockClick?: (blockType: string) => void;
 
   // ★追加

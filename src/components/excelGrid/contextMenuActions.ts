@@ -23,7 +23,7 @@ export function buildMenuActions(opts: {
   selectedCell: CellRef;
   range: CellRange | null;
   inRangeContext: boolean;
-  uiLang?: "en" | "ja";
+  uiLang?: "en" | "ja" | "fr";
 }): MenuAction[] {
   const t = tr(opts.uiLang ?? "en");
   const hasRange = !!opts.range && opts.inRangeContext;

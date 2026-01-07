@@ -4,14 +4,8 @@ import { BlocklyWorkspace } from "../blockly/BlocklyWorkspace";
 import { FormulaDisplay } from "../fomula/FormulaDisplay";
 import type { AppViewProps } from "../AppViewProps";
 
-export function DesktopApp({
-  ui,
-  projectCtx,
-  refs,
-  grid,
-  formula,
-  blockCategory = "math",
-}: AppViewProps) {
+export function DesktopApp(props: AppViewProps) {
+  const { ui, projectCtx, refs, grid, formula, blockCategory = "math" } = props;
   return (
     <>
       <ExcelRibbon
@@ -70,7 +64,11 @@ export function DesktopApp({
               category={blockCategory}
               onFormulaChange={formula.setFormula}
               selectedCell={grid.selectedCell}
-              onWorkspaceApi={(api) => (refs.workspaceApiRef.current = api)}
+              onWorkspaceApi={(api) => {
+                refs.workspaceApiRef.current = api;
+                // Propsのcallbackも呼ぶ（URL初期数式ロード用）
+                if (props.onWorkspaceCreated) props.onWorkspaceCreated(api);
+              }}
               uiLang={ui.uiLang}
               namedFns={projectCtx.namedFns}
               onHighlightRange={grid.setHighlightRange}

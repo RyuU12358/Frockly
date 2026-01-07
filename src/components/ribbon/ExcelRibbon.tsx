@@ -56,8 +56,8 @@ export interface ExcelRibbonProps {
   onTabChange: (tab: RibbonTab) => void;
   onBlockClick?: (blockType: string) => void;
 
-  uiLang: "en" | "ja";
-  onUiLangChange: (lang: "en" | "ja") => void;
+  uiLang: "en" | "ja" | "fr";
+  onUiLangChange: (lang: "en" | "ja" | "fr") => void;
 
   onWorkspaceApi?: React.MutableRefObject<WorkspaceApi | null>;
   focusOn: boolean;

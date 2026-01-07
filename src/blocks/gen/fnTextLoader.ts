@@ -18,7 +18,7 @@ function parseFnText(text: string): FnTextMap {
   return out;
 }
 
-export async function loadFnText(lang: "en" | "ja"): Promise<FnTextMap> {
+export async function loadFnText(lang: "en" | "ja" | "fr"): Promise<FnTextMap> {
   // ★ パス全部小文字に合わせる
   const base = import.meta.env.BASE_URL; // devでは "/", pagesでは "/Frockly/"
   const path =

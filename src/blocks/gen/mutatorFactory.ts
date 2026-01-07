@@ -3,35 +3,11 @@ import * as Blockly from "blockly";
 import { getFnSpec } from "./registry";
 import { ensureArgs } from "./ensureArgs";
 
+import { ClickableLabel, setFieldVisible, ensureHeaderInput } from "./uiUtils";
+
 const MUT_NAME = "frockly_fn_dynargs";
 
 type DynBlock = Blockly.Block & { __argc?: number };
-
-function setFieldVisible(block: Blockly.Block, name: string, visible: boolean) {
-  const f: any = block.getField(name);
-  const svg = f?.getSvgRoot?.();
-  if (svg) svg.style.display = visible ? "" : "none";
-}
-function ensureHeaderInput(block: DynBlock) {
-  // extension が作っててもいいし、無ければ mutator が作る
-  if (!block.getInput("FN_HEADER")) {
-    block.appendDummyInput("FN_HEADER");
-  }
-  return block.getInput("FN_HEADER")!;
-}
-
-class ClickableLabel extends Blockly.FieldLabelSerializable {
-  private onClick: () => void;
-  constructor(text: string, onClick: () => void) {
-    super(text);
-    this.onClick = onClick;
-  }
-  override onMouseDown_(e: MouseEvent) {
-    e.preventDefault();
-    e.stopPropagation();
-    this.onClick();
-  }
-}
 
 function specFromBlock(block: Blockly.Block) {
   const name = block.type.replace(/^frockly_/, "");

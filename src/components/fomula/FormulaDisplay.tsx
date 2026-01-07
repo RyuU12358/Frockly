@@ -4,7 +4,7 @@ import { STR, tr } from "../../i18n/strings";
 
 interface FormulaDisplayProps {
   formula: string;
-  uiLang?: "en" | "ja";
+  uiLang?: "en" | "ja" | "fr";
 }
 
 export function FormulaDisplay({
