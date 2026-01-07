@@ -57,10 +57,13 @@ export function MobileHeader(props: {
       focus:outline-none focus:bg-white focus:text-emerald-900
     "
           value={props.uiLang}
-          onChange={(e) => props.onChangeLang(e.target.value as "en" | "ja")}
+          onChange={(e) =>
+            props.onChangeLang(e.target.value as "en" | "ja" | "fr")
+          }
         >
           <option value="ja">JP</option>
           <option value="en">EN</option>
+          <option value="fr">FR</option>
         </select>
       </div>
 
