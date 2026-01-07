@@ -14,8 +14,8 @@ It focuses on helping you **read, analyze, and reason about formulas** before br
 
 🔗 https://ryuu12358.github.io/Frockly/
 
-- Desktop and mobile layouts are supported  
-- Desktop is recommended for large formulas  
+- Desktop and mobile layouts are supported
+- Desktop is recommended for large formulas
 - Mobile view is optimized for inspection and navigation
 
 ---
@@ -49,6 +49,7 @@ Frockly is designed for **understanding and refactoring**, not execution.
 Below is the same Excel formula shown in different representations.
 
 #### Original formula (text)
+
 All structure is hidden in a single line.
 
 ```excel
@@ -56,6 +57,7 @@ All structure is hidden in a single line.
 ```
 
 ### 1. Import from formula
+
 Paste an existing Excel formula and convert it into blocks instantly.
 
 ![Import from formula](Formula.jpg)
@@ -63,6 +65,7 @@ Paste an existing Excel formula and convert it into blocks instantly.
 ---
 
 ### 2. Structured view
+
 The logical structure is laid out visually.
 Nested conditions become explicit branches.
 
@@ -71,6 +74,7 @@ Nested conditions become explicit branches.
 ---
 
 ### 3. Focused / collapsed view
+
 Collapse irrelevant branches and focus on the part you are reasoning about.
 
 ![Focused view](Collapsed_And_Forcused.jpg)
@@ -78,6 +82,7 @@ Collapse irrelevant branches and focus on the part you are reasoning about.
 ---
 
 ### 4. Path view
+
 Trace which logical path is taken for a specific condition.
 
 This makes decision flows visible without mentally simulating nested IFs.
@@ -124,15 +129,25 @@ The project is still experimental, but usable for real inspection and refactorin
 ## Roadmap (rough)
 
 ### Structural assistance
+
 - Check tab (structural diagnostics, LET refactoring hints)
 
 ### Usability
+
 - Improved named function navigation
 
 ### Internationalization
+
 - i18n infrastructure (UI strings, function descriptions)
 - Multilingual function search
 - Community-driven translations (planned)
+
+---
+
+## Contributing - We need your help!
+
+We are looking for contributors to help add more languages to Frockly.
+If you are interested in translating the UI or function descriptions, please check [ADD_LANGUAGE.md](ADD_LANGUAGE.md) for instructions.
 
 ---
 
@@ -142,7 +157,6 @@ Frockly explores a different way of interacting with formulas.
 
 It does not aim to automate thinking or generate logic for you,  
 but to make **existing logic visible and easier to reason about**.
-
 
 ---
 
