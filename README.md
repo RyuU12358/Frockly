@@ -91,6 +91,18 @@ This makes decision flows visible without mentally simulating nested IFs.
 
 ---
 
+## URL Parameters
+
+You can initialize the app with specific settings using URL query parameters.
+
+- `lang`: Set UI language (`en`, `ja`, `fr`)
+- `formula`: Insert a formula on startup
+
+**Example:**  
+`https://ryuu12358.github.io/Frockly/?lang=fr&formula=SUM(1,2)`
+
+---
+
 ## Why Frockly?
 
 Excel formulas are often hard to understand not because they are complex,  
@@ -117,6 +129,7 @@ The project is still experimental, but usable for real inspection and refactorin
 - **2026-01-07** – v0.7  
   Foundation for multilingual support (English / Japanese / French infrastructure)  
   Basic French support added
+  URL parameter support (`?lang=`, `?formula=`)
 - **2026-01-05** – v0.6  
   Mobile view support  
   Optimized layout and interactions for mobile inspection and navigation
